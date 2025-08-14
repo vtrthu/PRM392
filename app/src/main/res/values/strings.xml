@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aviator Crash</string>
+    
+    <!-- Main Menu -->
+    <string name="start_game">Bắt đầu chơi</string>
+    <string name="game_history">Lịch sử</string>
+    <string name="settings">Cài đặt</string>
+    <string name="exit">Thoát</string>
+    
+    <!-- Game Screen -->
+    <string name="multiplier">Hệ số: %1$.2fx</string>
+    <string name="bet_amount">Số tiền cược: %1$s</string>
+    <string name="balance">Số dư: %1$s</string>
+    <string name="place_bet">Đặt cược</string>
+    <string name="cash_out">Rút tiền</string>
+    <string name="game_over">Kết thúc!</string>
+    <string name="you_won">Bạn thắng: %1$s</string>
+    <string name="you_lost">Bạn thua: %1$s</string>
+    <string name="crash_at">Sập tại: %1$.2fx</string>
+    
+    <!-- Betting -->
+    <string name="enter_bet_amount">Nhập số tiền cược</string>
+    <string name="invalid_bet">Số tiền cược không hợp lệ</string>
+    <string name="insufficient_balance">Số dư không đủ</string>
+    <string name="min_bet">Cược tối thiểu: %1$s</string>
+    <string name="max_bet">Cược tối đa: %1$s</string>
+    <string name="max_multiplier">Hệ số tối đa: 100x</string>
+    <string name="jackpot_message">🎉 JACKPOT! 100x 🎉</string>
+    <string name="mega_win_message">MEGA WIN! %.1fx</string>
+    <string name="special_win_message">Đặc biệt! %.1fx</string>
+    
+    <!-- History -->
+    <string name="game_history_title">Lịch sử trò chơi</string>
+    <string name="no_history">Chưa có lịch sử</string>
+    <string name="clear_history">Xóa lịch sử</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="sound_effects">Hiệu ứng âm thanh</string>
+    <string name="vibration">Rung</string>
+    <string name="auto_cashout">Tự động rút tiền</string>
+    <string name="auto_cashout_multiplier">Hệ số tự động rút tiền</string>
+    <string name="reset_balance">Đặt lại số dư</string>
+    <string name="reset_balance_confirm">Bạn có chắc muốn đặt lại số dư?</string>
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="back">Quay lại</string>
+    
+    <!-- Game States -->
+    <string name="waiting">Đang chờ...</string>
+    <string name="flying">Đang bay...</string>
+    <string name="crashed">Đã sập!</string>
+    <string name="next_round">Vòng tiếp theo</string>
+    
+    <!-- Notifications -->
+    <string name="notification_title">Aviator Crash</string>
+    <string name="notification_text">Vòng mới sắp bắt đầu!</string>
+    
+    <!-- Error Messages -->
+    <string name="error_occurred">Đã xảy ra lỗi</string>
+    <string name="try_again">Thử lại</string>
+    
+    <!-- Game Activity -->
+    <string name="balance_format">Số dư: %.2f</string>
+    <string name="current_bet_format">Cược hiện tại: %.2f</string>
+    <string name="win_amount_format">Thắng: %.2f</string>
+    <string name="crash_point_format">Sập tại: %.2fx</string>
+    <string name="game_status_waiting">Đang chờ...</string>
+    <string name="game_status_flying">Đang bay...</string>
+    <string name="game_status_crashed">Đã sập!</string>
+    <string name="game_status_cashed_out">Đã rút tiền!</string>
+    <string name="error_enter_bet_amount">Vui lòng nhập số tiền cược</string>
+    <string name="error_invalid_bet">Số tiền cược không hợp lệ</string>
+    <string name="error_invalid_number">Số không hợp lệ</string>
+    <string name="game_crashed">Game đã sập!</string>
+    <string name="cashout_successful">Rút tiền thành công!</string>
+    <string name="confirm_exit">Xác nhận thoát</string>
+    <string name="confirm_exit_message">Bạn có chắc muốn thoát? Tiền cược sẽ bị mất.</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    
+    <!-- History Activity -->
+    <string name="history_title">Lịch sử trò chơi</string>
+    <string name="clear_history_confirm">Bạn có chắc muốn xóa toàn bộ lịch sử?</string>
+</resources>
