@@ -214,7 +214,7 @@
                             android:id="@+id/current_balance_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1000"
+                            android:text="100,000.00"
                             android:textAppearance="@style/TextAppearance.AviatorCrash.Headline2"
                             android:textColor="@color/success" />
 

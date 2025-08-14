@@ -39,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
         viewModel.getGameState().observe(this, this::updateGameState);
         viewModel.getMultiplier().observe(this, this::updateMultiplier);
         viewModel.getBalance().observe(this, balance -> 
-            binding.balanceText.setText(getString(R.string.balance_format, balance)));
+            binding.balanceText.setText(getString(R.string.balance, balance)));
         viewModel.getCurrentBet().observe(this, bet -> 
             binding.currentBetText.setText(getString(R.string.current_bet_format, bet)));
         viewModel.getCashoutAmount().observe(this, amount -> 
@@ -121,7 +121,7 @@ public class GameActivity extends AppCompatActivity {
 
         try {
             double betAmount = Double.parseDouble(betText);
-            if (gameEngine.isValidBet(betAmount, viewModel.getBalance().getValue(), 1.0, 10000.0)) {
+            if (gameEngine.isValidBet(betAmount, viewModel.getBalance().getValue(), 5000.0, 10000000000000.0)) {
                 viewModel.placeBet(betAmount);
                 binding.betAmountInput.setText("");
                 binding.betAmountLayout.setError(null);

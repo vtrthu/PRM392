@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.PreferenceManager;
+import android.content.Context;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -53,12 +53,12 @@ public class GameViewModel extends AndroidViewModel {
         gameRecordDao = AppDatabase.getDatabase(application).gameRecordDao();
         executorService = Executors.newSingleThreadExecutor();
         mainHandler = new Handler(Looper.getMainLooper());
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
+        sharedPreferences = application.getSharedPreferences("game_preferences", Context.MODE_PRIVATE);
 
         // Initialize LiveData
         gameState = new MutableLiveData<>(GameState.WAITING);
         multiplier = new MutableLiveData<>(1.0);
-        balance = new MutableLiveData<>(1000.0);
+        balance = new MutableLiveData<>(loadBalance());
         betAmount = new MutableLiveData<>(10.0);
         currentBet = new MutableLiveData<>(0.0);
         cashoutAmount = new MutableLiveData<>(0.0);
@@ -76,10 +76,11 @@ public class GameViewModel extends AndroidViewModel {
 
     public void placeBet(double amount) {
         if (gameState.getValue() == GameState.WAITING && 
-            gameEngine.isValidBet(amount, balance.getValue(), 1.0, 10000.0)) {
+            gameEngine.isValidBet(amount, balance.getValue(), 5000.0, 10000000000000.0)) {
             
             currentBet.setValue(amount);
             balance.setValue(balance.getValue() - amount);
+            saveSettings(); // Lưu số dư sau khi đặt cược
             gameState.setValue(GameState.FLYING);
             startGameTimer();
         }
@@ -93,6 +94,7 @@ public class GameViewModel extends AndroidViewModel {
             
             cashoutAmount.setValue(winAmount);
             balance.setValue(balance.getValue() + winAmount);
+            saveSettings(); // Lưu số dư sau khi rút tiền
             gameState.setValue(GameState.CASHED_OUT);
             
             saveGameRecord(betAmount, currentMultiplier, winAmount, true);
@@ -106,6 +108,7 @@ public class GameViewModel extends AndroidViewModel {
         cashoutAmount.setValue(0.0);
         gameDuration.setValue(0L);
         crashPoint.setValue(0.0);
+        saveSettings(); // Lưu trạng thái game
     }
 
     private void startGameTimer() {
@@ -166,11 +169,25 @@ public class GameViewModel extends AndroidViewModel {
 
     private void loadGameHistory() {
         executorService.execute(() -> {
-            List<GameRecord> records = gameRecordDao.getAllGameRecords().getValue();
-            if (records != null) {
+            try {
+                // Load trực tiếp từ database thay vì qua LiveData
+                List<GameRecord> records = gameRecordDao.getAllGameRecordsDirect();
                 mainHandler.post(() -> {
                     gameHistory.setValue(records);
-                    calculateStatistics(records);
+                    if (records != null && !records.isEmpty()) {
+                        calculateStatistics(records);
+                    } else {
+                        winRate.setValue(0.0);
+                        totalGames.setValue(0);
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Fallback: set empty list
+                mainHandler.post(() -> {
+                    gameHistory.setValue(null);
+                    winRate.setValue(0.0);
+                    totalGames.setValue(0);
                 });
             }
         });
@@ -203,8 +220,12 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     public void resetBalance() {
-        balance.setValue(1000.0);
+        balance.setValue(100000.0);
         saveSettings();
+    }
+
+    private double loadBalance() {
+        return sharedPreferences.getFloat("balance", 100000.0f);
     }
 
     public void setAutoCashout(boolean enabled, double multiplier) {
@@ -214,11 +235,11 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private void loadSettings() {
-        double savedBalance = sharedPreferences.getFloat("balance", 1000.0f);
+        double savedBalance = sharedPreferences.getFloat("balance", 100000.0f);
         boolean autoCashout = sharedPreferences.getBoolean("auto_cashout_enabled", false);
         double autoCashoutMultiplierValue = sharedPreferences.getFloat("auto_cashout_multiplier", 2.0f);
         
-        balance.setValue((double) savedBalance);
+        balance.setValue(savedBalance);
         autoCashoutEnabled.setValue(autoCashout);
         autoCashoutMultiplier.setValue(autoCashoutMultiplierValue);
     }

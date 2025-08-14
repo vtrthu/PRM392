@@ -177,16 +177,16 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 106 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 116 warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Wed Aug 13 11:54:55 ICT 2025 by AGP (7.4.2)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Thu Aug 14 08:57:31 ICT 2025 by AGP (7.4.2)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
-      <a class="mdl-navigation__link" href="#DefaultLocale"><i class="material-icons warning-icon">warning</i>Implied default locale in case conversion (10)</a>
+      <a class="mdl-navigation__link" href="#DefaultLocale"><i class="material-icons warning-icon">warning</i>Implied default locale in case conversion (19)</a>
       <a class="mdl-navigation__link" href="#OldTargetApi"><i class="material-icons warning-icon">warning</i>Target SDK attribute is not targeting latest version (1)</a>
       <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (14)</a>
       <a class="mdl-navigation__link" href="#LockedOrientationActivity"><i class="material-icons warning-icon">warning</i>Incompatible screenOrientation value (4)</a>
@@ -194,7 +194,7 @@ document.getElementById(id).style.display = 'none';
       <a class="mdl-navigation__link" href="#UseCompoundDrawables"><i class="material-icons warning-icon">warning</i>Node can be replaced by a <code>TextView</code> with compound drawables (1)</a>
       <a class="mdl-navigation__link" href="#VectorPath"><i class="material-icons warning-icon">warning</i>Long vector paths (1)</a>
       <a class="mdl-navigation__link" href="#Overdraw"><i class="material-icons warning-icon">warning</i>Overdraw: Painting regions more than once (4)</a>
-      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (30)</a>
+      <a class="mdl-navigation__link" href="#UnusedResources"><i class="material-icons warning-icon">warning</i>Unused resources (31)</a>
       <a class="mdl-navigation__link" href="#TypographyEllipsis"><i class="material-icons warning-icon">warning</i>Ellipsis string can be replaced with ellipsis character (4)</a>
       <a class="mdl-navigation__link" href="#MonochromeLauncherIcon"><i class="material-icons warning-icon">warning</i>Monochrome icon is not defined (4)</a>
       <a class="mdl-navigation__link" href="#ContentDescription"><i class="material-icons warning-icon">warning</i>Image without <code>contentDescription</code> (6)</a>
@@ -216,7 +216,7 @@ document.getElementById(id).style.display = 'none';
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
 </td></tr>
 <tr>
-<td class="countColumn">10</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">19</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#DefaultLocale">DefaultLocale</a>: Implied default locale in case conversion</td></tr>
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
@@ -242,7 +242,7 @@ document.getElementById(id).style.display = 'none';
 <td class="countColumn">4</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#Overdraw">Overdraw</a>: Overdraw: Painting regions more than once</td></tr>
 <tr>
-<td class="countColumn">30</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">31</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#UnusedResources">UnusedResources</a>: Unused resources</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Usability:Typography">Usability:Typography</a>
 </td></tr>
@@ -311,6 +311,98 @@ Dismiss</button>            </div>
 <span class="lineno"> 108 </span>    }
 </pre>
 
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:134</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 131 </span>  
+<span class="lineno"> 132 </span>  System.out.println(<span class="string">"=== PHÂN PHỐI XÁC SUẤT THỰC TẾ ==="</span>);
+<span class="lineno"> 133 </span>  System.out.println(<span class="string">"Tổng số lần test: "</span> + iterations);
+<span class="caretline"><span class="lineno"> 134 </span>  System.out.println(<span class="string">"Jackpot 100x: "</span> + ranges[<span class="number">0</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">0</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 135 </span>  System.out.println(<span class="string">"Mega Win 50x-100x: "</span> + ranges[<span class="number">1</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">1</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:135</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 132 </span>  System.out.println(<span class="string">"=== PHÂN PHỐI XÁC SUẤT THỰC TẾ ==="</span>);
+<span class="lineno"> 133 </span>  System.out.println(<span class="string">"Tổng số lần test: "</span> + iterations);
+<span class="lineno"> 134 </span>  System.out.println(<span class="string">"Jackpot 100x: "</span> + ranges[<span class="number">0</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">0</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 135 </span>  System.out.println(<span class="string">"Mega Win 50x-100x: "</span> + ranges[<span class="number">1</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">1</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:136</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 133 </span>  System.out.println(<span class="string">"Tổng số lần test: "</span> + iterations);
+<span class="lineno"> 134 </span>  System.out.println(<span class="string">"Jackpot 100x: "</span> + ranges[<span class="number">0</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">0</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 135 </span>  System.out.println(<span class="string">"Mega Win 50x-100x: "</span> + ranges[<span class="number">1</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">1</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 139 </span>  System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+</pre>
+
+<button class="mdl-button mdl-js-button mdl-button--primary" id="DefaultLocaleDivLink" onclick="reveal('DefaultLocaleDiv');" />+ 14 More Occurrences...</button>
+<div id="DefaultLocaleDiv" style="display: none">
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:137</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 134 </span>  System.out.println(<span class="string">"Jackpot 100x: "</span> + ranges[<span class="number">0</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">0</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 135 </span>  System.out.println(<span class="string">"Mega Win 50x-100x: "</span> + ranges[<span class="number">1</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">1</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 139 </span>  System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 140 </span>  System.out.println(<span class="string">"Multiplier trung bình: "</span> + String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations));
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:138</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 135 </span>  System.out.println(<span class="string">"Mega Win 50x-100x: "</span> + ranges[<span class="number">1</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">1</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 139 </span>  System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 140 </span>  System.out.println(<span class="string">"Multiplier trung bình: "</span> + String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations));
+<span class="lineno"> 141 </span>  System.out.println(<span class="string">"Multiplier cao nhất: "</span> + String.format(<span class="string">"%.2f"</span>, maxMultiplier));
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:139</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 136 </span>  System.out.println(<span class="string">"20x-100x: "</span> + ranges[<span class="number">2</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">2</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 139 </span>  System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + <span class="warning">String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>)</span> + <span class="string">"%)"</span>);</span>
+<span class="lineno"> 140 </span>  System.out.println(<span class="string">"Multiplier trung bình: "</span> + String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations));
+<span class="lineno"> 141 </span>  System.out.println(<span class="string">"Multiplier cao nhất: "</span> + String.format(<span class="string">"%.2f"</span>, maxMultiplier));
+<span class="lineno"> 142 </span>  System.out.println(<span class="string">"Multiplier thấp nhất: "</span> + String.format(<span class="string">"%.2f"</span>, minMultiplier));
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:140</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 137 </span>  System.out.println(<span class="string">"5x-20x: "</span> + ranges[<span class="number">3</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">3</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 138 </span>  System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 139 </span>  System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="caretline"><span class="lineno"> 140 </span>  System.out.println(<span class="string">"Multiplier trung bình: "</span> + <span class="warning">String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations)</span>);</span>
+<span class="lineno"> 141 </span>  System.out.println(<span class="string">"Multiplier cao nhất: "</span> + String.format(<span class="string">"%.2f"</span>, maxMultiplier));
+<span class="lineno"> 142 </span>  System.out.println(<span class="string">"Multiplier thấp nhất: "</span> + String.format(<span class="string">"%.2f"</span>, minMultiplier));
+<span class="lineno"> 143 </span>  System.out.println(<span class="string">"================================"</span>);
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:141</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 138 </span>      System.out.println(<span class="string">"2x-5x: "</span> + ranges[<span class="number">4</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">4</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 139 </span>      System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 140 </span>      System.out.println(<span class="string">"Multiplier trung bình: "</span> + String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations));
+<span class="caretline"><span class="lineno"> 141 </span>      System.out.println(<span class="string">"Multiplier cao nhất: "</span> + <span class="warning">String.format(<span class="string">"%.2f"</span>, maxMultiplier)</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 142 </span>      System.out.println(<span class="string">"Multiplier thấp nhất: "</span> + String.format(<span class="string">"%.2f"</span>, minMultiplier));
+<span class="lineno"> 143 </span>      System.out.println(<span class="string">"================================"</span>);
+<span class="lineno"> 144 </span>  }
+</pre>
+
+<span class="location"><a href="../../src/main/java/com/example/aviatorcrash/game/GameEngine.java">../../src/main/java/com/example/aviatorcrash/game/GameEngine.java</a>:142</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno"> 139 </span>        System.out.println(<span class="string">"1x-2x: "</span> + ranges[<span class="number">5</span>] + <span class="string">" ("</span> + String.format(<span class="string">"%.3f"</span>, (<span class="keyword">double</span>)ranges[<span class="number">5</span>]/iterations*<span class="number">100</span>) + <span class="string">"%)"</span>);
+<span class="lineno"> 140 </span>        System.out.println(<span class="string">"Multiplier trung bình: "</span> + String.format(<span class="string">"%.2f"</span>, totalMultiplier/iterations));
+<span class="lineno"> 141 </span>        System.out.println(<span class="string">"Multiplier cao nhất: "</span> + String.format(<span class="string">"%.2f"</span>, maxMultiplier));
+<span class="caretline"><span class="lineno"> 142 </span>        System.out.println(<span class="string">"Multiplier thấp nhất: "</span> + <span class="warning">String.format(<span class="string">"%.2f"</span>, minMultiplier)</span>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 143 </span>        System.out.println(<span class="string">"================================"</span>);
+<span class="lineno"> 144 </span>    }
+<span class="lineno"> 145 </span>}
+</pre>
+
 <span class="location"><a href="../../src/main/java/com/example/aviatorcrash/adapter/GameHistoryAdapter.java">../../src/main/java/com/example/aviatorcrash/adapter/GameHistoryAdapter.java</a>:74</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
 <span class="lineno"> 71 </span>
 <span class="lineno"> 72 </span>        <span class="keyword">public</span> <span class="keyword">void</span> bind(GameRecord gameRecord) {
@@ -341,8 +433,6 @@ Dismiss</button>            </div>
 <span class="lineno"> 88 </span>        }
 </pre>
 
-<button class="mdl-button mdl-js-button mdl-button--primary" id="DefaultLocaleDivLink" onclick="reveal('DefaultLocaleDiv');" />+ 5 More Occurrences...</button>
-<div id="DefaultLocaleDiv" style="display: none">
 <span class="location"><a href="../../src/main/java/com/example/aviatorcrash/adapter/GameHistoryAdapter.java">../../src/main/java/com/example/aviatorcrash/adapter/GameHistoryAdapter.java</a>:86</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
 <span class="lineno"> 83 </span>            }
 <span class="lineno"> 84 </span>
@@ -574,7 +664,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 46 </span>    implementation <span class="string">'androidx.navigation:navigation-ui:2.5.3'</span>
 </pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:44</span>: <span class="message">A newer version of androidx.fragment:fragment than 1.5.7 is available: 1.8.8</span><br /><pre class="errorlines">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:44</span>: <span class="message">A newer version of androidx.fragment:fragment than 1.5.7 is available: 1.8.9</span><br /><pre class="errorlines">
 <span class="lineno"> 41 </span>    implementation <span class="string">'androidx.room:room-common:2.5.0'</span>
 <span class="lineno"> 42 </span>    annotationProcessor <span class="string">'androidx.room:room-compiler:2.5.0'</span>
 <span class="lineno"> 43 </span>    implementation <span class="string">'androidx.recyclerview:recyclerview:1.3.0'</span>
@@ -897,11 +987,10 @@ Dismiss</button>            </div>
 <span class="lineno">   4 </span>    <span class="prefix">xmlns:</span><span class="attribute">tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
 <span class="lineno">   5 </span>    <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"match_parent"</span>
 <span class="lineno">   6 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"match_parent"</span>
-<span class="caretline"><span class="lineno">   7 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">background</span>=<span class="value">"@color/background"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno">   7 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">background</span>=<span class="value">"@color/background"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno">   8 </span>    <span class="prefix">tools:</span><span class="attribute">context</span>=<span class="value">".GameActivity"</span>>
 <span class="lineno">   9 </span>
-<span class="lineno">  10 </span>    <span class="comment">&lt;!-- Top Bar --></span>
-</pre>
+<span class="lineno">  10 </span>    <span class="comment">&lt;!-- Top Bar --></span></pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_history.xml">../../src/main/res/layout/activity_history.xml</a>:7</span>: <span class="message">Possible overdraw: Root element paints background <code>@color/background</code> with a theme that also paints a background (inferred theme is <code>@style/Theme.AviatorCrash</code>)</span><br /><pre class="errorlines">
 <span class="lineno">   4 </span>    <span class="prefix">xmlns:</span><span class="attribute">tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
@@ -927,11 +1016,10 @@ Dismiss</button>            </div>
 <span class="lineno">   4 </span>    <span class="prefix">xmlns:</span><span class="attribute">tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
 <span class="lineno">   5 </span>    <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"match_parent"</span>
 <span class="lineno">   6 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"match_parent"</span>
-<span class="caretline"><span class="lineno">   7 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">background</span>=<span class="value">"@color/background"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno">   7 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">background</span>=<span class="value">"@color/background"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno">   8 </span>    <span class="prefix">tools:</span><span class="attribute">context</span>=<span class="value">".SettingsActivity"</span>>
 <span class="lineno">   9 </span>
-<span class="lineno">  10 </span>    <span class="comment">&lt;!-- Top Bar --></span>
-</pre>
+<span class="lineno">  10 </span>    <span class="comment">&lt;!-- Top Bar --></span></pre>
 
 </div>
 <div class="metadata"><div class="explanation" id="explanationOverdraw" style="display: none;">
@@ -1024,7 +1112,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 37 </span><span class="tag">&lt;/resources></span>
 </pre>
 
-<button class="mdl-button mdl-js-button mdl-button--primary" id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 25 More Occurrences...</button>
+<button class="mdl-button mdl-js-button mdl-button--primary" id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 26 More Occurrences...</button>
 <div id="UnusedResourcesDiv" style="display: none">
 <span class="location"><a href="../../src/main/res/values/colors.xml">../../src/main/res/values/colors.xml</a>:35</span>: <span class="message">The resource <code>R.color.cashout_button</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 32 </span>    <span class="tag">&lt;color</span><span class="attribute"> name</span>=<span class="value">"multiplier_orange"</span>>#FF9800<span class="tag">&lt;/color></span>
@@ -1036,80 +1124,73 @@ Dismiss</button>            </div>
 </pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:17</span>: <span class="message">The resource <code>R.string.game_over</code> appears to be unused</span><br /><pre class="errorlines">
-<span class="lineno"> 14 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"balance"</span>>Số dư: %1$s<span class="tag">&lt;/string></span>
+<span class="lineno"> 14 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"balance"</span>>Số dư: %.2f<span class="tag">&lt;/string></span>
 <span class="lineno"> 15 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"place_bet"</span>>Đặt cược<span class="tag">&lt;/string></span>
 <span class="lineno"> 16 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"cash_out"</span>>Rút tiền<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 17 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"game_over"</span></span>>Kết thúc!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 17 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"game_over"</span></span>>Kết thúc!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 18 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"you_won"</span>>Bạn thắng: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 19 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"you_lost"</span>>Bạn thua: %1$s<span class="tag">&lt;/string></span>
-<span class="lineno"> 20 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_at"</span>>Sập tại: %1$.2fx<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 20 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_at"</span>>Sập tại: %1$.2fx<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:19</span>: <span class="message">The resource <code>R.string.you_lost</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 16 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"cash_out"</span>>Rút tiền<span class="tag">&lt;/string></span>
 <span class="lineno"> 17 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_over"</span>>Kết thúc!<span class="tag">&lt;/string></span>
 <span class="lineno"> 18 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"you_won"</span>>Bạn thắng: %1$s<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 19 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"you_lost"</span></span>>Bạn thua: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 19 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"you_lost"</span></span>>Bạn thua: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 20 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_at"</span>>Sập tại: %1$.2fx<span class="tag">&lt;/string></span>
 <span class="lineno"> 21 </span>    
-<span class="lineno"> 22 </span>    <span class="comment">&lt;!-- Betting --></span>
-</pre>
+<span class="lineno"> 22 </span>    <span class="comment">&lt;!-- Betting --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:24</span>: <span class="message">The resource <code>R.string.invalid_bet</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 21 </span>    
 <span class="lineno"> 22 </span>    <span class="comment">&lt;!-- Betting --></span>
 <span class="lineno"> 23 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"enter_bet_amount"</span>>Nhập số tiền cược<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 24 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"invalid_bet"</span></span>>Số tiền cược không hợp lệ<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 24 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"invalid_bet"</span></span>>Số tiền cược không hợp lệ<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"insufficient_balance"</span>>Số dư không đủ<span class="tag">&lt;/string></span>
 <span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"min_bet"</span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>
-<span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:25</span>: <span class="message">The resource <code>R.string.insufficient_balance</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 22 </span>    <span class="comment">&lt;!-- Betting --></span>
 <span class="lineno"> 23 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"enter_bet_amount"</span>>Nhập số tiền cược<span class="tag">&lt;/string></span>
 <span class="lineno"> 24 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"invalid_bet"</span>>Số tiền cược không hợp lệ<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"insufficient_balance"</span></span>>Số dư không đủ<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"insufficient_balance"</span></span>>Số dư không đủ<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"min_bet"</span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
-<span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:26</span>: <span class="message">The resource <code>R.string.min_bet</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 23 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"enter_bet_amount"</span>>Nhập số tiền cược<span class="tag">&lt;/string></span>
 <span class="lineno"> 24 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"invalid_bet"</span>>Số tiền cược không hợp lệ<span class="tag">&lt;/string></span>
 <span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"insufficient_balance"</span>>Số dư không đủ<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"min_bet"</span></span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"min_bet"</span></span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
-<span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:27</span>: <span class="message">The resource <code>R.string.max_bet</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 24 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"invalid_bet"</span>>Số tiền cược không hợp lệ<span class="tag">&lt;/string></span>
 <span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"insufficient_balance"</span>>Số dư không đủ<span class="tag">&lt;/string></span>
 <span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"min_bet"</span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"max_bet"</span></span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"max_bet"</span></span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
 <span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>
-<span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"mega_win_message"</span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"mega_win_message"</span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:28</span>: <span class="message">The resource <code>R.string.max_multiplier</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 25 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"insufficient_balance"</span>>Số dư không đủ<span class="tag">&lt;/string></span>
 <span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"min_bet"</span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"max_multiplier"</span></span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"max_multiplier"</span></span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>
 <span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"mega_win_message"</span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>
-<span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"special_win_message"</span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"special_win_message"</span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:29</span>: <span class="message">The resource <code>R.string.jackpot_message</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 26 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"min_bet"</span>>Cược tối thiểu: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"jackpot_message"</span></span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"jackpot_message"</span></span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"mega_win_message"</span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>
 <span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"special_win_message"</span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span>
 <span class="lineno"> 32 </span>    
@@ -1119,57 +1200,52 @@ Dismiss</button>            </div>
 <span class="lineno"> 27 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_bet"</span>>Cược tối đa: %1$s<span class="tag">&lt;/string></span>
 <span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
 <span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"mega_win_message"</span></span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"mega_win_message"</span></span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"special_win_message"</span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span>
 <span class="lineno"> 32 </span>    
-<span class="lineno"> 33 </span>    <span class="comment">&lt;!-- History --></span>
-</pre>
+<span class="lineno"> 33 </span>    <span class="comment">&lt;!-- History --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:31</span>: <span class="message">The resource <code>R.string.special_win_message</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 28 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"max_multiplier"</span>>Hệ số tối đa: 100x<span class="tag">&lt;/string></span>
 <span class="lineno"> 29 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"jackpot_message"</span>>🎉 JACKPOT! 100x 🎉<span class="tag">&lt;/string></span>
 <span class="lineno"> 30 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"mega_win_message"</span>>MEGA WIN! %.1fx<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"special_win_message"</span></span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 31 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"special_win_message"</span></span>>Đặc biệt! %.1fx<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 32 </span>    
 <span class="lineno"> 33 </span>    <span class="comment">&lt;!-- History --></span>
-<span class="lineno"> 34 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_history_title"</span>>Lịch sử trò chơi<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 34 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_history_title"</span>>Lịch sử trò chơi<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:40</span>: <span class="message">The resource <code>R.string.sound_effects</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 37 </span>    
 <span class="lineno"> 38 </span>    <span class="comment">&lt;!-- Settings --></span>
 <span class="lineno"> 39 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"settings_title"</span>>Cài đặt<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 40 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"sound_effects"</span></span>>Hiệu ứng âm thanh<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 40 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"sound_effects"</span></span>>Hiệu ứng âm thanh<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 41 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"vibration"</span>>Rung<span class="tag">&lt;/string></span>
 <span class="lineno"> 42 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"auto_cashout"</span>>Tự động rút tiền<span class="tag">&lt;/string></span>
-<span class="lineno"> 43 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"auto_cashout_multiplier"</span>>Hệ số tự động rút tiền<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 43 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"auto_cashout_multiplier"</span>>Hệ số tự động rút tiền<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:41</span>: <span class="message">The resource <code>R.string.vibration</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 38 </span>    <span class="comment">&lt;!-- Settings --></span>
 <span class="lineno"> 39 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"settings_title"</span>>Cài đặt<span class="tag">&lt;/string></span>
 <span class="lineno"> 40 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"sound_effects"</span>>Hiệu ứng âm thanh<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 41 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"vibration"</span></span>>Rung<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 41 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"vibration"</span></span>>Rung<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 42 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"auto_cashout"</span>>Tự động rút tiền<span class="tag">&lt;/string></span>
 <span class="lineno"> 43 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"auto_cashout_multiplier"</span>>Hệ số tự động rút tiền<span class="tag">&lt;/string></span>
-<span class="lineno"> 44 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"reset_balance"</span>>Đặt lại số dư<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 44 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"reset_balance"</span>>Đặt lại số dư<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:48</span>: <span class="message">The resource <code>R.string.ok</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 45 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"reset_balance_confirm"</span>>Bạn có chắc muốn đặt lại số dư?<span class="tag">&lt;/string></span>
 <span class="lineno"> 46 </span>    
 <span class="lineno"> 47 </span>    <span class="comment">&lt;!-- Common --></span>
-<span class="caretline"><span class="lineno"> 48 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"ok"</span></span>>OK<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 48 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"ok"</span></span>>OK<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 49 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"cancel"</span>>Hủy<span class="tag">&lt;/string></span>
 <span class="lineno"> 50 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"confirm"</span>>Xác nhận<span class="tag">&lt;/string></span>
-<span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"back"</span>>Quay lại<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"back"</span>>Quay lại<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:49</span>: <span class="message">The resource <code>R.string.cancel</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 46 </span>    
 <span class="lineno"> 47 </span>    <span class="comment">&lt;!-- Common --></span>
 <span class="lineno"> 48 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"ok"</span>>OK<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 49 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"cancel"</span></span>>Hủy<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 49 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"cancel"</span></span>>Hủy<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 50 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"confirm"</span>>Xác nhận<span class="tag">&lt;/string></span>
 <span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"back"</span>>Quay lại<span class="tag">&lt;/string></span>
 <span class="lineno"> 52 </span>    
@@ -1179,27 +1255,25 @@ Dismiss</button>            </div>
 <span class="lineno"> 47 </span>    <span class="comment">&lt;!-- Common --></span>
 <span class="lineno"> 48 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"ok"</span>>OK<span class="tag">&lt;/string></span>
 <span class="lineno"> 49 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"cancel"</span>>Hủy<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 50 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"confirm"</span></span>>Xác nhận<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 50 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"confirm"</span></span>>Xác nhận<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"back"</span>>Quay lại<span class="tag">&lt;/string></span>
 <span class="lineno"> 52 </span>    
-<span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
-</pre>
+<span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:51</span>: <span class="message">The resource <code>R.string.back</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 48 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"ok"</span>>OK<span class="tag">&lt;/string></span>
 <span class="lineno"> 49 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"cancel"</span>>Hủy<span class="tag">&lt;/string></span>
 <span class="lineno"> 50 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"confirm"</span>>Xác nhận<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"back"</span></span>>Quay lại<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"back"</span></span>>Quay lại<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 52 </span>    
 <span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
-<span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:55</span>: <span class="message">The resource <code>R.string.flying</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 52 </span>    
 <span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
 <span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"flying"</span></span>>Đang bay...<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"flying"</span></span>>Đang bay...<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 56 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crashed"</span>>Đã sập!<span class="tag">&lt;/string></span>
 <span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span>
 <span class="lineno"> 58 </span>    
@@ -1209,57 +1283,61 @@ Dismiss</button>            </div>
 <span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
 <span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span>
 <span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"flying"</span>>Đang bay...<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 56 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"crashed"</span></span>>Đã sập!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 56 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"crashed"</span></span>>Đã sập!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span>
 <span class="lineno"> 58 </span>    
-<span class="lineno"> 59 </span>    <span class="comment">&lt;!-- Notifications --></span>
-</pre>
+<span class="lineno"> 59 </span>    <span class="comment">&lt;!-- Notifications --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:60</span>: <span class="message">The resource <code>R.string.notification_title</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span>
 <span class="lineno"> 58 </span>    
 <span class="lineno"> 59 </span>    <span class="comment">&lt;!-- Notifications --></span>
-<span class="caretline"><span class="lineno"> 60 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"notification_title"</span></span>>Aviator Crash<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 60 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"notification_title"</span></span>>Aviator Crash<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 61 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"notification_text"</span>>Vòng mới sắp bắt đầu!<span class="tag">&lt;/string></span>
 <span class="lineno"> 62 </span>    
-<span class="lineno"> 63 </span>    <span class="comment">&lt;!-- Error Messages --></span>
-</pre>
+<span class="lineno"> 63 </span>    <span class="comment">&lt;!-- Error Messages --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:61</span>: <span class="message">The resource <code>R.string.notification_text</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 58 </span>    
 <span class="lineno"> 59 </span>    <span class="comment">&lt;!-- Notifications --></span>
 <span class="lineno"> 60 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"notification_title"</span>>Aviator Crash<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 61 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"notification_text"</span></span>>Vòng mới sắp bắt đầu!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 61 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"notification_text"</span></span>>Vòng mới sắp bắt đầu!<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 62 </span>    
 <span class="lineno"> 63 </span>    <span class="comment">&lt;!-- Error Messages --></span>
-<span class="lineno"> 64 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"error_occurred"</span>>Đã xảy ra lỗi<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 64 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"error_occurred"</span>>Đã xảy ra lỗi<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:64</span>: <span class="message">The resource <code>R.string.error_occurred</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 61 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"notification_text"</span>>Vòng mới sắp bắt đầu!<span class="tag">&lt;/string></span>
 <span class="lineno"> 62 </span>    
 <span class="lineno"> 63 </span>    <span class="comment">&lt;!-- Error Messages --></span>
-<span class="caretline"><span class="lineno"> 64 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"error_occurred"</span></span>>Đã xảy ra lỗi<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 64 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"error_occurred"</span></span>>Đã xảy ra lỗi<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 65 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"try_again"</span>>Thử lại<span class="tag">&lt;/string></span>
 <span class="lineno"> 66 </span>    
-<span class="lineno"> 67 </span>    <span class="comment">&lt;!-- Game Activity --></span>
-</pre>
+<span class="lineno"> 67 </span>    <span class="comment">&lt;!-- Game Activity --></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:65</span>: <span class="message">The resource <code>R.string.try_again</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 62 </span>    
 <span class="lineno"> 63 </span>    <span class="comment">&lt;!-- Error Messages --></span>
 <span class="lineno"> 64 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"error_occurred"</span>>Đã xảy ra lỗi<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 65 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"try_again"</span></span>>Thử lại<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 65 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"try_again"</span></span>>Thử lại<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 66 </span>    
 <span class="lineno"> 67 </span>    <span class="comment">&lt;!-- Game Activity --></span>
-<span class="lineno"> 68 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"balance_format"</span>>Số dư: %.2f<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 68 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"balance_format"</span>>Số dư: %.2f<span class="tag">&lt;/string></span></pre>
+
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:68</span>: <span class="message">The resource <code>R.string.balance_format</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno"> 65 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"try_again"</span>>Thử lại<span class="tag">&lt;/string></span>
+<span class="lineno"> 66 </span>    
+<span class="lineno"> 67 </span>    <span class="comment">&lt;!-- Game Activity --></span>
+<span class="caretline"><span class="lineno"> 68 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"balance_format"</span></span>>Số dư: %.2f<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 69 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"current_bet_format"</span>>Cược hiện tại: %.2f<span class="tag">&lt;/string></span>
+<span class="lineno"> 70 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"win_amount_format"</span>>Thắng: %.2f<span class="tag">&lt;/string></span>
+<span class="lineno"> 71 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_point_format"</span>>Sập tại: %.2fx<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:87</span>: <span class="message">The resource <code>R.string.history_title</code> appears to be unused</span><br /><pre class="errorlines">
 <span class="lineno"> 84 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"no"</span>>Không<span class="tag">&lt;/string></span>
 <span class="lineno"> 85 </span>    
 <span class="lineno"> 86 </span>    <span class="comment">&lt;!-- History Activity --></span>
-<span class="caretline"><span class="lineno"> 87 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"history_title"</span></span>>Lịch sử trò chơi<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 87 </span>    <span class="tag">&lt;string</span><span class="attribute"> </span><span class="warning"><span class="attribute">name</span>=<span class="value">"history_title"</span></span>>Lịch sử trò chơi<span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 88 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"clear_history_confirm"</span>>Bạn có chắc muốn xóa toàn bộ lịch sử?<span class="tag">&lt;/string></span>
 <span class="lineno"> 89 </span><span class="tag">&lt;/resources></span>
 </pre>
@@ -1323,17 +1401,16 @@ Dismiss</button>            </div>
 <span class="lineno"> 51 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"back"</span>>Quay lại<span class="tag">&lt;/string></span>
 <span class="lineno"> 52 </span>    
 <span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
-<span class="caretline"><span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>><span class="warning">Đang chờ...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>><span class="warning">Đang chờ...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"flying"</span>>Đang bay...<span class="tag">&lt;/string></span>
 <span class="lineno"> 56 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crashed"</span>>Đã sập!<span class="tag">&lt;/string></span>
-<span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:55</span>: <span class="message">Replace "..." with ellipsis character (&#8230;, &amp;#8230;) ?</span><br /><pre class="errorlines">
 <span class="lineno"> 52 </span>    
 <span class="lineno"> 53 </span>    <span class="comment">&lt;!-- Game States --></span>
 <span class="lineno"> 54 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"flying"</span>><span class="warning">Đang bay...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 55 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"flying"</span>><span class="warning">Đang bay...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 56 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crashed"</span>>Đã sập!<span class="tag">&lt;/string></span>
 <span class="lineno"> 57 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"next_round"</span>>Vòng tiếp theo<span class="tag">&lt;/string></span>
 <span class="lineno"> 58 </span>    
@@ -1343,21 +1420,19 @@ Dismiss</button>            </div>
 <span class="lineno"> 69 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"current_bet_format"</span>>Cược hiện tại: %.2f<span class="tag">&lt;/string></span>
 <span class="lineno"> 70 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"win_amount_format"</span>>Thắng: %.2f<span class="tag">&lt;/string></span>
 <span class="lineno"> 71 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_point_format"</span>>Sập tại: %.2fx<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 72 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_waiting"</span>><span class="warning">Đang chờ...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 72 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_waiting"</span>><span class="warning">Đang chờ...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 73 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_flying"</span>>Đang bay...<span class="tag">&lt;/string></span>
 <span class="lineno"> 74 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_crashed"</span>>Đã sập!<span class="tag">&lt;/string></span>
-<span class="lineno"> 75 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_cashed_out"</span>>Đã rút tiền!<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 75 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_cashed_out"</span>>Đã rút tiền!<span class="tag">&lt;/string></span></pre>
 
 <span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:73</span>: <span class="message">Replace "..." with ellipsis character (&#8230;, &amp;#8230;) ?</span><br /><pre class="errorlines">
 <span class="lineno"> 70 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"win_amount_format"</span>>Thắng: %.2f<span class="tag">&lt;/string></span>
 <span class="lineno"> 71 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"crash_point_format"</span>>Sập tại: %.2fx<span class="tag">&lt;/string></span>
 <span class="lineno"> 72 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_waiting"</span>>Đang chờ...<span class="tag">&lt;/string></span>
-<span class="caretline"><span class="lineno"> 73 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_flying"</span>><span class="warning">Đang bay...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 73 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_flying"</span>><span class="warning">Đang bay...</span><span class="tag">&lt;/string></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 74 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_crashed"</span>>Đã sập!<span class="tag">&lt;/string></span>
 <span class="lineno"> 75 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"game_status_cashed_out"</span>>Đã rút tiền!<span class="tag">&lt;/string></span>
-<span class="lineno"> 76 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"error_enter_bet_amount"</span>>Vui lòng nhập số tiền cược<span class="tag">&lt;/string></span>
-</pre>
+<span class="lineno"> 76 </span>    <span class="tag">&lt;string</span><span class="attribute"> name</span>=<span class="value">"error_enter_bet_amount"</span>>Vui lòng nhập số tiền cược<span class="tag">&lt;/string></span></pre>
 
 </div>
 <div class="metadata"><div class="explanation" id="explanationTypographyEllipsis" style="display: none;">
@@ -1479,11 +1554,10 @@ Dismiss</button>            </div>
 <span class="lineno">  27 </span>                <span class="prefix">android:</span><span class="attribute">gravity</span>=<span class="value">"center_vertical"</span>
 <span class="lineno">  28 </span>                <span class="prefix">android:</span><span class="attribute">orientation</span>=<span class="value">"horizontal"</span>>
 <span class="lineno">  29 </span>
-<span class="caretline"><span class="lineno">  30 </span>                <span class="tag">&lt;</span><span class="warning"><span class="tag">ImageButton</span></span><span class="attribute"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
+<span class="caretline"><span class="lineno">  30 </span>                <span class="tag">&lt;</span><span class="warning"><span class="tag">ImageButton</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
 </span><span class="lineno">  31 </span><span class="attribute">                    </span><span class="prefix">android:</span><span class="attribute">id</span>=<span class="value">"@+id/back_button"</span>
 <span class="lineno">  32 </span>                    <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"48dp"</span>
-<span class="lineno">  33 </span>                    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"48dp"</span>
-</pre>
+<span class="lineno">  33 </span>                    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"48dp"</span></pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_history.xml">../../src/main/res/layout/activity_history.xml</a>:30</span>: <span class="message">Missing <code>contentDescription</code> attribute on image</span><br /><pre class="errorlines">
 <span class="lineno">  27 </span>                <span class="prefix">android:</span><span class="attribute">gravity</span>=<span class="value">"center_vertical"</span>
@@ -1519,11 +1593,10 @@ Dismiss</button>            </div>
 <span class="lineno">  27 </span>                <span class="prefix">android:</span><span class="attribute">gravity</span>=<span class="value">"center_vertical"</span>
 <span class="lineno">  28 </span>                <span class="prefix">android:</span><span class="attribute">orientation</span>=<span class="value">"horizontal"</span>>
 <span class="lineno">  29 </span>
-<span class="caretline"><span class="lineno">  30 </span>                <span class="tag">&lt;</span><span class="warning"><span class="tag">ImageButton</span></span><span class="attribute"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
+<span class="caretline"><span class="lineno">  30 </span>                <span class="tag">&lt;</span><span class="warning"><span class="tag">ImageButton</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="attribute">
 </span><span class="lineno">  31 </span><span class="attribute">                    </span><span class="prefix">android:</span><span class="attribute">id</span>=<span class="value">"@+id/back_button"</span>
 <span class="lineno">  32 </span>                    <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"48dp"</span>
-<span class="lineno">  33 </span>                    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"48dp"</span>
-</pre>
+<span class="lineno">  33 </span>                    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"48dp"</span></pre>
 
 <span class="location"><a href="../../src/main/res/layout/item_game_record.xml">../../src/main/res/layout/item_game_record.xml</a>:19</span>: <span class="message">Missing <code>contentDescription</code> attribute on image</span><br /><pre class="errorlines">
 <span class="lineno">  16 </span>        <span class="prefix">android:</span><span class="attribute">padding</span>=<span class="value">"16dp"</span>>
@@ -1754,103 +1827,93 @@ Dismiss</button>            </div>
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:89</span>: <span class="message">Hardcoded string "Cài &#273;&#7863;t trò ch&#417;i", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno">  86 </span><span class="attribute">    </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno">  87 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno">  88 </span>    <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
-<span class="caretline"><span class="lineno">  89 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Cài đặt trò chơi"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno">  90 </span>    <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
-<span class="lineno">  91 </span>    <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
-<span class="lineno">  92 </span>
+<span class="lineno">  86 </span><span class="attribute">     </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno">  87 </span>     <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno">  88 </span>     <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
+<span class="caretline"><span class="lineno">  89 </span>     <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Cài đặt trò chơi"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno">  90 </span>     <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
+<span class="lineno">  91 </span>     <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:118</span>: <span class="message">Hardcoded string "T&#7921; &#273;&#7897;ng rút ti&#7873;n khi &#273;&#7841;t h&#7879; s&#7889;", should use <code>@string</code> resource</span><br /><pre class="errorlines">
 <span class="lineno"> 115 </span><span class="attribute">  </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
 <span class="lineno"> 116 </span>  <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
 <span class="lineno"> 117 </span>  <span class="prefix">android:</span><span class="attribute">layout_marginTop</span>=<span class="value">"4dp"</span>
-<span class="caretline"><span class="lineno"> 118 </span>  <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Tự động rút tiền khi đạt hệ số"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 118 </span>  <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Tự động rút tiền khi đạt hệ số"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 119 </span>  <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
 <span class="lineno"> 120 </span>  <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_secondary"</span> />
-<span class="lineno"> 121 </span>
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:164</span>: <span class="message">Hardcoded string "2.0x", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 161 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 162 </span>    <span class="prefix">android:</span><span class="attribute">layout_gravity</span>=<span class="value">"center"</span>
-<span class="lineno"> 163 </span>    <span class="prefix">android:</span><span class="attribute">layout_marginTop</span>=<span class="value">"8dp"</span>
-<span class="caretline"><span class="lineno"> 164 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"2.0x"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 165 </span>    <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
-<span class="lineno"> 166 </span>    <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/primary"</span> />
-<span class="lineno"> 167 </span>
+<span class="lineno"> 161 </span>     <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 162 </span>     <span class="prefix">android:</span><span class="attribute">layout_gravity</span>=<span class="value">"center"</span>
+<span class="lineno"> 163 </span>     <span class="prefix">android:</span><span class="attribute">layout_marginTop</span>=<span class="value">"8dp"</span>
+<span class="caretline"><span class="lineno"> 164 </span>     <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"2.0x"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 165 </span>     <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
+<span class="lineno"> 166 </span>     <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/primary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:193</span>: <span class="message">Hardcoded string "Qu&#7843;n lý s&#7889; d&#432;", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 190 </span><span class="attribute">    </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 191 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 192 </span>    <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
-<span class="caretline"><span class="lineno"> 193 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Quản lý số dư"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 194 </span>    <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
-<span class="lineno"> 195 </span>    <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
-<span class="lineno"> 196 </span>
+<span class="lineno"> 190 </span><span class="attribute">     </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 191 </span>     <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 192 </span>     <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
+<span class="caretline"><span class="lineno"> 193 </span>     <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Quản lý số dư"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 194 </span>     <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
+<span class="lineno"> 195 </span>     <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:209</span>: <span class="message">Hardcoded string "S&#7889; d&#432; hi&#7879;n t&#7841;i", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 206 </span><span class="attribute">    </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"0dp"</span>
-<span class="lineno"> 207 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 208 </span>    <span class="prefix">android:</span><span class="attribute">layout_weight</span>=<span class="value">"1"</span>
-<span class="caretline"><span class="lineno"> 209 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Số dư hiện tại"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 210 </span>    <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body1"</span>
-<span class="lineno"> 211 </span>    <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
-<span class="lineno"> 212 </span>
+<span class="lineno"> 206 </span><span class="attribute">     </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"0dp"</span>
+<span class="lineno"> 207 </span>     <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 208 </span>     <span class="prefix">android:</span><span class="attribute">layout_weight</span>=<span class="value">"1"</span>
+<span class="caretline"><span class="lineno"> 209 </span>     <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Số dư hiện tại"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 210 </span>     <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body1"</span>
+<span class="lineno"> 211 </span>     <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
 </pre>
 
-<span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:217</span>: <span class="message">Hardcoded string "1000", should use <code>@string</code> resource</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:217</span>: <span class="message">Hardcoded string "100,000.00", should use <code>@string</code> resource</span><br /><pre class="errorlines">
 <span class="lineno"> 214 </span><span class="attribute">  </span><span class="prefix">android:</span><span class="attribute">id</span>=<span class="value">"@+id/current_balance_text"</span>
 <span class="lineno"> 215 </span>  <span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
 <span class="lineno"> 216 </span>  <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="caretline"><span class="lineno"> 217 </span>  <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"1000"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="caretline"><span class="lineno"> 217 </span>  <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"100,000.00"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 <span class="lineno"> 218 </span>  <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
 <span class="lineno"> 219 </span>  <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/success"</span> />
-<span class="lineno"> 220 </span>
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:253</span>: <span class="message">Hardcoded string "Thông tin", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 250 </span><span class="attribute">    </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 251 </span>    <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 252 </span>    <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
-<span class="caretline"><span class="lineno"> 253 </span>    <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Thông tin"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 254 </span>    <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
-<span class="lineno"> 255 </span>    <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
-<span class="lineno"> 256 </span>
+<span class="lineno"> 250 </span><span class="attribute">     </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 251 </span>     <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 252 </span>     <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"16dp"</span>
+<span class="caretline"><span class="lineno"> 253 </span>     <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Thông tin"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 254 </span>     <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Headline2"</span>
+<span class="lineno"> 255 </span>     <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_primary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:261</span>: <span class="message">Hardcoded string "Phiên b&#7843;n: 1.0", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 258 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 259 </span>        <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 260 </span>        <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"8dp"</span>
-<span class="caretline"><span class="lineno"> 261 </span>        <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Phiên bản: 1.0"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 262 </span>        <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
-<span class="lineno"> 263 </span>        <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_secondary"</span> />
-<span class="lineno"> 264 </span>
+<span class="lineno"> 258 </span><span class="attribute">         </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 259 </span>         <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 260 </span>         <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"8dp"</span>
+<span class="caretline"><span class="lineno"> 261 </span>         <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Phiên bản: 1.0"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 262 </span>         <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
+<span class="lineno"> 263 </span>         <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_secondary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:269</span>: <span class="message">Hardcoded string "Nhà phát tri&#7875;n: Android Fundamentals", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 266 </span><span class="attribute">        </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 267 </span>        <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 268 </span>        <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"8dp"</span>
-<span class="caretline"><span class="lineno"> 269 </span>        <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Nhà phát triển: Android Fundamentals"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 270 </span>        <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
-<span class="lineno"> 271 </span>        <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_secondary"</span> />
-<span class="lineno"> 272 </span>
+<span class="lineno"> 266 </span><span class="attribute">         </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 267 </span>         <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 268 </span>         <span class="prefix">android:</span><span class="attribute">layout_marginBottom</span>=<span class="value">"8dp"</span>
+<span class="caretline"><span class="lineno"> 269 </span>         <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Nhà phát triển: Android Fundamentals"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 270 </span>         <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
+<span class="lineno"> 271 </span>         <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_secondary"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/activity_settings.xml">../../src/main/res/layout/activity_settings.xml</a>:276</span>: <span class="message">Hardcoded string "Ch&#7881; dành cho m&#7909;c &#273;ích gi&#7843;i trí và h&#7885;c t&#7853;p", should use <code>@string</code> resource</span><br /><pre class="errorlines">
-<span class="lineno"> 273 </span>        <span class="tag">&lt;TextView</span><span class="attribute">
-</span><span class="lineno"> 274 </span><span class="attribute">            </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
-<span class="lineno"> 275 </span>            <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
-<span class="caretline"><span class="lineno"> 276 </span>            <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Chỉ dành cho mục đích giải trí và học tập"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 277 </span>            <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
-<span class="lineno"> 278 </span>            <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_hint"</span> />
-<span class="lineno"> 279 </span>
+<span class="lineno"> 273 </span>         <span class="tag">&lt;TextView</span><span class="attribute">
+</span><span class="lineno"> 274 </span><span class="attribute">             </span><span class="prefix">android:</span><span class="attribute">layout_width</span>=<span class="value">"wrap_content"</span>
+<span class="lineno"> 275 </span>             <span class="prefix">android:</span><span class="attribute">layout_height</span>=<span class="value">"wrap_content"</span>
+<span class="caretline"><span class="lineno"> 276 </span>             <span class="warning"><span class="prefix">android:</span><span class="attribute">text</span>=<span class="value">"Chỉ dành cho mục đích giải trí và học tập"</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 277 </span>             <span class="prefix">android:</span><span class="attribute">textAppearance</span>=<span class="value">"@style/TextAppearance.AviatorCrash.Body2"</span>
+<span class="lineno"> 278 </span>             <span class="prefix">android:</span><span class="attribute">textColor</span>=<span class="value">"@color/text_hint"</span> />
 </pre>
 
 <span class="location"><a href="../../src/main/res/layout/item_game_record.xml">../../src/main/res/layout/item_game_record.xml</a>:44</span>: <span class="message">Hardcoded string "2.5x", should use <code>@string</code> resource</span><br /><pre class="errorlines">

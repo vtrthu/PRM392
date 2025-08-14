@@ -11,7 +11,7 @@
     <!-- Game Screen -->
     <string name="multiplier">Hệ số: %1$.2fx</string>
     <string name="bet_amount">Số tiền cược: %1$s</string>
-    <string name="balance">Số dư: %1$s</string>
+    <string name="balance">Số dư: %.2f</string>
     <string name="place_bet">Đặt cược</string>
     <string name="cash_out">Rút tiền</string>
     <string name="game_over">Kết thúc!</string>

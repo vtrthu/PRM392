@@ -13,6 +13,9 @@ public interface GameRecordDao {
     @Query("SELECT * FROM game_records ORDER BY timestamp DESC")
     LiveData<List<GameRecord>> getAllGameRecords();
 
+    @Query("SELECT * FROM game_records ORDER BY timestamp DESC")
+    List<GameRecord> getAllGameRecordsDirect();
+
     @Query("SELECT * FROM game_records ORDER BY timestamp DESC LIMIT 50")
     LiveData<List<GameRecord>> getRecentGameRecords();
 

@@ -61,7 +61,7 @@ public final class ActivityGameBinding implements ViewBinding {
   public final ConstraintLayout gameArea;
 
   @NonNull
-  public final LinearLayout gameControls;
+  public final ConstraintLayout gameControls;
 
   @NonNull
   public final TextView gameStatus;
@@ -87,7 +87,7 @@ public final class ActivityGameBinding implements ViewBinding {
       @NonNull LinearLayout bettingControls, @NonNull MaterialButton cashoutButton,
       @NonNull MaterialCardView controlsContainer, @NonNull TextView crashPointText,
       @NonNull TextView currentBetText, @NonNull ConstraintLayout gameArea,
-      @NonNull LinearLayout gameControls, @NonNull TextView gameStatus,
+      @NonNull ConstraintLayout gameControls, @NonNull TextView gameStatus,
       @NonNull TextView multiplierText, @NonNull MaterialButton nextRoundButton,
       @NonNull MaterialButton placeBetButton, @NonNull Toolbar toolbar,
       @NonNull TextView winAmountText) {
@@ -206,7 +206,7 @@ public final class ActivityGameBinding implements ViewBinding {
       }
 
       id = R.id.game_controls;
-      LinearLayout gameControls = ViewBindings.findChildViewById(rootView, id);
+      ConstraintLayout gameControls = ViewBindings.findChildViewById(rootView, id);
       if (gameControls == null) {
         break missingId;
       }

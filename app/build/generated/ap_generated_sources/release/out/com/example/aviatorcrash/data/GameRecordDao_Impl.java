@@ -176,6 +176,56 @@ public final class GameRecordDao_Impl implements GameRecordDao {
   }
 
   @Override
+  public List<GameRecord> getAllGameRecordsDirect() {
+    final String _sql = "SELECT * FROM game_records ORDER BY timestamp DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+      final int _cursorIndexOfBetAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "betAmount");
+      final int _cursorIndexOfMultiplier = CursorUtil.getColumnIndexOrThrow(_cursor, "multiplier");
+      final int _cursorIndexOfCashoutAmount = CursorUtil.getColumnIndexOrThrow(_cursor, "cashoutAmount");
+      final int _cursorIndexOfIsWin = CursorUtil.getColumnIndexOrThrow(_cursor, "isWin");
+      final int _cursorIndexOfGameDuration = CursorUtil.getColumnIndexOrThrow(_cursor, "gameDuration");
+      final List<GameRecord> _result = new ArrayList<GameRecord>(_cursor.getCount());
+      while(_cursor.moveToNext()) {
+        final GameRecord _item;
+        final Date _tmpTimestamp;
+        final Long _tmp;
+        if (_cursor.isNull(_cursorIndexOfTimestamp)) {
+          _tmp = null;
+        } else {
+          _tmp = _cursor.getLong(_cursorIndexOfTimestamp);
+        }
+        _tmpTimestamp = AppDatabase.Converters.fromTimestamp(_tmp);
+        final double _tmpBetAmount;
+        _tmpBetAmount = _cursor.getDouble(_cursorIndexOfBetAmount);
+        final double _tmpMultiplier;
+        _tmpMultiplier = _cursor.getDouble(_cursorIndexOfMultiplier);
+        final double _tmpCashoutAmount;
+        _tmpCashoutAmount = _cursor.getDouble(_cursorIndexOfCashoutAmount);
+        final boolean _tmpIsWin;
+        final int _tmp_1;
+        _tmp_1 = _cursor.getInt(_cursorIndexOfIsWin);
+        _tmpIsWin = _tmp_1 != 0;
+        final long _tmpGameDuration;
+        _tmpGameDuration = _cursor.getLong(_cursorIndexOfGameDuration);
+        _item = new GameRecord(_tmpTimestamp,_tmpBetAmount,_tmpMultiplier,_tmpCashoutAmount,_tmpIsWin,_tmpGameDuration);
+        final int _tmpId;
+        _tmpId = _cursor.getInt(_cursorIndexOfId);
+        _item.setId(_tmpId);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public LiveData<List<GameRecord>> getRecentGameRecords() {
     final String _sql = "SELECT * FROM game_records ORDER BY timestamp DESC LIMIT 50";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);

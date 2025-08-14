@@ -4,6 +4,33 @@ D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\GameActivity.java:96: Warn
 D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\GameActivity.java:105: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
                 showSpecialEffect("MEGA WIN! " + String.format("%.1fx", multiplier));
                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:134: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("Jackpot 100x: " + ranges[0] + " (" + String.format("%.3f", (double)ranges[0]/iterations*100) + "%)");
+                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:135: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("Mega Win 50x-100x: " + ranges[1] + " (" + String.format("%.3f", (double)ranges[1]/iterations*100) + "%)");
+                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:136: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("20x-100x: " + ranges[2] + " (" + String.format("%.3f", (double)ranges[2]/iterations*100) + "%)");
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:137: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("5x-20x: " + ranges[3] + " (" + String.format("%.3f", (double)ranges[3]/iterations*100) + "%)");
+                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:138: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("2x-5x: " + ranges[4] + " (" + String.format("%.3f", (double)ranges[4]/iterations*100) + "%)");
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:139: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("1x-2x: " + ranges[5] + " (" + String.format("%.3f", (double)ranges[5]/iterations*100) + "%)");
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:140: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("Multiplier trung bình: " + String.format("%.2f", totalMultiplier/iterations));
+                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:141: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("Multiplier cao nhất: " + String.format("%.2f", maxMultiplier));
+                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\game\GameEngine.java:142: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
+        System.out.println("Multiplier thấp nhất: " + String.format("%.2f", minMultiplier));
+                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 D:\PRM_BL5\app\src\main\java\com\example\aviatorcrash\adapter\GameHistoryAdapter.java:74: Warning: Implicitly using the default locale is a common source of bugs: Use String.format(Locale, ...) instead [DefaultLocale]
                 resultText.setText(String.format("+%.2f", gameRecord.getCashoutAmount()));
                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,7 +120,7 @@ D:\PRM_BL5\app\build.gradle:42: Warning: A newer version of androidx.room:room-c
 D:\PRM_BL5\app\build.gradle:43: Warning: A newer version of androidx.recyclerview:recyclerview than 1.3.0 is available: 1.4.0 [GradleDependency]
     implementation 'androidx.recyclerview:recyclerview:1.3.0'
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\PRM_BL5\app\build.gradle:44: Warning: A newer version of androidx.fragment:fragment than 1.5.7 is available: 1.8.8 [GradleDependency]
+D:\PRM_BL5\app\build.gradle:44: Warning: A newer version of androidx.fragment:fragment than 1.5.7 is available: 1.8.9 [GradleDependency]
     implementation 'androidx.fragment:fragment:1.5.7'
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 D:\PRM_BL5\app\build.gradle:45: Warning: A newer version of androidx.navigation:navigation-fragment than 2.5.3 is available: 2.9.3 [GradleDependency]
@@ -299,6 +326,9 @@ D:\PRM_BL5\app\src\main\res\values\strings.xml:64: Warning: The resource R.strin
 D:\PRM_BL5\app\src\main\res\values\strings.xml:65: Warning: The resource R.string.try_again appears to be unused [UnusedResources]
     <string name="try_again">Thử lại</string>
             ~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\res\values\strings.xml:68: Warning: The resource R.string.balance_format appears to be unused [UnusedResources]
+    <string name="balance_format">Số dư: %.2f</string>
+            ~~~~~~~~~~~~~~~~~~~~~
 D:\PRM_BL5\app\src\main\res\values\strings.xml:87: Warning: The resource R.string.history_title appears to be unused [UnusedResources]
     <string name="history_title">Lịch sử trò chơi</string>
             ~~~~~~~~~~~~~~~~~~~~
@@ -465,9 +495,9 @@ D:\PRM_BL5\app\src\main\res\layout\activity_settings.xml:193: Warning: Hardcoded
 D:\PRM_BL5\app\src\main\res\layout\activity_settings.xml:209: Warning: Hardcoded string "Số dư hiện tại", should use @string resource [HardcodedText]
                             android:text="Số dư hiện tại"
                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-D:\PRM_BL5\app\src\main\res\layout\activity_settings.xml:217: Warning: Hardcoded string "1000", should use @string resource [HardcodedText]
-                            android:text="1000"
-                            ~~~~~~~~~~~~~~~~~~~
+D:\PRM_BL5\app\src\main\res\layout\activity_settings.xml:217: Warning: Hardcoded string "100,000.00", should use @string resource [HardcodedText]
+                            android:text="100,000.00"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~
 D:\PRM_BL5\app\src\main\res\layout\activity_settings.xml:253: Warning: Hardcoded string "Thông tin", should use @string resource [HardcodedText]
                         android:text="Thông tin"
                         ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -510,4 +540,4 @@ D:\PRM_BL5\app\src\main\res\layout\item_game_record.xml:96: Warning: Hardcoded s
    There are quickfixes to automatically extract this hardcoded string into a
    resource lookup.
 
-0 errors, 106 warnings
+0 errors, 116 warnings
