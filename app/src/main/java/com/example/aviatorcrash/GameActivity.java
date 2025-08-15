@@ -68,18 +68,27 @@ public class GameActivity extends AppCompatActivity {
                 binding.placeBetButton.setEnabled(true);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(false);
+                if (binding.gameView != null) {
+                    binding.gameView.reset();
+                }
                 break;
             case FLYING:
                 binding.gameStatus.setText(R.string.game_status_flying);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(true);
                 binding.nextRoundButton.setEnabled(false);
+                if (binding.gameView != null) {
+                    binding.gameView.startFlight();
+                }
                 break;
             case CRASHED:
                 binding.gameStatus.setText(R.string.game_status_crashed);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(true);
+                if (binding.gameView != null) {
+                    binding.gameView.crash();
+                }
                 showCrashEffect();
                 break;
             case CASHED_OUT:
@@ -87,6 +96,9 @@ public class GameActivity extends AppCompatActivity {
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(true);
+                if (binding.gameView != null) {
+                    binding.gameView.reset();
+                }
                 break;
         }
     }
@@ -96,6 +108,9 @@ public class GameActivity extends AppCompatActivity {
             binding.multiplierText.setText(String.format("%.2fx", multiplier));
             int color = gameEngine.getMultiplierColor(multiplier);
             binding.multiplierText.setTextColor(color);
+            if (binding.gameView != null) {
+                binding.gameView.setMultiplier(multiplier);
+            }
             
             // Hiển thị thông báo đặc biệt cho jackpot và mega win
             if (gameEngine.isJackpot(multiplier)) {

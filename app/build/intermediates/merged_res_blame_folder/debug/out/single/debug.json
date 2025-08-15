@@ -4,20 +4,20 @@
         "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_exit.xml"
     },
     {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_airplane.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_airplane.xml"
+    },
+    {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_close.xml.flat",
         "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_close.xml"
     },
     {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_gradient_background.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/drawable/gradient_background.xml"
-    },
-    {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_back.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_back.xml"
-    },
-    {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_circle_background.xml.flat",
         "source": "com.example.aviatorcrash.app-main-50:/drawable/circle_background.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_airplane_jet.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_airplane_jet.xml"
     },
     {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_main.xml.flat",
@@ -28,12 +28,36 @@
         "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_play.xml"
     },
     {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_item_game_record.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/layout/item_game_record.xml"
-    },
-    {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_history.xml.flat",
         "source": "com.example.aviatorcrash.app-main-50:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/mipmap-mdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/mipmap-mdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_gradient_background.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/gradient_background.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_back.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_logofpt.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_logofpt.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_item_game_record.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/layout/item_game_record.xml"
     },
     {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_game.xml.flat",
@@ -44,8 +68,8 @@
         "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_check.xml"
     },
     {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-hdpi_ic_launcher_round.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/mipmap-hdpi/ic_launcher_round.xml"
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_airplane_modern.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/ic_airplane_modern.xml"
     },
     {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_settings.xml.flat",
@@ -58,14 +82,6 @@
     {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-hdpi_ic_launcher.xml.flat",
         "source": "com.example.aviatorcrash.app-main-50:/mipmap-hdpi/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-mdpi_ic_launcher.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/mipmap-mdpi/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/mipmap-mdpi_ic_launcher_round.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/mipmap-mdpi/ic_launcher_round.xml"
     },
     {
         "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_ic_launcher_foreground.xml.flat",

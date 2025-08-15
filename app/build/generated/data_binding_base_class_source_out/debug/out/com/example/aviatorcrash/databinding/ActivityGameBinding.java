@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.aviatorcrash.R;
+import com.example.aviatorcrash.game.GameView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -67,6 +68,9 @@ public final class ActivityGameBinding implements ViewBinding {
   public final TextView gameStatus;
 
   @NonNull
+  public final GameView gameView;
+
+  @NonNull
   public final TextView multiplierText;
 
   @NonNull
@@ -88,9 +92,9 @@ public final class ActivityGameBinding implements ViewBinding {
       @NonNull MaterialCardView controlsContainer, @NonNull TextView crashPointText,
       @NonNull TextView currentBetText, @NonNull ConstraintLayout gameArea,
       @NonNull ConstraintLayout gameControls, @NonNull TextView gameStatus,
-      @NonNull TextView multiplierText, @NonNull MaterialButton nextRoundButton,
-      @NonNull MaterialButton placeBetButton, @NonNull Toolbar toolbar,
-      @NonNull TextView winAmountText) {
+      @NonNull GameView gameView, @NonNull TextView multiplierText,
+      @NonNull MaterialButton nextRoundButton, @NonNull MaterialButton placeBetButton,
+      @NonNull Toolbar toolbar, @NonNull TextView winAmountText) {
     this.rootView = rootView;
     this.appBar = appBar;
     this.backButton = backButton;
@@ -105,6 +109,7 @@ public final class ActivityGameBinding implements ViewBinding {
     this.gameArea = gameArea;
     this.gameControls = gameControls;
     this.gameStatus = gameStatus;
+    this.gameView = gameView;
     this.multiplierText = multiplierText;
     this.nextRoundButton = nextRoundButton;
     this.placeBetButton = placeBetButton;
@@ -217,6 +222,12 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.game_view;
+      GameView gameView = ViewBindings.findChildViewById(rootView, id);
+      if (gameView == null) {
+        break missingId;
+      }
+
       id = R.id.multiplier_text;
       TextView multiplierText = ViewBindings.findChildViewById(rootView, id);
       if (multiplierText == null) {
@@ -249,8 +260,8 @@ public final class ActivityGameBinding implements ViewBinding {
 
       return new ActivityGameBinding((ConstraintLayout) rootView, appBar, backButton, balanceText,
           betAmountInput, betAmountLayout, bettingControls, cashoutButton, controlsContainer,
-          crashPointText, currentBetText, gameArea, gameControls, gameStatus, multiplierText,
-          nextRoundButton, placeBetButton, toolbar, winAmountText);
+          crashPointText, currentBetText, gameArea, gameControls, gameStatus, gameView,
+          multiplierText, nextRoundButton, placeBetButton, toolbar, winAmountText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

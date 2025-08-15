@@ -61,13 +61,16 @@ if (randomValue < 0.001) {
 }
 ```
 
-### Phân phối xác suất
-- **70%**: Crash ở 1.0x - 2.0x
-- **15%**: Crash ở 2.0x - 5.0x  
-- **10%**: Crash ở 5.0x - 20.0x
-- **5%**: Crash ở 20.0x - 100.0x
-- **0.1%**: Jackpot 100x
+### Phân phối xác suất (Cải tiến dựa trên thống kê thực tế)
+- **48%**: Crash ở 1.01x - 2.0x (giảm từ 70% để hợp lý hơn)
+- **24%**: Crash ở 2.0x - 2.5x (sweet spot cho người chơi)  
+- **13%**: Crash ở 2.5x - 5.0x
+- **8%**: Crash ở 5.0x - 10.0x
+- **3.4%**: Crash ở 10.0x - 50.0x
 - **0.5%**: Mega Win 50x-100x
+- **0.1%**: Jackpot 100x
+
+**Thống kê quan trọng**: ~51% crash trước 2x (phù hợp với game thực tế)
 
 ### Hiệu ứng đặc biệt
 - **Vibration**: Rung khi thắng/thua

@@ -13,8 +13,8 @@
     <string name="bet_amount">Số tiền cược: %1$s</string>
     <string name="balance">Số dư: %.2f</string>
     <string name="place_bet">Đặt cược</string>
-    <string name="cash_out">Rút tiền</string>
-    <string name="game_over">Kết thúc!</string>
+    <string name="cash_out">Rút học phí</string>
+    <string name="game_over">Niệm!</string>
     <string name="you_won">Bạn thắng: %1$s</string>
     <string name="you_lost">Bạn thua: %1$s</string>
     <string name="crash_at">Sập tại: %1$.2fx</string>
@@ -53,8 +53,8 @@
     <!-- Game States -->
     <string name="waiting">Đang chờ...</string>
     <string name="flying">Đang bay...</string>
-    <string name="crashed">Đã sập!</string>
-    <string name="next_round">Vòng tiếp theo</string>
+    <string name="crashed">Niệm!</string>
+    <string name="next_round">Kỳ tiếp theo</string>
     
     <!-- Notifications -->
     <string name="notification_title">Aviator Crash</string>
@@ -71,12 +71,12 @@
     <string name="crash_point_format">Sập tại: %.2fx</string>
     <string name="game_status_waiting">Đang chờ...</string>
     <string name="game_status_flying">Đang bay...</string>
-    <string name="game_status_crashed">Đã sập!</string>
-    <string name="game_status_cashed_out">Đã rút tiền!</string>
+    <string name="game_status_crashed">Niệm!</string>
+    <string name="game_status_cashed_out">Đã rút học phí!</string>
     <string name="error_enter_bet_amount">Vui lòng nhập số tiền cược</string>
     <string name="error_invalid_bet">Số tiền cược không hợp lệ</string>
     <string name="error_invalid_number">Số không hợp lệ</string>
-    <string name="game_crashed">Game đã sập!</string>
+    <string name="game_crashed">Niệm!</string>
     <string name="cashout_successful">Rút tiền thành công!</string>
     <string name="confirm_exit">Xác nhận thoát</string>
     <string name="confirm_exit_message">Bạn có chắc muốn thoát? Tiền cược sẽ bị mất.</string>

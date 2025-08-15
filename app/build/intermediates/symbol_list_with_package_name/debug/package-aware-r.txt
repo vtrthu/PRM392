@@ -2988,6 +2988,9 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable gradient_background
+drawable ic_airplane
+drawable ic_airplane_jet
+drawable ic_airplane_modern
 drawable ic_arrow_back_black_24
 drawable ic_back
 drawable ic_check
@@ -2999,6 +3002,7 @@ drawable ic_exit
 drawable ic_history
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_foreground
+drawable ic_logofpt
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3305,6 +3309,7 @@ id fullscreen_header
 id game_area
 id game_controls
 id game_status
+id game_view
 id ghost_view
 id ghost_view_holder
 id gone
