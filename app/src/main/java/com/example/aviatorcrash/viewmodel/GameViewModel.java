@@ -14,6 +14,7 @@ import com.example.aviatorcrash.data.AppDatabase;
 import com.example.aviatorcrash.data.GameRecord;
 import com.example.aviatorcrash.data.GameRecordDao;
 import com.example.aviatorcrash.game.GameEngine;
+import com.example.aviatorcrash.auth.AuthManager;
 
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,7 @@ public class GameViewModel extends AndroidViewModel {
     private ExecutorService executorService;
     private Handler mainHandler;
     private SharedPreferences sharedPreferences;
+    private AuthManager authManager; // Educational bias manager
 
     // LiveData for UI updates
     private MutableLiveData<GameState> gameState;
@@ -50,6 +52,8 @@ public class GameViewModel extends AndroidViewModel {
         super(application);
         
         gameEngine = new GameEngine();
+        authManager = new AuthManager(application);
+        gameEngine.setAuthManager(authManager); // Set educational bias
         gameRecordDao = AppDatabase.getDatabase(application).gameRecordDao();
         executorService = Executors.newSingleThreadExecutor();
         mainHandler = new Handler(Looper.getMainLooper());
@@ -112,6 +116,9 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private void startGameTimer() {
+        // Increment game count for educational tracking
+        authManager.incrementUserGameCount();
+        
         crashPoint.setValue(gameEngine.generateCrashPoint());
         
         Runnable timerRunnable = new Runnable() {
@@ -266,6 +273,13 @@ public class GameViewModel extends AndroidViewModel {
     public LiveData<List<GameRecord>> getGameHistory() { return gameHistory; }
     public LiveData<Double> getWinRate() { return winRate; }
     public LiveData<Integer> getTotalGames() { return totalGames; }
+    
+    /**
+     * Get AuthManager for educational features
+     */
+    public AuthManager getAuthManager() {
+        return authManager;
+    }
 
     @Override
     protected void onCleared() {

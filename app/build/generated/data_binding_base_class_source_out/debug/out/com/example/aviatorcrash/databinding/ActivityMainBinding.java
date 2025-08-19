@@ -34,6 +34,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton historyButton;
 
   @NonNull
+  public final MaterialButton logoutButton;
+
+  @NonNull
   public final MaterialCardView menuContainer;
 
   @NonNull
@@ -50,14 +53,16 @@ public final class ActivityMainBinding implements ViewBinding {
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull View backgroundGradient,
       @NonNull MaterialButton exitButton, @NonNull TextView footerText,
-      @NonNull MaterialButton historyButton, @NonNull MaterialCardView menuContainer,
-      @NonNull MaterialButton settingsButton, @NonNull MaterialButton startGameButton,
-      @NonNull TextView subtitleText, @NonNull TextView titleText) {
+      @NonNull MaterialButton historyButton, @NonNull MaterialButton logoutButton,
+      @NonNull MaterialCardView menuContainer, @NonNull MaterialButton settingsButton,
+      @NonNull MaterialButton startGameButton, @NonNull TextView subtitleText,
+      @NonNull TextView titleText) {
     this.rootView = rootView;
     this.backgroundGradient = backgroundGradient;
     this.exitButton = exitButton;
     this.footerText = footerText;
     this.historyButton = historyButton;
+    this.logoutButton = logoutButton;
     this.menuContainer = menuContainer;
     this.settingsButton = settingsButton;
     this.startGameButton = startGameButton;
@@ -116,6 +121,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.logout_button;
+      MaterialButton logoutButton = ViewBindings.findChildViewById(rootView, id);
+      if (logoutButton == null) {
+        break missingId;
+      }
+
       id = R.id.menu_container;
       MaterialCardView menuContainer = ViewBindings.findChildViewById(rootView, id);
       if (menuContainer == null) {
@@ -147,8 +158,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, backgroundGradient, exitButton,
-          footerText, historyButton, menuContainer, settingsButton, startGameButton, subtitleText,
-          titleText);
+          footerText, historyButton, logoutButton, menuContainer, settingsButton, startGameButton,
+          subtitleText, titleText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

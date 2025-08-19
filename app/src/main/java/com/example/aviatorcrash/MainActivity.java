@@ -6,16 +6,27 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.aviatorcrash.auth.AuthManager;
+import com.example.aviatorcrash.auth.AccountType;
 import com.example.aviatorcrash.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private AuthManager authManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        authManager = new AuthManager(this);
+        
+        // Check if user is logged in
+        if (!authManager.isLoggedIn()) {
+            navigateToLogin();
+            return;
+        }
 
         setupClickListeners();
     }
@@ -36,10 +47,26 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.logoutButton.setOnClickListener(v -> {
+            authManager.logout();
+            navigateToLogin();
+        });
+
         binding.exitButton.setOnClickListener(v -> {
             finish();
         });
     }
+
+
+    
+    private void navigateToLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+    
+
 
     @Override
     public void onBackPressed() {

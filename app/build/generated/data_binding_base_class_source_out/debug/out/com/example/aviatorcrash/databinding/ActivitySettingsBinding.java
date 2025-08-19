@@ -44,6 +44,9 @@ public final class ActivitySettingsBinding implements ViewBinding {
   public final TextView currentBalanceText;
 
   @NonNull
+  public final MaterialButton hiddenLogoutButton;
+
+  @NonNull
   public final MaterialButton resetBalanceButton;
 
   @NonNull
@@ -52,8 +55,8 @@ public final class ActivitySettingsBinding implements ViewBinding {
   private ActivitySettingsBinding(@NonNull ConstraintLayout rootView, @NonNull AppBarLayout appBar,
       @NonNull Slider autoCashoutSlider, @NonNull SwitchMaterial autoCashoutSwitch,
       @NonNull TextView autoCashoutValue, @NonNull ImageButton backButton,
-      @NonNull TextView currentBalanceText, @NonNull MaterialButton resetBalanceButton,
-      @NonNull Toolbar toolbar) {
+      @NonNull TextView currentBalanceText, @NonNull MaterialButton hiddenLogoutButton,
+      @NonNull MaterialButton resetBalanceButton, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.appBar = appBar;
     this.autoCashoutSlider = autoCashoutSlider;
@@ -61,6 +64,7 @@ public final class ActivitySettingsBinding implements ViewBinding {
     this.autoCashoutValue = autoCashoutValue;
     this.backButton = backButton;
     this.currentBalanceText = currentBalanceText;
+    this.hiddenLogoutButton = hiddenLogoutButton;
     this.resetBalanceButton = resetBalanceButton;
     this.toolbar = toolbar;
   }
@@ -128,6 +132,12 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.hidden_logout_button;
+      MaterialButton hiddenLogoutButton = ViewBindings.findChildViewById(rootView, id);
+      if (hiddenLogoutButton == null) {
+        break missingId;
+      }
+
       id = R.id.reset_balance_button;
       MaterialButton resetBalanceButton = ViewBindings.findChildViewById(rootView, id);
       if (resetBalanceButton == null) {
@@ -141,8 +151,8 @@ public final class ActivitySettingsBinding implements ViewBinding {
       }
 
       return new ActivitySettingsBinding((ConstraintLayout) rootView, appBar, autoCashoutSlider,
-          autoCashoutSwitch, autoCashoutValue, backButton, currentBalanceText, resetBalanceButton,
-          toolbar);
+          autoCashoutSwitch, autoCashoutValue, backButton, currentBalanceText, hiddenLogoutButton,
+          resetBalanceButton, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

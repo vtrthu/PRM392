@@ -28,7 +28,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.AviatorCrash" >
         <activity
-            android:name="com.example.aviatorcrash.MainActivity"
+            android:name="com.example.aviatorcrash.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -37,6 +37,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.aviatorcrash.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.aviatorcrash.GameActivity"
             android:exported="false"

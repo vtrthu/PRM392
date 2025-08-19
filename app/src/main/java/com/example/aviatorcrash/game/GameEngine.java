@@ -1,19 +1,92 @@
 package com.example.aviatorcrash.game;
 
 import java.util.Random;
+import com.example.aviatorcrash.auth.AuthManager;
 
 public class GameEngine {
     private static final double MIN_MULTIPLIER = 1.0;
     private static final double MAX_MULTIPLIER = 100.0; // Giới hạn tối đa 100x
     private static final double HOUSE_EDGE = 0.04; // 4% house edge để cân bằng hơn
-    
+
     private Random random;
+    private AuthManager authManager; // For educational bias
     
     public GameEngine() {
         this.random = new Random();
     }
     
+    /**
+     * Set AuthManager for educational bias
+     */
+    public void setAuthManager(AuthManager authManager) {
+        this.authManager = authManager;
+    }
+    
     public double generateCrashPoint() {
+        // EDUCATIONAL BIAS: Different behavior based on account type
+        if (authManager != null) {
+            if (authManager.isAdmin()) {
+                return generateAdminBiasedCrashPoint();
+            } else if (authManager.isUser()) {
+                return generateUserBiasedCrashPoint();
+            }
+        }
+        
+        // Default behavior (original algorithm)
+        return generateDefaultCrashPoint();
+    }
+    
+    /**
+     * Generate crash point with admin bias (house always wins)
+     * 95%+ win rate for admin account
+     */
+    private double generateAdminBiasedCrashPoint() {
+        double randomValue = random.nextDouble();
+        
+        // Admin gets favorable crash points 95% of the time
+        if (randomValue < 0.95) {
+            // High crash points (3x - 50x) for admin wins
+            if (randomValue < 0.40) {
+                return 3.0 + random.nextDouble() * 7.0; // 3x-10x (40%)
+            } else if (randomValue < 0.75) {
+                return 10.0 + random.nextDouble() * 15.0; // 10x-25x (35%)
+            } else {
+                return 25.0 + random.nextDouble() * 25.0; // 25x-50x (20%)
+            }
+        } else {
+            // Occasional low crash points to maintain some realism
+            return 1.0 + random.nextDouble() * 2.0; // 1x-3x (5%)
+        }
+    }
+    
+    /**
+     * Generate crash point with user bias (house edge increases over time)
+     * Educational demonstration of gambling reality
+     */
+    private double generateUserBiasedCrashPoint() {
+        double expectedWinRate = authManager.getExpectedWinRate();
+        double randomValue = random.nextDouble();
+        
+        // If user should "win" based on educational curve
+        if (randomValue < expectedWinRate) {
+            // Give decent crash points for wins
+            if (randomValue < 0.30) {
+                return 2.0 + random.nextDouble() * 3.0; // 2x-5x
+            } else if (randomValue < 0.50) {
+                return 5.0 + random.nextDouble() * 5.0; // 5x-10x
+            } else {
+                return 1.5 + random.nextDouble() * 1.5; // 1.5x-3x
+            }
+        } else {
+            // User loses - early crash points
+            return 1.0 + random.nextDouble() * 0.8; // 1x-1.8x (losses)
+        }
+    }
+    
+    /**
+     * Default crash point generation (original algorithm)
+     */
+    private double generateDefaultCrashPoint() {
         // Thuật toán cải tiến dựa trên thống kê thực tế từ các game crash phổ biến
         double randomValue = random.nextDouble();
         
