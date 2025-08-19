@@ -15,6 +15,8 @@ import com.example.aviatorcrash.data.GameRecord;
 import com.example.aviatorcrash.data.GameRecordDao;
 import com.example.aviatorcrash.game.GameEngine;
 import com.example.aviatorcrash.auth.AuthManager;
+import com.example.aviatorcrash.bot.BotManager;
+import com.example.aviatorcrash.bot.BotEntry;
 
 import java.util.Date;
 import java.util.List;
@@ -32,6 +34,7 @@ public class GameViewModel extends AndroidViewModel {
     private Handler mainHandler;
     private SharedPreferences sharedPreferences;
     private AuthManager authManager; // Educational bias manager
+    private BotManager botManager; // Bot crowd manager
 
     // LiveData for UI updates
     private MutableLiveData<GameState> gameState;
@@ -47,6 +50,7 @@ public class GameViewModel extends AndroidViewModel {
     private MutableLiveData<List<GameRecord>> gameHistory;
     private MutableLiveData<Double> winRate;
     private MutableLiveData<Integer> totalGames;
+    private MutableLiveData<List<BotEntry>> botLeaderboard;
 
     public GameViewModel(Application application) {
         super(application);
@@ -54,6 +58,7 @@ public class GameViewModel extends AndroidViewModel {
         gameEngine = new GameEngine();
         authManager = new AuthManager(application);
         gameEngine.setAuthManager(authManager); // Set educational bias
+        botManager = new BotManager(); // Initialize bot manager
         gameRecordDao = AppDatabase.getDatabase(application).gameRecordDao();
         executorService = Executors.newSingleThreadExecutor();
         mainHandler = new Handler(Looper.getMainLooper());
@@ -73,6 +78,10 @@ public class GameViewModel extends AndroidViewModel {
         gameHistory = new MutableLiveData<>();
         winRate = new MutableLiveData<>(0.0);
         totalGames = new MutableLiveData<>(0);
+        botLeaderboard = new MutableLiveData<>();
+
+        // Setup bot manager listener
+        botManager.setBotUpdateListener(bots -> botLeaderboard.setValue(bots));
 
         loadSettings();
         loadGameHistory();
@@ -85,6 +94,11 @@ public class GameViewModel extends AndroidViewModel {
             currentBet.setValue(amount);
             balance.setValue(balance.getValue() - amount);
             saveSettings(); // Lưu số dư sau khi đặt cược
+            
+            // Notify bot manager about player bet
+            String playerName = "You";
+            botManager.setPlayerBet(playerName, amount);
+            
             gameState.setValue(GameState.FLYING);
             startGameTimer();
         }
@@ -101,6 +115,9 @@ public class GameViewModel extends AndroidViewModel {
             saveSettings(); // Lưu số dư sau khi rút tiền
             gameState.setValue(GameState.CASHED_OUT);
             
+            // Notify bot manager about player cashout
+            botManager.setPlayerCashout(currentMultiplier, winAmount);
+            
             saveGameRecord(betAmount, currentMultiplier, winAmount, true);
         }
     }
@@ -112,6 +129,10 @@ public class GameViewModel extends AndroidViewModel {
         cashoutAmount.setValue(0.0);
         gameDuration.setValue(0L);
         crashPoint.setValue(0.0);
+        
+        // Reset bot manager for new round
+        botManager.resetPlayer();
+        
         saveSettings(); // Lưu trạng thái game
     }
 
@@ -119,7 +140,11 @@ public class GameViewModel extends AndroidViewModel {
         // Increment game count for educational tracking
         authManager.incrementUserGameCount();
         
-        crashPoint.setValue(gameEngine.generateCrashPoint());
+        double generatedCrashPoint = gameEngine.generateCrashPoint();
+        crashPoint.setValue(generatedCrashPoint);
+        
+        // Start bot round with the crash point
+        botManager.startRound(generatedCrashPoint);
         
         Runnable timerRunnable = new Runnable() {
             @Override
@@ -131,6 +156,9 @@ public class GameViewModel extends AndroidViewModel {
                     
                     double currentMultiplier = gameEngine.calculateMultiplier(currentDuration);
                     multiplier.setValue(currentMultiplier);
+                    
+                    // Update bot manager with current multiplier
+                    botManager.onTick(currentMultiplier);
                     
                     // Check for auto-cashout (only if still flying)
                     if (gameState.getValue() == GameState.FLYING && autoCashoutEnabled.getValue() && 
@@ -160,10 +188,19 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private void handleCrash() {
+        double crashMultiplier = multiplier.getValue();
+        
+        // End bot round
+        botManager.endRound(crashMultiplier);
+        
         if (gameState.getValue() == GameState.FLYING) {
             // Player was still flying when crash happened - they lose
             gameState.setValue(GameState.CRASHED);
             double betAmount = currentBet.getValue();
+            
+            // Notify bot manager about player crash
+            botManager.setPlayerCrash();
+            
             saveGameRecord(betAmount, multiplier.getValue(), 0.0, false);
         } else if (gameState.getValue() == GameState.CASHED_OUT) {
             // Player already cashed out, just end the round to show crash effect
@@ -287,6 +324,7 @@ public class GameViewModel extends AndroidViewModel {
     public LiveData<List<GameRecord>> getGameHistory() { return gameHistory; }
     public LiveData<Double> getWinRate() { return winRate; }
     public LiveData<Integer> getTotalGames() { return totalGames; }
+    public LiveData<List<BotEntry>> getBotLeaderboard() { return botLeaderboard; }
     
     /**
      * Get AuthManager for educational features

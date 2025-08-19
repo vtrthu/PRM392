@@ -7,7 +7,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.aviatorcrash.adapter.BotLeaderboardAdapter;
 import com.example.aviatorcrash.databinding.ActivityGameBinding;
 import com.example.aviatorcrash.game.GameEngine;
 import com.example.aviatorcrash.viewmodel.GameViewModel;
@@ -16,6 +18,7 @@ public class GameActivity extends AppCompatActivity {
     private ActivityGameBinding binding;
     private GameViewModel viewModel;
     private GameEngine gameEngine;
+    private BotLeaderboardAdapter botLeaderboardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +30,19 @@ public class GameActivity extends AppCompatActivity {
         gameEngine = new GameEngine();
 
         setupUI();
+        setupLeaderboard();
         setupObservers();
         setupClickListeners();
     }
 
     private void setupUI() {
         // No action bar setup needed as we have custom toolbar
+    }
+
+    private void setupLeaderboard() {
+        botLeaderboardAdapter = new BotLeaderboardAdapter();
+        binding.botLeaderboardRecycler.setLayoutManager(new LinearLayoutManager(this));
+        binding.botLeaderboardRecycler.setAdapter(botLeaderboardAdapter);
     }
 
     private void setupObservers() {
@@ -46,6 +56,11 @@ public class GameActivity extends AppCompatActivity {
             binding.winAmountText.setText(getString(R.string.win_amount_format, amount)));
         viewModel.getCrashPoint().observe(this, crashPoint -> 
             binding.crashPointText.setText(getString(R.string.crash_point_format, crashPoint)));
+        viewModel.getBotLeaderboard().observe(this, bots -> {
+            if (bots != null) {
+                botLeaderboardAdapter.updateBots(bots);
+            }
+        });
     }
 
     private void setupClickListeners() {

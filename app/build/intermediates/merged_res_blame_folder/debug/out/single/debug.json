@@ -8,6 +8,10 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_logo_fpt_broken.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\logo_fpt_broken.xml"
+    },
+    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_check.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_check.xml"
     },
@@ -36,6 +40,10 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_game.xml"
     },
     {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_item_bot_leaderboard.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\item_bot_leaderboard.xml"
+    },
+    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_settings.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_settings.xml"
     },
@@ -60,12 +68,12 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_history.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_modern.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_modern.xml"
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/drawable_logo_fpt_big_broke.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/drawable/logo_fpt_big_broke.xml"
     },
     {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_settings.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_settings.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_modern.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_modern.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_login.xml.flat",

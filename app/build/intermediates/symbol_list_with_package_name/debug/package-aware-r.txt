@@ -3013,6 +3013,8 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_play
 drawable ic_search_black_24
 drawable ic_settings
+drawable logo_fpt_big_broke
+drawable logo_fpt_broken
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3192,6 +3194,7 @@ id bet_amount_layout
 id bet_amount_text
 id betting_controls
 id blocking
+id bot_leaderboard_recycler
 id bottom
 id bounce
 id bounceBoth
@@ -3346,6 +3349,7 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id leaderboard_card
 id left
 id leftToRight
 id legacy
@@ -3461,6 +3465,10 @@ id peekHeight
 id percent
 id pin
 id place_bet_button
+id player_bet
+id player_name
+id player_rank
+id player_status
 id pooling_container_listener_holder_tag
 id position
 id postLayout
@@ -3774,6 +3782,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout item_bot_leaderboard
 layout item_game_record
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -4507,6 +4516,7 @@ style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 style TextAppearance_AviatorCrash_Body1
 style TextAppearance_AviatorCrash_Body2
+style TextAppearance_AviatorCrash_Caption
 style TextAppearance_AviatorCrash_Headline1
 style TextAppearance_AviatorCrash_Headline2
 style TextAppearance_Compat_Notification
