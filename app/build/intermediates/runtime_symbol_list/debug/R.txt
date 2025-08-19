@@ -3319,7 +3319,6 @@ int id group_divider 0x7f0800e5
 int id grouping 0x7f0800e6
 int id groups 0x7f0800e7
 int id header_title 0x7f0800e8
-int id hidden_logout_button 0x7f0800e9
 int id hideable 0x7f0800ea
 int id history_button 0x7f0800eb
 int id history_recycler_view 0x7f0800ec

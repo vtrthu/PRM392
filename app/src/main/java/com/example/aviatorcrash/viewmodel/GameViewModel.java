@@ -124,23 +124,24 @@ public class GameViewModel extends AndroidViewModel {
         Runnable timerRunnable = new Runnable() {
             @Override
             public void run() {
-                if (gameState.getValue() == GameState.FLYING) {
+                // Continue timer for both FLYING and CASHED_OUT states
+                if (gameState.getValue() == GameState.FLYING || gameState.getValue() == GameState.CASHED_OUT) {
                     long currentDuration = gameDuration.getValue() + 100;
                     gameDuration.setValue(currentDuration);
                     
                     double currentMultiplier = gameEngine.calculateMultiplier(currentDuration);
                     multiplier.setValue(currentMultiplier);
                     
-                    // Check for auto-cashout
-                    if (autoCashoutEnabled.getValue() && 
+                    // Check for auto-cashout (only if still flying)
+                    if (gameState.getValue() == GameState.FLYING && autoCashoutEnabled.getValue() && 
                         currentMultiplier >= autoCashoutMultiplier.getValue()) {
                         cashout();
-                        return;
+                        // Don't return here, continue the timer to show regret effect
                     }
                     
                     // Check if should crash
                     if (gameEngine.shouldCrash(currentMultiplier, crashPoint.getValue())) {
-                        crash();
+                        handleCrash();
                         return;
                     }
                     
@@ -156,6 +157,19 @@ public class GameViewModel extends AndroidViewModel {
         gameState.setValue(GameState.CRASHED);
         double betAmount = currentBet.getValue();
         saveGameRecord(betAmount, multiplier.getValue(), 0.0, false);
+    }
+
+    private void handleCrash() {
+        if (gameState.getValue() == GameState.FLYING) {
+            // Player was still flying when crash happened - they lose
+            gameState.setValue(GameState.CRASHED);
+            double betAmount = currentBet.getValue();
+            saveGameRecord(betAmount, multiplier.getValue(), 0.0, false);
+        } else if (gameState.getValue() == GameState.CASHED_OUT) {
+            // Player already cashed out, just end the round to show crash effect
+            // No need to save another game record since they already won
+            gameState.setValue(GameState.CRASHED);
+        }
     }
 
     private void saveGameRecord(double betAmount, double multiplier, double cashoutAmount, boolean isWin) {

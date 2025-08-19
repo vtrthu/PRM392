@@ -95,10 +95,8 @@ public class GameActivity extends AppCompatActivity {
                 binding.gameStatus.setText(R.string.game_status_cashed_out);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(false);
-                binding.nextRoundButton.setEnabled(true);
-                if (binding.gameView != null) {
-                    binding.gameView.reset();
-                }
+                binding.nextRoundButton.setEnabled(false); // Keep disabled until crash
+                // Don't reset gameView here - let the plane continue flying until crash
                 break;
         }
     }

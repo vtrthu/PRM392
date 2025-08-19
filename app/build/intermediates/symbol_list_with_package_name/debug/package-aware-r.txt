@@ -3320,7 +3320,6 @@ id group_divider
 id grouping
 id groups
 id header_title
-id hidden_logout_button
 id hideable
 id history_button
 id history_recycler_view

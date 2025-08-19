@@ -275,19 +275,7 @@
                         android:layout_height="wrap_content"
                         android:text="Chỉ dành cho mục đích giải trí và học tập"
                         android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
-                        android:textColor="@color/text_hint"
-                        android:layout_marginBottom="16dp" />
-
-                    <!-- Hidden logout button (subtle) -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/hidden_logout_button"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:text="Account Settings"
-                        android:textColor="@color/text_hint"
-                        android:textSize="10sp"
-                        android:alpha="0.7" />
+                        android:textColor="@color/text_hint" />
 
                 </LinearLayout>
 
