@@ -2987,7 +2987,13 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable glass_card_background
 drawable gradient_background
+drawable gradient_button_primary
+drawable gradient_button_success
+drawable gradient_card_background
+drawable gradient_game_background
+drawable gradient_login_background
 drawable ic_airplane
 drawable ic_airplane_jet
 drawable ic_airplane_modern
@@ -3002,6 +3008,7 @@ drawable ic_exit
 drawable ic_history
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_foreground
+drawable ic_lock
 drawable ic_logofpt
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3010,6 +3017,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_person
 drawable ic_play
 drawable ic_search_black_24
 drawable ic_settings
@@ -3074,6 +3082,9 @@ drawable mtrl_switch_track
 drawable mtrl_switch_track_decoration
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable neon_button_green
+drawable neon_button_orange
+drawable neon_glow_background
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -3182,7 +3193,6 @@ id auto_cashout_slider
 id auto_cashout_switch
 id auto_cashout_value
 id back_button
-id background_gradient
 id balance_text
 id barrier
 id baseline
@@ -3192,10 +3202,12 @@ id bestChoice
 id bet_amount_input
 id bet_amount_layout
 id bet_amount_text
+id bet_info_container
 id betting_controls
 id blocking
 id bot_leaderboard_recycler
 id bottom
+id bottom_hud
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3233,7 +3245,6 @@ id content
 id contentPanel
 id contiguous
 id continuousVelocity
-id controls_container
 id coordinator
 id cos
 id counterclockwise
@@ -3293,6 +3304,7 @@ id exit_button
 id expand_activities_button
 id expanded_menu
 id fade
+id features_card
 id fill
 id fill_horizontal
 id fill_vertical
@@ -3322,6 +3334,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id header_section
 id header_title
 id hideable
 id history_button
@@ -3360,6 +3373,8 @@ id listMode
 id list_item
 id locale
 id login_button
+id login_card
+id logo_section
 id logout_button
 id ltr
 id m3_side_sheet
@@ -3565,6 +3580,7 @@ id start_game_button
 id staticLayout
 id staticPostLayout
 id statistics_container
+id status_card
 id stop
 id stretch
 id submenuarrow
@@ -3611,6 +3627,7 @@ id toggle
 id toolbar
 id top
 id topPanel
+id top_hud
 id total_games_text
 id touch_outside
 id transitionToEnd

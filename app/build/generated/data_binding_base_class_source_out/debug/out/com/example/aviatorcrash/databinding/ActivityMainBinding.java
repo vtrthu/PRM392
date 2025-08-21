@@ -4,31 +4,35 @@ package com.example.aviatorcrash.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.aviatorcrash.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
-
-  @NonNull
-  public final View backgroundGradient;
+  private final ScrollView rootView;
 
   @NonNull
   public final MaterialButton exitButton;
 
   @NonNull
+  public final CardView featuresCard;
+
+  @NonNull
   public final TextView footerText;
+
+  @NonNull
+  public final LinearLayout headerSection;
 
   @NonNull
   public final MaterialButton historyButton;
@@ -37,7 +41,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final MaterialButton logoutButton;
 
   @NonNull
-  public final MaterialCardView menuContainer;
+  public final CardView menuContainer;
 
   @NonNull
   public final MaterialButton settingsButton;
@@ -51,16 +55,17 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView titleText;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull View backgroundGradient,
-      @NonNull MaterialButton exitButton, @NonNull TextView footerText,
-      @NonNull MaterialButton historyButton, @NonNull MaterialButton logoutButton,
-      @NonNull MaterialCardView menuContainer, @NonNull MaterialButton settingsButton,
-      @NonNull MaterialButton startGameButton, @NonNull TextView subtitleText,
-      @NonNull TextView titleText) {
+  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull MaterialButton exitButton,
+      @NonNull CardView featuresCard, @NonNull TextView footerText,
+      @NonNull LinearLayout headerSection, @NonNull MaterialButton historyButton,
+      @NonNull MaterialButton logoutButton, @NonNull CardView menuContainer,
+      @NonNull MaterialButton settingsButton, @NonNull MaterialButton startGameButton,
+      @NonNull TextView subtitleText, @NonNull TextView titleText) {
     this.rootView = rootView;
-    this.backgroundGradient = backgroundGradient;
     this.exitButton = exitButton;
+    this.featuresCard = featuresCard;
     this.footerText = footerText;
+    this.headerSection = headerSection;
     this.historyButton = historyButton;
     this.logoutButton = logoutButton;
     this.menuContainer = menuContainer;
@@ -72,7 +77,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -97,21 +102,27 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.background_gradient;
-      View backgroundGradient = ViewBindings.findChildViewById(rootView, id);
-      if (backgroundGradient == null) {
-        break missingId;
-      }
-
       id = R.id.exit_button;
       MaterialButton exitButton = ViewBindings.findChildViewById(rootView, id);
       if (exitButton == null) {
         break missingId;
       }
 
+      id = R.id.features_card;
+      CardView featuresCard = ViewBindings.findChildViewById(rootView, id);
+      if (featuresCard == null) {
+        break missingId;
+      }
+
       id = R.id.footer_text;
       TextView footerText = ViewBindings.findChildViewById(rootView, id);
       if (footerText == null) {
+        break missingId;
+      }
+
+      id = R.id.header_section;
+      LinearLayout headerSection = ViewBindings.findChildViewById(rootView, id);
+      if (headerSection == null) {
         break missingId;
       }
 
@@ -128,7 +139,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       id = R.id.menu_container;
-      MaterialCardView menuContainer = ViewBindings.findChildViewById(rootView, id);
+      CardView menuContainer = ViewBindings.findChildViewById(rootView, id);
       if (menuContainer == null) {
         break missingId;
       }
@@ -157,9 +168,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, backgroundGradient, exitButton,
-          footerText, historyButton, logoutButton, menuContainer, settingsButton, startGameButton,
-          subtitleText, titleText);
+      return new ActivityMainBinding((ScrollView) rootView, exitButton, featuresCard, footerText,
+          headerSection, historyButton, logoutButton, menuContainer, settingsButton,
+          startGameButton, subtitleText, titleText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

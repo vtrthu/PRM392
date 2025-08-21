@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.aviatorcrash.R;
@@ -19,7 +21,7 @@ import java.lang.String;
 
 public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
   public final TextView errorMessage;
@@ -28,24 +30,33 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final MaterialButton loginButton;
 
   @NonNull
+  public final CardView loginCard;
+
+  @NonNull
+  public final LinearLayout logoSection;
+
+  @NonNull
   public final TextInputEditText passwordInput;
 
   @NonNull
   public final TextInputEditText usernameInput;
 
-  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull TextView errorMessage,
-      @NonNull MaterialButton loginButton, @NonNull TextInputEditText passwordInput,
+  private ActivityLoginBinding(@NonNull ScrollView rootView, @NonNull TextView errorMessage,
+      @NonNull MaterialButton loginButton, @NonNull CardView loginCard,
+      @NonNull LinearLayout logoSection, @NonNull TextInputEditText passwordInput,
       @NonNull TextInputEditText usernameInput) {
     this.rootView = rootView;
     this.errorMessage = errorMessage;
     this.loginButton = loginButton;
+    this.loginCard = loginCard;
+    this.logoSection = logoSection;
     this.passwordInput = passwordInput;
     this.usernameInput = usernameInput;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -82,6 +93,18 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.login_card;
+      CardView loginCard = ViewBindings.findChildViewById(rootView, id);
+      if (loginCard == null) {
+        break missingId;
+      }
+
+      id = R.id.logo_section;
+      LinearLayout logoSection = ViewBindings.findChildViewById(rootView, id);
+      if (logoSection == null) {
+        break missingId;
+      }
+
       id = R.id.password_input;
       TextInputEditText passwordInput = ViewBindings.findChildViewById(rootView, id);
       if (passwordInput == null) {
@@ -94,8 +117,8 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((LinearLayout) rootView, errorMessage, loginButton,
-          passwordInput, usernameInput);
+      return new ActivityLoginBinding((ScrollView) rootView, errorMessage, loginButton, loginCard,
+          logoSection, passwordInput, usernameInput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
