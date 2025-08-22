@@ -16,8 +16,8 @@ public class AuthManager {
     // Real login credentials for demo
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "house2024";
-    private static final String PLAYER_USERNAME = "player";
-    private static final String PLAYER_PASSWORD = "demo123";
+    private static final String PLAYER_USERNAME = "toiyeufpt";
+    private static final String PLAYER_PASSWORD = "demo";
 
     private final SharedPreferences prefs;
     private AccountType currentAccountType;
@@ -35,6 +35,13 @@ public class AuthManager {
         AccountType accountType = validateCredentials(username, password);
         if (accountType != null) {
             currentAccountType = accountType;
+            
+            // Reset game count for fresh experience each login (educational demo)
+            // This ensures every login starts with "honeymoon period" -> "house edge" pattern
+            if (accountType == AccountType.USER) {
+                resetUserGameCount();
+            }
+            
             prefs.edit()
                     .putString(KEY_ACCOUNT_TYPE, accountType.getUsername())
                     .putBoolean(KEY_IS_LOGGED_IN, true)
@@ -99,7 +106,7 @@ public class AuthManager {
     }
 
     /**
-     * Reset user game count (for testing purposes)
+     * Reset user game count (for fresh demo experience)
      */
     public void resetUserGameCount() {
         prefs.edit()

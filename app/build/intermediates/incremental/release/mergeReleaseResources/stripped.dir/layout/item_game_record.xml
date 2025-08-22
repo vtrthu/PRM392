@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/card_background"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Result Icon -->
+        <ImageView
+            android:id="@+id/result_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/circle_background"
+            android:padding="12dp"
+            android:src="@drawable/ic_check"
+            app:tint="@color/success"
+            tools:src="@drawable/ic_close" />
+
+        <!-- Game Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <!-- Multiplier -->
+            <TextView
+                android:id="@+id/multiplier_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.5x"
+                android:textAppearance="@style/TextAppearance.AviatorCrash.Headline2"
+                android:textColor="@color/text_primary"
+                tools:text="5.2x" />
+
+            <!-- Bet Amount -->
+            <TextView
+                android:id="@+id/bet_amount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Cược: 100"
+                android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
+                android:textColor="@color/text_secondary"
+                tools:text="Cược: 50" />
+
+            <!-- Timestamp -->
+            <TextView
+                android:id="@+id/timestamp_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="12:30 PM"
+                android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
+                android:textColor="@color/text_hint"
+                tools:text="2:15 PM" />
+
+        </LinearLayout>
+
+        <!-- Win/Loss Amount -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/result_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+250"
+                android:textAppearance="@style/TextAppearance.AviatorCrash.Headline2"
+                android:textColor="@color/success"
+                tools:text="-100"
+                tools:textColor="@color/error" />
+
+            <TextView
+                android:id="@+id/result_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Thắng"
+                android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
+                android:textColor="@color/success"
+                tools:text="Thua"
+                tools:textColor="@color/error" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

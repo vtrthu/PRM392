@@ -16,10 +16,6 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_history.xml"
     },
     {
-        "merged": "com.example.aviatorcrash.app-mergeDebugResources-47:/layout/activity_main.xml",
-        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_login.xml",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_login.xml"
     },
@@ -30,5 +26,9 @@
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_main.xml",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.aviatorcrash.app-mergeDebugResources-47:/layout/activity_game.xml",
+        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_game.xml"
     }
 ]

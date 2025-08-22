@@ -2,6 +2,8 @@ package com.example.aviatorcrash;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -19,6 +21,10 @@ public class GameActivity extends AppCompatActivity {
     private GameViewModel viewModel;
     private GameEngine gameEngine;
     private BotLeaderboardAdapter botLeaderboardAdapter;
+    
+    // Countdown timer for enrollment deadline
+    private Handler countdownHandler;
+    private Runnable countdownRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +34,15 @@ public class GameActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         gameEngine = new GameEngine();
+        
+        // Initialize countdown timer
+        countdownHandler = new Handler(Looper.getMainLooper());
 
         setupUI();
         setupLeaderboard();
         setupObservers();
         setupClickListeners();
+        startCountdownTimer();
     }
 
     private void setupUI() {
@@ -48,8 +58,14 @@ public class GameActivity extends AppCompatActivity {
     private void setupObservers() {
         viewModel.getGameState().observe(this, this::updateGameState);
         viewModel.getMultiplier().observe(this, this::updateMultiplier);
-        viewModel.getBalance().observe(this, balance -> 
-            binding.balanceText.setText(getString(R.string.balance, balance)));
+        
+        // Add balance observer to update UI
+        viewModel.getBalance().observe(this, balance -> {
+            if (balance != null) {
+                binding.tuitionAmountText.setText(String.format("%,.0f VND", balance));
+            }
+        });
+        
         viewModel.getCurrentBet().observe(this, bet -> 
             binding.currentBetText.setText(getString(R.string.current_bet_format, bet)));
         viewModel.getCashoutAmount().observe(this, amount -> 
@@ -61,19 +77,238 @@ public class GameActivity extends AppCompatActivity {
                 botLeaderboardAdapter.updateBots(bots);
             }
         });
+        
+        // Educational feature observers
+        setupEducationalObservers();
+    }
+    
+    private void setupEducationalObservers() {
+        // Only show educational features for user account
+        if (!viewModel.getAuthManager().isUser()) {
+            // Hide educational cards for admin account
+            binding.tuitionMeterCard.setVisibility(android.view.View.GONE);
+            binding.enrollmentDeadlineCard.setVisibility(android.view.View.GONE);
+            binding.educationalIndicators.setVisibility(android.view.View.GONE);
+            return;
+        }
+        
+        // Tuition meter
+        viewModel.getTuitionRemaining().observe(this, tuition -> {
+            binding.tuitionAmountText.setText(String.format("%,.0f VND", tuition));
+            
+            // Update progress bar
+            double percentage = (tuition / 28700000.0) * 100;
+            binding.tuitionProgressBar.setProgress((int) percentage);
+            
+            // Update colors based on amount
+            if (percentage < 30) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFFF6B35));
+                }
+                binding.tuitionAmountText.setTextColor(0xFFFF6B35);
+                binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
+            } else if (percentage < 50) {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFFFCC02));
+                }
+                binding.tuitionAmountText.setTextColor(0xFFFFCC02);
+                binding.tuitionWarningText.setVisibility(android.view.View.GONE);
+            } else {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFF00FF88));
+                }
+                binding.tuitionAmountText.setTextColor(0xFF00FF88);
+                binding.tuitionWarningText.setVisibility(android.view.View.GONE);
+            }
+        });
+        
+        // Enrollment deadline countdown (will be updated by timer)
+        // Observer just to get the initial deadline value
+        
+        
+        // Total Loss
+        viewModel.getTotalLoss().observe(this, totalLoss -> {
+            if (totalLoss > 0) {
+                binding.totalLossText.setText(String.format("%,.0f VND", totalLoss));
+                binding.totalLossText.setTextColor(0xFFFF6B35); // Red color for losses
+            } else {
+                binding.totalLossText.setText("0 VND");
+                binding.totalLossText.setTextColor(0xFF00FF88); // Green color for no loss
+            }
+        });
+        
+        // Chasing warning
+        viewModel.getChasingWarning().observe(this, isChasing -> {
+            if (isChasing) {
+                showChasingWarning();
+            }
+        });
+        
+        // Regret message
+        viewModel.getRegretMessage().observe(this, message -> {
+            if (!message.isEmpty()) {
+                showRegretMessage(message);
+            }
+        });
+        
+        // Motivational messages
+        viewModel.getMotivationalMessage().observe(this, message -> {
+            if (!message.isEmpty()) {
+                showMotivationalMessage(message);
+            }
+        });
+        
+        // Probability popup
+        viewModel.getShowProbabilityPopup().observe(this, showPopup -> {
+            if (showPopup) {
+                showProbabilityPopup();
+            }
+        });
     }
 
     private void setupClickListeners() {
+        try {
         binding.backButton.setOnClickListener(v -> onBackPressed());
 
-        binding.placeBetButton.setOnClickListener(v -> placeBet());
+            binding.placeBetButton.setOnClickListener(v -> {
+                try {
+                    placeBet();
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in placeBet click: " + e.getMessage());
+                    Toast.makeText(this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                }
+            });
 
         binding.cashoutButton.setOnClickListener(v -> {
+                try {
             viewModel.cashout();
             showWinEffect();
-        });
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in cashout click: " + e.getMessage());
+                }
+            });
 
-        binding.nextRoundButton.setOnClickListener(v -> viewModel.startNewRound());
+            binding.nextRoundButton.setOnClickListener(v -> {
+                try {
+                    viewModel.startNewRound();
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in nextRound click: " + e.getMessage());
+                }
+            });
+            
+            // Quick bet buttons
+            binding.bet1mButton.setOnClickListener(v -> {
+                try {
+                    addToBetAmount(1000000);
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in bet1m click: " + e.getMessage());
+                }
+            });
+            binding.bet5mButton.setOnClickListener(v -> {
+                try {
+                    addToBetAmount(5000000);
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in bet5m click: " + e.getMessage());
+                }
+            });
+            binding.bet10mButton.setOnClickListener(v -> {
+                try {
+                    addToBetAmount(10000000);
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in bet10m click: " + e.getMessage());
+                }
+            });
+            binding.betAllinButton.setOnClickListener(v -> {
+                try {
+                    setAllInBet();
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in betAllin click: " + e.getMessage());
+                }
+            });
+            
+            // Collapse leaderboard button
+            binding.collapseLeaderboardButton.setOnClickListener(v -> {
+                try {
+                    toggleLeaderboard();
+                } catch (Exception e) {
+                    android.util.Log.e("GameActivity", "Error in toggleLeaderboard click: " + e.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in setupClickListeners: " + e.getMessage());
+        }
+    }
+    
+    private boolean isLeaderboardCollapsed = false;
+    
+    private void toggleLeaderboard() {
+        if (isLeaderboardCollapsed) {
+            // Expand - restore full size
+            binding.leaderboardCard.getLayoutParams().width = (int) (200 * getResources().getDisplayMetrics().density);
+            binding.leaderboardCard.getLayoutParams().height = (int) (160 * getResources().getDisplayMetrics().density);
+            binding.leaderboardCard.requestLayout();
+            binding.collapseLeaderboardButton.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+            isLeaderboardCollapsed = false;
+        } else {
+            // Collapse - reduce to small size
+            binding.leaderboardCard.getLayoutParams().width = (int) (60 * getResources().getDisplayMetrics().density);
+            binding.leaderboardCard.getLayoutParams().height = (int) (60 * getResources().getDisplayMetrics().density);
+            binding.leaderboardCard.requestLayout();
+            binding.collapseLeaderboardButton.setImageResource(android.R.drawable.ic_menu_view);
+            isLeaderboardCollapsed = true;
+        }
+    }
+    
+    private void addToBetAmount(double amount) {
+        try {
+            String currentText = binding.betAmountInput.getText().toString().trim();
+            long currentAmount = 0;
+            
+            if (!currentText.isEmpty()) {
+                try {
+                    currentAmount = Long.parseLong(currentText);
+                } catch (NumberFormatException e) {
+                    currentAmount = 0;
+                }
+            }
+            
+            // Add new amount
+            long newTotal = currentAmount + (long) amount;
+            
+            // Check if total exceeds balance
+            Double currentBalance = viewModel.getBalance().getValue();
+            if (currentBalance != null && newTotal > currentBalance) {
+                // Show warning and set to max possible
+                newTotal = currentBalance.longValue();
+                Toast.makeText(this, "⚠️ Tổng tiền cược không được vượt quá số dư!", Toast.LENGTH_SHORT).show();
+            }
+            
+            // Update input directly (already on UI thread)
+            binding.betAmountInput.setText(String.valueOf(newTotal));
+        } catch (Exception e) {
+            // Log error and show user-friendly message
+            android.util.Log.e("GameActivity", "Error in addToBetAmount: " + e.getMessage());
+            Toast.makeText(this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    private void setQuickBetAmount(double amount) {
+        try {
+            binding.betAmountInput.setText(String.valueOf((long) amount));
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in setQuickBetAmount: " + e.getMessage());
+        }
+    }
+    
+    private void setAllInBet() {
+        try {
+            Double currentBalance = viewModel.getBalance().getValue();
+            if (currentBalance != null && currentBalance > 0) {
+                binding.betAmountInput.setText(String.valueOf(currentBalance.longValue()));
+            }
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in setAllInBet: " + e.getMessage());
+        }
     }
 
     private void updateGameState(GameViewModel.GameState state) {
@@ -83,34 +318,53 @@ public class GameActivity extends AppCompatActivity {
                 binding.placeBetButton.setEnabled(true);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(false);
+                
+                // Show all HUD elements for waiting state
+                showAllHUD();
+                
                 if (binding.gameView != null) {
                     binding.gameView.reset();
                 }
                 break;
+                
             case FLYING:
                 binding.gameStatus.setText(R.string.game_status_flying);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(true);
                 binding.nextRoundButton.setEnabled(false);
+                
+                // Hide HUD and focus on game view, only keep cashout button
+                hideHUDForFlying();
+                
                 if (binding.gameView != null) {
                     binding.gameView.startFlight();
                 }
                 break;
+                
             case CRASHED:
                 binding.gameStatus.setText(R.string.game_status_crashed);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(true);
+                
+                // Show all HUD elements back for crashed state
+                showAllHUD();
+                
                 if (binding.gameView != null) {
                     binding.gameView.crash();
                 }
                 showCrashEffect();
                 break;
+                
             case CASHED_OUT:
                 binding.gameStatus.setText(R.string.game_status_cashed_out);
                 binding.placeBetButton.setEnabled(false);
                 binding.cashoutButton.setEnabled(false);
                 binding.nextRoundButton.setEnabled(false); // Keep disabled until crash
+                
+                // Show all HUD elements back for cashout state
+                showAllHUD();
+                
                 // Don't reset gameView here - let the plane continue flying until crash
                 break;
         }
@@ -140,24 +394,42 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void placeBet() {
-        String betText = binding.betAmountInput.getText().toString();
+        try {
+            String betText = binding.betAmountInput.getText().toString().trim();
         
         if (TextUtils.isEmpty(betText)) {
-            binding.betAmountLayout.setError(getString(R.string.error_enter_bet_amount));
+                Toast.makeText(this, "Vui lòng nhập số tiền cược", Toast.LENGTH_SHORT).show();
             return;
         }
 
         try {
-            double betAmount = Double.parseDouble(betText);
-            if (gameEngine.isValidBet(betAmount, viewModel.getBalance().getValue(), 5000.0, 10000000000000.0)) {
+                long betAmount = Long.parseLong(betText);
+                
+                // Basic validation
+                if (betAmount < 1000000) {
+                    Toast.makeText(this, "Số tiền cược tối thiểu là 1,000,000 VND", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                
+                Double currentBalance = viewModel.getBalance().getValue();
+                if (currentBalance == null || betAmount > currentBalance) {
+                    Toast.makeText(this, "Số dư không đủ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                
+                if (gameEngine.isValidBet(betAmount, currentBalance, 1000000.0, 10000000000000.0)) {
                 viewModel.placeBet(betAmount);
                 binding.betAmountInput.setText("");
-                binding.betAmountLayout.setError(null);
             } else {
-                binding.betAmountLayout.setError(getString(R.string.error_invalid_bet));
+                    Toast.makeText(this, "Số tiền cược không hợp lệ", Toast.LENGTH_SHORT).show();
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Vui lòng nhập số hợp lệ", Toast.LENGTH_SHORT).show();
+                android.util.Log.e("GameActivity", "NumberFormatException in placeBet: " + e.getMessage());
             }
-        } catch (NumberFormatException e) {
-            binding.betAmountLayout.setError(getString(R.string.error_invalid_number));
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in placeBet: " + e.getMessage());
+            Toast.makeText(this, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -184,6 +456,162 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
+    
+    // Educational feature methods
+    private void showChasingWarning() {
+        new AlertDialog.Builder(this)
+            .setTitle("⚠️ Cảnh báo hành vi nguy hiểm")
+            .setMessage("Bạn đang 'gỡ' - tăng tiền cược sau khi thua!\n\nĐây là hành vi phổ biến dẫn đến mất tiền nhiều hơn. Nhà cái luôn có lợi thế về lâu dài.")
+            .setPositiveButton("Tôi hiểu", null)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show();
+    }
+    
+    private void showRegretMessage(String message) {
+        new AlertDialog.Builder(this)
+            .setTitle("💡 Kiến thức tâm lý")
+            .setMessage(message)
+            .setPositiveButton("Hiểu rồi", null)
+            .setIcon(android.R.drawable.ic_dialog_info)
+            .show();
+    }
+    
+    private void showMotivationalMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+    
+    private void showProbabilityPopup() {
+        double currentBalance = viewModel.getBalance().getValue() != null ? viewModel.getBalance().getValue() : 0.0;
+        double deficit = 2870000.0 - currentBalance;
+        
+        if (deficit > 0) {
+            String message = String.format("💹 Để quay về đủ học phí (%.0f VND), bạn cần:\n\n" +
+                "• Thắng liên tiếp nhiều ván với tỷ lệ cao\n" +
+                "• Xác suất thành công < 5%%\n" +
+                "• Càng cố gắng 'gỡ', càng dễ mất sạch\n\n" +
+                "🎯 Lời khuyên: Hãy dừng lại và bảo vệ số tiền còn lại!", deficit);
+                
+            new AlertDialog.Builder(this)
+                .setTitle("📊 Phân tích xác suất")
+                .setMessage(message)
+                .setPositiveButton("Tôi sẽ cân nhắc", null)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+        }
+    }
+    
+    private void startCountdownTimer() {
+        countdownRunnable = new Runnable() {
+            @Override
+            public void run() {
+                updateEnrollmentCountdown();
+                // Update every second
+                countdownHandler.postDelayed(this, 1000);
+            }
+        };
+        countdownHandler.post(countdownRunnable);
+    }
+    
+    private void updateEnrollmentCountdown() {
+        // Only update if user account
+        if (!viewModel.getAuthManager().isUser()) {
+            return;
+        }
+        
+        Long deadline = viewModel.getEnrollmentDeadline().getValue();
+        if (deadline != null) {
+            long timeLeft = deadline - System.currentTimeMillis();
+            if (timeLeft > 0) {
+                long hours = timeLeft / (60 * 60 * 1000);
+                long minutes = (timeLeft % (60 * 60 * 1000)) / (60 * 1000);
+                long seconds = (timeLeft % (60 * 1000)) / 1000;
+                
+                String countdownText = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+                binding.enrollmentCountdownText.setText(countdownText);
+                binding.enrollmentCountdownText.setTextColor(0xFFFFCC02);
+            } else {
+                binding.enrollmentCountdownText.setText("HẾT HẠN");
+                binding.enrollmentCountdownText.setTextColor(0xFFFF6B35);
+                // Stop the countdown when expired
+                stopCountdownTimer();
+            }
+        }
+    }
+    
+    private void stopCountdownTimer() {
+        if (countdownHandler != null && countdownRunnable != null) {
+            countdownHandler.removeCallbacks(countdownRunnable);
+        }
+    }
+    
+    /**
+     * Hide HUD elements during FLYING state to focus on game view
+     * Keep multiplier, leaderboard, and cashout button visible
+     */
+    private void hideHUDForFlying() {
+        try {
+            // Hide top HUD (back button, title)
+            binding.topHud.setVisibility(android.view.View.GONE);
+            
+            // Hide educational cards
+            binding.tuitionMeterCard.setVisibility(android.view.View.GONE);
+            binding.enrollmentDeadlineCard.setVisibility(android.view.View.GONE);
+            
+            // Keep leaderboard visible for live player updates
+            binding.leaderboardCard.setVisibility(android.view.View.VISIBLE);
+            
+            // Hide bottom HUD except cashout button
+            binding.educationalIndicators.setVisibility(android.view.View.GONE);
+            binding.bettingControls.setVisibility(android.view.View.GONE);
+            binding.nextRoundButton.setVisibility(android.view.View.GONE);
+            
+            // Keep cashout button visible
+            binding.cashoutButton.setVisibility(android.view.View.VISIBLE);
+            
+            // Keep game status and multiplier text visible for real-time updates
+            binding.statusCard.setVisibility(android.view.View.VISIBLE);
+            binding.crashPointText.setVisibility(android.view.View.GONE);
+            binding.betInfoContainer.setVisibility(android.view.View.GONE);
+            
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in hideHUDForFlying: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Show all HUD elements back for WAITING, CRASHED, CASHED_OUT states
+     */
+    private void showAllHUD() {
+        try {
+            // Show top HUD
+            binding.topHud.setVisibility(android.view.View.VISIBLE);
+            
+            // Show educational cards (only for user account)
+            if (viewModel.getAuthManager().isUser()) {
+                binding.tuitionMeterCard.setVisibility(android.view.View.VISIBLE);
+                binding.enrollmentDeadlineCard.setVisibility(android.view.View.VISIBLE);
+            }
+            
+            // Show leaderboard
+            binding.leaderboardCard.setVisibility(android.view.View.VISIBLE);
+            
+            // Show bottom HUD
+            binding.educationalIndicators.setVisibility(android.view.View.VISIBLE);
+            binding.bettingControls.setVisibility(android.view.View.VISIBLE);
+            binding.nextRoundButton.setVisibility(android.view.View.VISIBLE);
+            
+            // Show cashout button
+            binding.cashoutButton.setVisibility(android.view.View.VISIBLE);
+            
+            // Show game status and multiplier text
+            binding.statusCard.setVisibility(android.view.View.VISIBLE);
+            binding.crashPointText.setVisibility(android.view.View.GONE); // Keep hidden by default
+            binding.betInfoContainer.setVisibility(android.view.View.GONE); // Keep hidden by default
+            
+        } catch (Exception e) {
+            android.util.Log.e("GameActivity", "Error in showAllHUD: " + e.getMessage());
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -196,6 +624,27 @@ public class GameActivity extends AppCompatActivity {
                 .show();
         } else {
             super.onBackPressed();
+        }
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopCountdownTimer();
+        
+        // Save balance when activity is destroyed
+        if (viewModel != null) {
+            viewModel.saveBalance();
+        }
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        
+        // Save balance when activity is paused
+        if (viewModel != null) {
+            viewModel.saveBalance();
         }
     }
 }

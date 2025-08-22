@@ -12,8 +12,8 @@ public class BotManager {
     // Configuration constants
     private static final int BOT_COUNT = 40;
     private static final double BOT_WIN_RATE = 0.80; // 80% win rate for bots
-    private static final double BET_MIN = 5000.0;
-    private static final double BET_MAX = 200000.0;
+    private static final double BET_MIN = 1000000.0; // Updated to match new min bet
+    private static final double BET_MAX = 10000000.0; // Updated to match new max bet range
     private static final int TICK_MS = 100;
     
     // Cashout distribution weights (multiplier ranges)

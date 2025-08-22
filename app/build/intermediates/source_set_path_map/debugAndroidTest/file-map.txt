@@ -1,0 +1,7 @@
+com.example.aviatorcrash.test.app-jetified-core-1.5.0-0 C:\Users\vutro\.gradle\caches\8.9\transforms\9e6f8319fec4f80f764aeeba9d191fd7\transformed\jetified-core-1.5.0\res
+com.example.aviatorcrash.test.app-jetified-annotation-experimental-1.3.0-1 C:\Users\vutro\.gradle\caches\8.9\transforms\b1a5161033e08b4bee4b31fb07771559\transformed\jetified-annotation-experimental-1.3.0\res
+com.example.aviatorcrash.test.app-androidTest-2 D:\PRM_BL5\app\build\generated\res\resValues\androidTest\debug
+com.example.aviatorcrash.test.app-androidTest-3 D:\PRM_BL5\app\build\generated\res\rs\androidTest\debug
+com.example.aviatorcrash.test.app-mergeDebugAndroidTestResources-4 D:\PRM_BL5\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.aviatorcrash.test.app-mergeDebugAndroidTestResources-5 D:\PRM_BL5\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.aviatorcrash.test.app-merged_res-6 D:\PRM_BL5\app\build\intermediates\merged_res\debugAndroidTest
