@@ -54,7 +54,6 @@ public class GameViewModel extends AndroidViewModel {
     
     // Educational features
     private MutableLiveData<Double> tuitionRemaining;
-    private MutableLiveData<Long> enrollmentDeadline;
     private MutableLiveData<Double> additionalExpenses;
     private MutableLiveData<Double> debtAmount;
 
@@ -66,7 +65,6 @@ public class GameViewModel extends AndroidViewModel {
     
     // Educational constants
     private static final double INITIAL_TUITION = 28700000.0;
-    private static final long ENROLLMENT_DURATION_MS = 60 * 60 * 1000L; // 1 hour
     private double[] previousBets = new double[5]; // Track last 5 bets for chasing detection
     private int betHistoryIndex = 0;
     private long sessionStartTime;
@@ -101,7 +99,6 @@ public class GameViewModel extends AndroidViewModel {
         
         // Initialize educational features
         tuitionRemaining = new MutableLiveData<>(INITIAL_TUITION);
-        enrollmentDeadline = new MutableLiveData<>(System.currentTimeMillis() + ENROLLMENT_DURATION_MS);
         additionalExpenses = new MutableLiveData<>(0.0);
         debtAmount = new MutableLiveData<>(0.0);
 
@@ -405,7 +402,7 @@ public class GameViewModel extends AndroidViewModel {
     
     // Educational feature getters
     public LiveData<Double> getTuitionRemaining() { return tuitionRemaining; }
-    public LiveData<Long> getEnrollmentDeadline() { return enrollmentDeadline; }
+
     public LiveData<Double> getAdditionalExpenses() { return additionalExpenses; }
     public LiveData<Double> getDebtAmount() { return debtAmount; }
 

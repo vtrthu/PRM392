@@ -22,9 +22,7 @@ public class GameActivity extends AppCompatActivity {
     private GameEngine gameEngine;
     private BotLeaderboardAdapter botLeaderboardAdapter;
     
-    // Countdown timer for enrollment deadline
-    private Handler countdownHandler;
-    private Runnable countdownRunnable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +33,12 @@ public class GameActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         gameEngine = new GameEngine();
         
-        // Initialize countdown timer
-        countdownHandler = new Handler(Looper.getMainLooper());
+
 
         setupUI();
         setupLeaderboard();
         setupObservers();
         setupClickListeners();
-        startCountdownTimer();
     }
 
     private void setupUI() {
@@ -87,7 +83,6 @@ public class GameActivity extends AppCompatActivity {
         if (!viewModel.getAuthManager().isUser()) {
             // Hide educational cards for admin account
             binding.tuitionMeterCard.setVisibility(android.view.View.GONE);
-            binding.enrollmentDeadlineCard.setVisibility(android.view.View.GONE);
             binding.educationalIndicators.setVisibility(android.view.View.GONE);
             return;
         }
@@ -121,10 +116,6 @@ public class GameActivity extends AppCompatActivity {
                 binding.tuitionWarningText.setVisibility(android.view.View.GONE);
             }
         });
-        
-        // Enrollment deadline countdown (will be updated by timer)
-        // Observer just to get the initial deadline value
-        
         
         // Total Loss
         viewModel.getTotalLoss().observe(this, totalLoss -> {
@@ -500,49 +491,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
     
-    private void startCountdownTimer() {
-        countdownRunnable = new Runnable() {
-            @Override
-            public void run() {
-                updateEnrollmentCountdown();
-                // Update every second
-                countdownHandler.postDelayed(this, 1000);
-            }
-        };
-        countdownHandler.post(countdownRunnable);
-    }
-    
-    private void updateEnrollmentCountdown() {
-        // Only update if user account
-        if (!viewModel.getAuthManager().isUser()) {
-            return;
-        }
-        
-        Long deadline = viewModel.getEnrollmentDeadline().getValue();
-        if (deadline != null) {
-            long timeLeft = deadline - System.currentTimeMillis();
-            if (timeLeft > 0) {
-                long hours = timeLeft / (60 * 60 * 1000);
-                long minutes = (timeLeft % (60 * 60 * 1000)) / (60 * 1000);
-                long seconds = (timeLeft % (60 * 1000)) / 1000;
-                
-                String countdownText = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-                binding.enrollmentCountdownText.setText(countdownText);
-                binding.enrollmentCountdownText.setTextColor(0xFFFFCC02);
-            } else {
-                binding.enrollmentCountdownText.setText("HẾT HẠN");
-                binding.enrollmentCountdownText.setTextColor(0xFFFF6B35);
-                // Stop the countdown when expired
-                stopCountdownTimer();
-            }
-        }
-    }
-    
-    private void stopCountdownTimer() {
-        if (countdownHandler != null && countdownRunnable != null) {
-            countdownHandler.removeCallbacks(countdownRunnable);
-        }
-    }
+
     
     /**
      * Hide HUD elements during FLYING state to focus on game view
@@ -555,7 +504,6 @@ public class GameActivity extends AppCompatActivity {
             
             // Hide educational cards
             binding.tuitionMeterCard.setVisibility(android.view.View.GONE);
-            binding.enrollmentDeadlineCard.setVisibility(android.view.View.GONE);
             
             // Keep leaderboard visible for live player updates
             binding.leaderboardCard.setVisibility(android.view.View.VISIBLE);
@@ -589,7 +537,6 @@ public class GameActivity extends AppCompatActivity {
             // Show educational cards (only for user account)
             if (viewModel.getAuthManager().isUser()) {
                 binding.tuitionMeterCard.setVisibility(android.view.View.VISIBLE);
-                binding.enrollmentDeadlineCard.setVisibility(android.view.View.VISIBLE);
             }
             
             // Show leaderboard
@@ -630,7 +577,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopCountdownTimer();
         
         // Save balance when activity is destroyed
         if (viewModel != null) {

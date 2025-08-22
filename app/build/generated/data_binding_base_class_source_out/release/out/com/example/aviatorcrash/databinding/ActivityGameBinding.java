@@ -4,6 +4,7 @@ package com.example.aviatorcrash.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -20,8 +21,6 @@ import com.example.aviatorcrash.R;
 import com.example.aviatorcrash.game.GameView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -34,13 +33,19 @@ public final class ActivityGameBinding implements ViewBinding {
   public final ImageButton backButton;
 
   @NonNull
-  public final TextView balanceText;
+  public final MaterialButton bet10mButton;
 
   @NonNull
-  public final TextInputEditText betAmountInput;
+  public final MaterialButton bet1mButton;
 
   @NonNull
-  public final TextInputLayout betAmountLayout;
+  public final MaterialButton bet5mButton;
+
+  @NonNull
+  public final MaterialButton betAllinButton;
+
+  @NonNull
+  public final EditText betAmountInput;
 
   @NonNull
   public final LinearLayout betInfoContainer;
@@ -58,6 +63,9 @@ public final class ActivityGameBinding implements ViewBinding {
   public final MaterialButton cashoutButton;
 
   @NonNull
+  public final ImageButton collapseLeaderboardButton;
+
+  @NonNull
   public final TextView crashPointText;
 
   @NonNull
@@ -65,15 +73,6 @@ public final class ActivityGameBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout educationalIndicators;
-
-  @NonNull
-  public final TextView enrollmentCountdownText;
-
-  @NonNull
-  public final MaterialCardView enrollmentDeadlineCard;
-
-  @NonNull
-  public final TextView expectedValueText;
 
   @NonNull
   public final ConstraintLayout gameArea;
@@ -86,9 +85,6 @@ public final class ActivityGameBinding implements ViewBinding {
 
   @NonNull
   public final GameView gameView;
-
-  @NonNull
-  public final TextView houseEdgeText;
 
   @NonNull
   public final CardView leaderboardCard;
@@ -109,6 +105,9 @@ public final class ActivityGameBinding implements ViewBinding {
   public final CardView topHud;
 
   @NonNull
+  public final TextView totalLossText;
+
+  @NonNull
   public final TextView tuitionAmountText;
 
   @NonNull
@@ -124,47 +123,48 @@ public final class ActivityGameBinding implements ViewBinding {
   public final TextView winAmountText;
 
   private ActivityGameBinding(@NonNull FrameLayout rootView, @NonNull ImageButton backButton,
-      @NonNull TextView balanceText, @NonNull TextInputEditText betAmountInput,
-      @NonNull TextInputLayout betAmountLayout, @NonNull LinearLayout betInfoContainer,
+      @NonNull MaterialButton bet10mButton, @NonNull MaterialButton bet1mButton,
+      @NonNull MaterialButton bet5mButton, @NonNull MaterialButton betAllinButton,
+      @NonNull EditText betAmountInput, @NonNull LinearLayout betInfoContainer,
       @NonNull LinearLayout bettingControls, @NonNull RecyclerView botLeaderboardRecycler,
       @NonNull CardView bottomHud, @NonNull MaterialButton cashoutButton,
-      @NonNull TextView crashPointText, @NonNull TextView currentBetText,
-      @NonNull LinearLayout educationalIndicators, @NonNull TextView enrollmentCountdownText,
-      @NonNull MaterialCardView enrollmentDeadlineCard, @NonNull TextView expectedValueText,
+      @NonNull ImageButton collapseLeaderboardButton, @NonNull TextView crashPointText,
+      @NonNull TextView currentBetText, @NonNull LinearLayout educationalIndicators,
       @NonNull ConstraintLayout gameArea, @NonNull LinearLayout gameControls,
-      @NonNull TextView gameStatus, @NonNull GameView gameView, @NonNull TextView houseEdgeText,
-      @NonNull CardView leaderboardCard, @NonNull TextView multiplierText,
-      @NonNull MaterialButton nextRoundButton, @NonNull MaterialButton placeBetButton,
-      @NonNull CardView statusCard, @NonNull CardView topHud, @NonNull TextView tuitionAmountText,
-      @NonNull MaterialCardView tuitionMeterCard, @NonNull ProgressBar tuitionProgressBar,
-      @NonNull TextView tuitionWarningText, @NonNull TextView winAmountText) {
+      @NonNull TextView gameStatus, @NonNull GameView gameView, @NonNull CardView leaderboardCard,
+      @NonNull TextView multiplierText, @NonNull MaterialButton nextRoundButton,
+      @NonNull MaterialButton placeBetButton, @NonNull CardView statusCard,
+      @NonNull CardView topHud, @NonNull TextView totalLossText,
+      @NonNull TextView tuitionAmountText, @NonNull MaterialCardView tuitionMeterCard,
+      @NonNull ProgressBar tuitionProgressBar, @NonNull TextView tuitionWarningText,
+      @NonNull TextView winAmountText) {
     this.rootView = rootView;
     this.backButton = backButton;
-    this.balanceText = balanceText;
+    this.bet10mButton = bet10mButton;
+    this.bet1mButton = bet1mButton;
+    this.bet5mButton = bet5mButton;
+    this.betAllinButton = betAllinButton;
     this.betAmountInput = betAmountInput;
-    this.betAmountLayout = betAmountLayout;
     this.betInfoContainer = betInfoContainer;
     this.bettingControls = bettingControls;
     this.botLeaderboardRecycler = botLeaderboardRecycler;
     this.bottomHud = bottomHud;
     this.cashoutButton = cashoutButton;
+    this.collapseLeaderboardButton = collapseLeaderboardButton;
     this.crashPointText = crashPointText;
     this.currentBetText = currentBetText;
     this.educationalIndicators = educationalIndicators;
-    this.enrollmentCountdownText = enrollmentCountdownText;
-    this.enrollmentDeadlineCard = enrollmentDeadlineCard;
-    this.expectedValueText = expectedValueText;
     this.gameArea = gameArea;
     this.gameControls = gameControls;
     this.gameStatus = gameStatus;
     this.gameView = gameView;
-    this.houseEdgeText = houseEdgeText;
     this.leaderboardCard = leaderboardCard;
     this.multiplierText = multiplierText;
     this.nextRoundButton = nextRoundButton;
     this.placeBetButton = placeBetButton;
     this.statusCard = statusCard;
     this.topHud = topHud;
+    this.totalLossText = totalLossText;
     this.tuitionAmountText = tuitionAmountText;
     this.tuitionMeterCard = tuitionMeterCard;
     this.tuitionProgressBar = tuitionProgressBar;
@@ -205,21 +205,33 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.balance_text;
-      TextView balanceText = ViewBindings.findChildViewById(rootView, id);
-      if (balanceText == null) {
+      id = R.id.bet_10m_button;
+      MaterialButton bet10mButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet10mButton == null) {
+        break missingId;
+      }
+
+      id = R.id.bet_1m_button;
+      MaterialButton bet1mButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet1mButton == null) {
+        break missingId;
+      }
+
+      id = R.id.bet_5m_button;
+      MaterialButton bet5mButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet5mButton == null) {
+        break missingId;
+      }
+
+      id = R.id.bet_allin_button;
+      MaterialButton betAllinButton = ViewBindings.findChildViewById(rootView, id);
+      if (betAllinButton == null) {
         break missingId;
       }
 
       id = R.id.bet_amount_input;
-      TextInputEditText betAmountInput = ViewBindings.findChildViewById(rootView, id);
+      EditText betAmountInput = ViewBindings.findChildViewById(rootView, id);
       if (betAmountInput == null) {
-        break missingId;
-      }
-
-      id = R.id.bet_amount_layout;
-      TextInputLayout betAmountLayout = ViewBindings.findChildViewById(rootView, id);
-      if (betAmountLayout == null) {
         break missingId;
       }
 
@@ -253,6 +265,12 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.collapse_leaderboard_button;
+      ImageButton collapseLeaderboardButton = ViewBindings.findChildViewById(rootView, id);
+      if (collapseLeaderboardButton == null) {
+        break missingId;
+      }
+
       id = R.id.crash_point_text;
       TextView crashPointText = ViewBindings.findChildViewById(rootView, id);
       if (crashPointText == null) {
@@ -268,24 +286,6 @@ public final class ActivityGameBinding implements ViewBinding {
       id = R.id.educational_indicators;
       LinearLayout educationalIndicators = ViewBindings.findChildViewById(rootView, id);
       if (educationalIndicators == null) {
-        break missingId;
-      }
-
-      id = R.id.enrollment_countdown_text;
-      TextView enrollmentCountdownText = ViewBindings.findChildViewById(rootView, id);
-      if (enrollmentCountdownText == null) {
-        break missingId;
-      }
-
-      id = R.id.enrollment_deadline_card;
-      MaterialCardView enrollmentDeadlineCard = ViewBindings.findChildViewById(rootView, id);
-      if (enrollmentDeadlineCard == null) {
-        break missingId;
-      }
-
-      id = R.id.expected_value_text;
-      TextView expectedValueText = ViewBindings.findChildViewById(rootView, id);
-      if (expectedValueText == null) {
         break missingId;
       }
 
@@ -310,12 +310,6 @@ public final class ActivityGameBinding implements ViewBinding {
       id = R.id.game_view;
       GameView gameView = ViewBindings.findChildViewById(rootView, id);
       if (gameView == null) {
-        break missingId;
-      }
-
-      id = R.id.house_edge_text;
-      TextView houseEdgeText = ViewBindings.findChildViewById(rootView, id);
-      if (houseEdgeText == null) {
         break missingId;
       }
 
@@ -355,6 +349,12 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.total_loss_text;
+      TextView totalLossText = ViewBindings.findChildViewById(rootView, id);
+      if (totalLossText == null) {
+        break missingId;
+      }
+
       id = R.id.tuition_amount_text;
       TextView tuitionAmountText = ViewBindings.findChildViewById(rootView, id);
       if (tuitionAmountText == null) {
@@ -385,13 +385,13 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityGameBinding((FrameLayout) rootView, backButton, balanceText,
-          betAmountInput, betAmountLayout, betInfoContainer, bettingControls,
-          botLeaderboardRecycler, bottomHud, cashoutButton, crashPointText, currentBetText,
-          educationalIndicators, enrollmentCountdownText, enrollmentDeadlineCard, expectedValueText,
-          gameArea, gameControls, gameStatus, gameView, houseEdgeText, leaderboardCard,
-          multiplierText, nextRoundButton, placeBetButton, statusCard, topHud, tuitionAmountText,
-          tuitionMeterCard, tuitionProgressBar, tuitionWarningText, winAmountText);
+      return new ActivityGameBinding((FrameLayout) rootView, backButton, bet10mButton, bet1mButton,
+          bet5mButton, betAllinButton, betAmountInput, betInfoContainer, bettingControls,
+          botLeaderboardRecycler, bottomHud, cashoutButton, collapseLeaderboardButton,
+          crashPointText, currentBetText, educationalIndicators, gameArea, gameControls, gameStatus,
+          gameView, leaderboardCard, multiplierText, nextRoundButton, placeBetButton, statusCard,
+          topHud, totalLossText, tuitionAmountText, tuitionMeterCard, tuitionProgressBar,
+          tuitionWarningText, winAmountText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

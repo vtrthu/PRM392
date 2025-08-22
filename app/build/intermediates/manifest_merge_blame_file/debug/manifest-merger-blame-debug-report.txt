@@ -6,13 +6,13 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->D:\PRM_BL5\app\src\main\AndroidManifest.xml
+8-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->D:\PRM_BL5\app\src\main\AndroidManifest.xml
+9-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.VIBRATE" />
-11-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:5:5-66
-11-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:5:22-63
+11-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:5:5-66
+11-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:5:22-63
 12
 13    <permission
 13-->[androidx.core:core:1.9.0] C:\Users\vutro\.gradle\caches\8.9\transforms\0d3aa342b9549cc1543d2e7fe296e21a\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
@@ -26,75 +26,75 @@
 17-->[androidx.core:core:1.9.0] C:\Users\vutro\.gradle\caches\8.9\transforms\0d3aa342b9549cc1543d2e7fe296e21a\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
 18
 19    <application
-19-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:7:5-45:19
+19-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:7:5-45:19
 20        android:allowBackup="true"
-20-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:8:9-35
+20-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:8:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 21-->[androidx.core:core:1.9.0] C:\Users\vutro\.gradle\caches\8.9\transforms\0d3aa342b9549cc1543d2e7fe296e21a\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:icon="@mipmap/ic_launcher"
-24-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:9:9-43
+24-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:9:9-43
 25        android:label="@string/app_name"
-25-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:10:9-41
+25-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:10:9-41
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:11:9-54
+26-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:11:9-54
 27        android:supportsRtl="true"
-27-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:12:9-35
+27-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:12:9-35
 28        android:testOnly="true"
 29        android:theme="@style/Theme.AviatorCrash" >
-29-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:13:9-50
+29-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:13:9-50
 30        <activity
-30-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:15:9-23:20
+30-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:15:9-23:20
 31            android:name="com.example.aviatorcrash.LoginActivity"
-31-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:16:13-42
+31-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:16:13-42
 32            android:exported="true"
-32-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:17:13-36
+32-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:17:13-36
 33            android:screenOrientation="portrait" >
-33-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:18:13-49
+33-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:18:13-49
 34            <intent-filter>
-34-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:19:13-22:29
+34-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:19:13-22:29
 35                <action android:name="android.intent.action.MAIN" />
-35-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:20:17-69
-35-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:20:25-66
+35-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:20:17-69
+35-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:20:25-66
 36
 37                <category android:name="android.intent.category.LAUNCHER" />
-37-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:21:17-77
-37-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:21:27-74
+37-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:21:17-77
+37-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:21:27-74
 38            </intent-filter>
 39        </activity>
 40        <activity
-40-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:25:9-28:52
+40-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:25:9-28:52
 41            android:name="com.example.aviatorcrash.MainActivity"
-41-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:26:13-41
+41-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:26:13-41
 42            android:exported="false"
-42-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:27:13-37
+42-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:27:13-37
 43            android:screenOrientation="portrait" />
-43-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:28:13-49
+43-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:28:13-49
 44        <activity
-44-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:30:9-33:52
+44-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:30:9-33:52
 45            android:name="com.example.aviatorcrash.GameActivity"
-45-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:31:13-41
+45-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:31:13-41
 46            android:exported="false"
-46-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:32:13-37
+46-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:32:13-37
 47            android:screenOrientation="portrait" />
-47-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:33:13-49
+47-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:33:13-49
 48        <activity
-48-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:35:9-38:52
+48-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:35:9-38:52
 49            android:name="com.example.aviatorcrash.HistoryActivity"
-49-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:36:13-44
+49-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:36:13-44
 50            android:exported="false"
-50-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:37:13-37
+50-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:37:13-37
 51            android:screenOrientation="portrait" />
-51-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:38:13-49
+51-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:38:13-49
 52        <activity
-52-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:40:9-43:52
+52-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:40:9-43:52
 53            android:name="com.example.aviatorcrash.SettingsActivity"
-53-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:41:13-45
+53-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:41:13-45
 54            android:exported="false"
-54-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:42:13-37
+54-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:42:13-37
 55            android:screenOrientation="portrait" />
-55-->D:\PRM_BL5\app\src\main\AndroidManifest.xml:43:13-49
+55-->D:\PRM_GIT\PRM392\app\src\main\AndroidManifest.xml:43:13-49
 56
 57        <provider
 57-->[androidx.emoji2:emoji2:1.2.0] C:\Users\vutro\.gradle\caches\8.9\transforms\0205d01b13d19ff48c6b4bbca7646eb1\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20

@@ -75,12 +75,6 @@ public final class ActivityGameBinding implements ViewBinding {
   public final LinearLayout educationalIndicators;
 
   @NonNull
-  public final TextView enrollmentCountdownText;
-
-  @NonNull
-  public final MaterialCardView enrollmentDeadlineCard;
-
-  @NonNull
   public final ConstraintLayout gameArea;
 
   @NonNull
@@ -136,7 +130,6 @@ public final class ActivityGameBinding implements ViewBinding {
       @NonNull CardView bottomHud, @NonNull MaterialButton cashoutButton,
       @NonNull ImageButton collapseLeaderboardButton, @NonNull TextView crashPointText,
       @NonNull TextView currentBetText, @NonNull LinearLayout educationalIndicators,
-      @NonNull TextView enrollmentCountdownText, @NonNull MaterialCardView enrollmentDeadlineCard,
       @NonNull ConstraintLayout gameArea, @NonNull LinearLayout gameControls,
       @NonNull TextView gameStatus, @NonNull GameView gameView, @NonNull CardView leaderboardCard,
       @NonNull TextView multiplierText, @NonNull MaterialButton nextRoundButton,
@@ -161,8 +154,6 @@ public final class ActivityGameBinding implements ViewBinding {
     this.crashPointText = crashPointText;
     this.currentBetText = currentBetText;
     this.educationalIndicators = educationalIndicators;
-    this.enrollmentCountdownText = enrollmentCountdownText;
-    this.enrollmentDeadlineCard = enrollmentDeadlineCard;
     this.gameArea = gameArea;
     this.gameControls = gameControls;
     this.gameStatus = gameStatus;
@@ -298,18 +289,6 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.enrollment_countdown_text;
-      TextView enrollmentCountdownText = ViewBindings.findChildViewById(rootView, id);
-      if (enrollmentCountdownText == null) {
-        break missingId;
-      }
-
-      id = R.id.enrollment_deadline_card;
-      MaterialCardView enrollmentDeadlineCard = ViewBindings.findChildViewById(rootView, id);
-      if (enrollmentDeadlineCard == null) {
-        break missingId;
-      }
-
       id = R.id.game_area;
       ConstraintLayout gameArea = ViewBindings.findChildViewById(rootView, id);
       if (gameArea == null) {
@@ -409,11 +388,10 @@ public final class ActivityGameBinding implements ViewBinding {
       return new ActivityGameBinding((FrameLayout) rootView, backButton, bet10mButton, bet1mButton,
           bet5mButton, betAllinButton, betAmountInput, betInfoContainer, bettingControls,
           botLeaderboardRecycler, bottomHud, cashoutButton, collapseLeaderboardButton,
-          crashPointText, currentBetText, educationalIndicators, enrollmentCountdownText,
-          enrollmentDeadlineCard, gameArea, gameControls, gameStatus, gameView, leaderboardCard,
-          multiplierText, nextRoundButton, placeBetButton, statusCard, topHud, totalLossText,
-          tuitionAmountText, tuitionMeterCard, tuitionProgressBar, tuitionWarningText,
-          winAmountText);
+          crashPointText, currentBetText, educationalIndicators, gameArea, gameControls, gameStatus,
+          gameView, leaderboardCard, multiplierText, nextRoundButton, placeBetButton, statusCard,
+          topHud, totalLossText, tuitionAmountText, tuitionMeterCard, tuitionProgressBar,
+          tuitionWarningText, winAmountText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
