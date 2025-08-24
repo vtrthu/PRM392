@@ -12,6 +12,7 @@ public class AuthManager {
     private static final String KEY_ACCOUNT_TYPE = "account_type";
     private static final String KEY_TOTAL_GAMES_USER = "total_games_user";
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    private static final String KEY_REGISTERED_USERS = "registered_users";
     
     // Real login credentials for demo
     private static final String ADMIN_USERNAME = "admin";
@@ -59,6 +60,8 @@ public class AuthManager {
             return AccountType.ADMIN;
         } else if (PLAYER_USERNAME.equals(username) && PLAYER_PASSWORD.equals(password)) {
             return AccountType.USER;
+        } else if (isRegisteredUser(username, password)) {
+            return AccountType.USER; // Registered users get USER account type
         }
         return null; // Invalid credentials
     }
@@ -128,9 +131,9 @@ public class AuthManager {
             // Educational bias: User win rate decreases over time
             if (gamesPlayed <= 5) {
                 return 0.80; // 80% in honeymoon period
-            } else if (gamesPlayed <= 15) {
+            } else if (gamesPlayed <= 8) {
                 return 0.60; // 60% as house edge starts
-            } else if (gamesPlayed <= 30) {
+            } else if (gamesPlayed <= 10) {
                 return 0.40; // 40% house edge increases
             } else {
                 return 0.20; // 20% long-term house edge dominates
@@ -185,5 +188,49 @@ public class AuthManager {
             String username = prefs.getString(KEY_ACCOUNT_TYPE, AccountType.USER.getUsername());
             currentAccountType = AccountType.fromUsername(username);
         }
+    }
+
+    /**
+     * Register new user account
+     */
+    public boolean register(String username, String password) {
+        try {
+            // Get existing registered users
+            String existingUsers = prefs.getString(KEY_REGISTERED_USERS, "");
+            
+            // Check if username already exists
+            if (existingUsers.contains(username + ":")) {
+                return false; // Username already exists
+            }
+            
+            // Add new user (format: username:password,username:password,...)
+            String newUser = username + ":" + password;
+            String updatedUsers = existingUsers.isEmpty() ? newUser : existingUsers + "," + newUser;
+            
+            prefs.edit()
+                    .putString(KEY_REGISTERED_USERS, updatedUsers)
+                    .apply();
+            
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Check if username already exists
+     */
+    public boolean isUsernameExists(String username) {
+        String existingUsers = prefs.getString(KEY_REGISTERED_USERS, "");
+        return existingUsers.contains(username + ":");
+    }
+
+    /**
+     * Check if user is a registered user (not admin or demo player)
+     */
+    private boolean isRegisteredUser(String username, String password) {
+        String existingUsers = prefs.getString(KEY_REGISTERED_USERS, "");
+        String userToCheck = username + ":" + password;
+        return existingUsers.contains(userToCheck);
     }
 }

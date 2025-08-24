@@ -386,68 +386,64 @@
 
                 <!-- Betting Controls Section -->
                 <LinearLayout
-                    android:id="@+id/betting_controls"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="16dp">
+    android:id="@+id/betting_controls"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="16dp">
 
-                    <!-- Custom Bet Amount Input Row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="12dp">
+    <!-- Custom Bet Amount Input Row -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="12dp">
 
-                        <!-- Bet Amount Input - SIMPLIFIED FOR REAL DEVICE -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="12dp"
-                            android:background="#30ffffff"
-                            android:orientation="vertical"
-                            android:padding="12dp">
+    <!-- Bet Amount Input (Material Design) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Nhập số tiền"
+        app:boxStrokeColor="#00ff88"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:hintTextColor="#80ffffff"
+        app:boxBackgroundColor="#30ffffff">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Nhập số tiền"
-                                android:textColor="#80ffffff"
-                                android:textSize="12sp"
-                                android:layout_marginBottom="4dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bet_amount_input"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80ffffff"
+            android:textSize="16sp"
+            android:hint=""
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-                            <EditText
-                                android:id="@+id/bet_amount_input"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@android:color/transparent"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="#80ffffff"
-                                android:textSize="16sp"
-                                android:hint="1000000"
-                                android:inputType="number"
-                                android:importantForAutofill="no"
-                                android:singleLine="true"
-                                android:maxLines="1"
-                                android:imeOptions="actionDone" />
+    <!-- Place Bet Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/place_bet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:text="Lên đường"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#00ff88"
+        app:cornerRadius="12dp" />
 
-                        </LinearLayout>
+</LinearLayout>
 
-                        <!-- Place Bet Button -->
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/place_bet_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="56dp"
-                            android:text="Lên đường"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:backgroundTint="#00ff88"
-                            app:cornerRadius="12dp" />
 
-                    </LinearLayout>
 
                     <!-- Quick Bet Buttons -->
                     <LinearLayout

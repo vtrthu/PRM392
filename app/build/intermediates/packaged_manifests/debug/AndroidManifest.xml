@@ -38,6 +38,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.aviatorcrash.RegisterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.example.aviatorcrash.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

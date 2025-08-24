@@ -195,7 +195,6 @@
                     android:background="#ffebee"
                     android:padding="12dp"
                     android:layout_marginTop="8dp"
-                    app:cornerRadius="8dp"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -215,7 +214,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            
+            <!-- Register Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📝 Chưa có tài khoản? Đăng ký ngay"
+                android:textSize="16sp"
+                android:backgroundTint="#40ffffff"
+                android:textColor="@android:color/white"
+                app:cornerRadius="24dp"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp" />
 
             <!-- Footer -->
             <TextView

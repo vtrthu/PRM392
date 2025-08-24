@@ -176,33 +176,41 @@ public class GameView extends View {
 	}
 
 	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(w, h, oldw, oldh);
-		viewWidth = w;
-		viewHeight = h;
-		scaleAirplaneBitmap();
-	}
+protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    super.onSizeChanged(w, h, oldw, oldh);
+    viewWidth = w;
+    viewHeight = h;
 
-	private void scaleAirplaneBitmap() {
-		if (airplaneBitmap != null) {
-			// Scale bitmap to appropriate size for the view
-			// FPT logo converted from vector (200x200), scale appropriately
-			float scale = Math.min(viewWidth, viewHeight) / 300f; // Scale factor for converted FPT logo
-			airplaneBitmapScaled = Bitmap.createScaledBitmap(
-				airplaneBitmap, 
-				(int)(airplaneBitmap.getWidth() * scale), 
-				(int)(airplaneBitmap.getHeight() * scale), 
-				true
-			);
-			
-			// Debug logging
-			android.util.Log.d("GameView", "FPT Logo bitmap scaled: " + 
-				airplaneBitmapScaled.getWidth() + "x" + airplaneBitmapScaled.getHeight() + 
-				" (scale: " + scale + ")");
-		} else {
-			android.util.Log.e("GameView", "Cannot scale: airplaneBitmap is null");
-		}
-	}
+    // Chỉ scale khi view đã có kích thước hợp lệ
+    if (w > 0 && h > 0) {
+        scaleAirplaneBitmap();
+    } else {
+        android.util.Log.w("GameView", "Skip scaling: view size is 0 (" + w + "x" + h + ")");
+    }
+}
+
+private void scaleAirplaneBitmap() {
+    if (airplaneBitmap == null) {
+        android.util.Log.e("GameView", "Cannot scale: airplaneBitmap is null");
+        return;
+    }
+
+    if (viewWidth <= 0 || viewHeight <= 0) {
+        android.util.Log.w("GameView", "Skip scaling: invalid view size (" + viewWidth + "x" + viewHeight + ")");
+        return;
+    }
+
+    // Scale factor (>= 1px để tránh crash)
+    float scale = Math.min(viewWidth, viewHeight) / 300f;
+    int newWidth  = Math.max(1, (int) (airplaneBitmap.getWidth() * scale));
+    int newHeight = Math.max(1, (int) (airplaneBitmap.getHeight() * scale));
+
+    airplaneBitmapScaled = Bitmap.createScaledBitmap(airplaneBitmap, newWidth, newHeight, true);
+
+    android.util.Log.d("GameView",
+            "FPT Logo bitmap scaled: " + newWidth + "x" + newHeight + " (scale: " + scale + ")");
+}
+
 
 	@Override
 	protected void onDraw(Canvas canvas) {

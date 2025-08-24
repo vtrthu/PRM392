@@ -39,6 +39,11 @@ public class LoginActivity extends AppCompatActivity {
             attemptLogin();
         });
         
+        binding.registerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        });
+        
         // Allow login on Enter key press
         binding.passwordInput.setOnEditorActionListener((v, actionId, event) -> {
             attemptLogin();

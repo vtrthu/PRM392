@@ -39,18 +39,22 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final TextInputEditText passwordInput;
 
   @NonNull
+  public final MaterialButton registerButton;
+
+  @NonNull
   public final TextInputEditText usernameInput;
 
   private ActivityLoginBinding(@NonNull ScrollView rootView, @NonNull TextView errorMessage,
       @NonNull MaterialButton loginButton, @NonNull CardView loginCard,
       @NonNull LinearLayout logoSection, @NonNull TextInputEditText passwordInput,
-      @NonNull TextInputEditText usernameInput) {
+      @NonNull MaterialButton registerButton, @NonNull TextInputEditText usernameInput) {
     this.rootView = rootView;
     this.errorMessage = errorMessage;
     this.loginButton = loginButton;
     this.loginCard = loginCard;
     this.logoSection = logoSection;
     this.passwordInput = passwordInput;
+    this.registerButton = registerButton;
     this.usernameInput = usernameInput;
   }
 
@@ -111,6 +115,12 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.register_button;
+      MaterialButton registerButton = ViewBindings.findChildViewById(rootView, id);
+      if (registerButton == null) {
+        break missingId;
+      }
+
       id = R.id.username_input;
       TextInputEditText usernameInput = ViewBindings.findChildViewById(rootView, id);
       if (usernameInput == null) {
@@ -118,7 +128,7 @@ public final class ActivityLoginBinding implements ViewBinding {
       }
 
       return new ActivityLoginBinding((ScrollView) rootView, errorMessage, loginButton, loginCard,
-          logoSection, passwordInput, usernameInput);
+          logoSection, passwordInput, registerButton, usernameInput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

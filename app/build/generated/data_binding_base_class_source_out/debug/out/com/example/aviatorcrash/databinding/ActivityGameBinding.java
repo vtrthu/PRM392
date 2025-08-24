@@ -4,7 +4,6 @@ package com.example.aviatorcrash.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -21,6 +20,7 @@ import com.example.aviatorcrash.R;
 import com.example.aviatorcrash.game.GameView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -45,7 +45,7 @@ public final class ActivityGameBinding implements ViewBinding {
   public final MaterialButton betAllinButton;
 
   @NonNull
-  public final EditText betAmountInput;
+  public final TextInputEditText betAmountInput;
 
   @NonNull
   public final LinearLayout betInfoContainer;
@@ -125,7 +125,7 @@ public final class ActivityGameBinding implements ViewBinding {
   private ActivityGameBinding(@NonNull FrameLayout rootView, @NonNull ImageButton backButton,
       @NonNull MaterialButton bet10mButton, @NonNull MaterialButton bet1mButton,
       @NonNull MaterialButton bet5mButton, @NonNull MaterialButton betAllinButton,
-      @NonNull EditText betAmountInput, @NonNull LinearLayout betInfoContainer,
+      @NonNull TextInputEditText betAmountInput, @NonNull LinearLayout betInfoContainer,
       @NonNull LinearLayout bettingControls, @NonNull RecyclerView botLeaderboardRecycler,
       @NonNull CardView bottomHud, @NonNull MaterialButton cashoutButton,
       @NonNull ImageButton collapseLeaderboardButton, @NonNull TextView crashPointText,
@@ -230,7 +230,7 @@ public final class ActivityGameBinding implements ViewBinding {
       }
 
       id = R.id.bet_amount_input;
-      EditText betAmountInput = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText betAmountInput = ViewBindings.findChildViewById(rootView, id);
       if (betAmountInput == null) {
         break missingId;
       }

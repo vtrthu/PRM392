@@ -2993,7 +2993,9 @@ drawable gradient_button_primary
 drawable gradient_button_success
 drawable gradient_card_background
 drawable gradient_game_background
+drawable gradient_input_background
 drawable gradient_login_background
+drawable gradient_register_background
 drawable ic_airplane
 drawable ic_airplane_jet
 drawable ic_airplane_modern
@@ -3193,6 +3195,7 @@ id auto_cashout_slider
 id auto_cashout_switch
 id auto_cashout_value
 id back_button
+id back_to_login_button
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3242,6 +3245,7 @@ id collapseActionView
 id collapse_leaderboard_button
 id compress
 id confirm_button
+id confirm_password_input
 id constraint
 id container
 id content
@@ -3338,6 +3342,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id header
 id header_section
 id header_title
 id hideable
@@ -3497,6 +3502,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id register_button
+id register_card
 id reset_balance_button
 id result_icon
 id result_label
@@ -3791,6 +3798,7 @@ layout activity_game
 layout activity_history
 layout activity_login
 layout activity_main
+layout activity_register
 layout activity_settings
 layout custom_dialog
 layout design_bottom_navigation_item
