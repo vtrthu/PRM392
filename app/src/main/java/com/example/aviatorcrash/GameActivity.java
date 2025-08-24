@@ -86,7 +86,7 @@ public class GameActivity extends AppCompatActivity {
         
         // Tuition meter - shows current balance as "remaining study money"
         viewModel.getTuitionRemaining().observe(this, tuition -> {
-            binding.tuitionAmountText.setText(String.format("%,.0f VND", tuition));
+            binding.tuitionAmountText.setText(String.format("%,.0f coin", tuition));
             
             // Get total deposited to calculate percentage remaining
             double totalDeposited = viewModel.getTotalDeposited();
@@ -117,7 +117,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 binding.tuitionAmountText.setTextColor(0xFFFF6B35);
                 binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
-                binding.tuitionWarningText.setText("⚠️ Hết tiền học phí!");
+                binding.tuitionWarningText.setText("⚠️ Hết tiền");
             } else if (percentage < 20) {
                 // Very low remaining (< 20%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -125,7 +125,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 binding.tuitionAmountText.setTextColor(0xFFFF6B35);
                 binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
-                binding.tuitionWarningText.setText("⚠️ Tiền học phí sắp hết!");
+                binding.tuitionWarningText.setText("⚠️ Tiền sắp hết!");
             } else if (percentage < 50) {
                 // Low remaining (< 50%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -133,7 +133,7 @@ public class GameActivity extends AppCompatActivity {
                 }
                 binding.tuitionAmountText.setTextColor(0xFFFFCC02);
                 binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
-                binding.tuitionWarningText.setText("⚠️ Cẩn thận với tiền học phí!");
+                binding.tuitionWarningText.setText("⚠️ Cẩn thận");
             } else {
                 // Good remaining (≥ 50%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -147,10 +147,10 @@ public class GameActivity extends AppCompatActivity {
         // Total Loss
         viewModel.getTotalLoss().observe(this, totalLoss -> {
             if (totalLoss > 0) {
-                binding.totalLossText.setText(String.format("%,.0f VND", totalLoss));
+                binding.totalLossText.setText(String.format("%,.0f coin", totalLoss));
                 binding.totalLossText.setTextColor(0xFFFF6B35); // Red color for losses
             } else {
-                binding.totalLossText.setText("0 VND");
+                binding.totalLossText.setText("0 coin");
                 binding.totalLossText.setTextColor(0xFF00FF88); // Green color for no loss
             }
         });
@@ -215,25 +215,25 @@ public class GameActivity extends AppCompatActivity {
             });
             
             // Quick bet buttons
-            binding.bet1mButton.setOnClickListener(v -> {
+            binding.bet50kButton.setOnClickListener(v -> {
                 try {
-                    addToBetAmount(1000000);
+                    addToBetAmount(50000);
                 } catch (Exception e) {
-                    android.util.Log.e("GameActivity", "Error in bet1m click: " + e.getMessage());
+                    android.util.Log.e("GameActivity", "Error in bet50k click: " + e.getMessage());
                 }
             });
-            binding.bet5mButton.setOnClickListener(v -> {
+            binding.bet100kButton.setOnClickListener(v -> {
                 try {
-                    addToBetAmount(5000000);
+                    addToBetAmount(100000);
                 } catch (Exception e) {
-                    android.util.Log.e("GameActivity", "Error in bet5m click: " + e.getMessage());
+                    android.util.Log.e("GameActivity", "Error in bet100k click: " + e.getMessage());
                 }
             });
-            binding.bet10mButton.setOnClickListener(v -> {
+            binding.bet500kButton.setOnClickListener(v -> {
                 try {
-                    addToBetAmount(10000000);
+                    addToBetAmount(500000);
                 } catch (Exception e) {
-                    android.util.Log.e("GameActivity", "Error in bet10m click: " + e.getMessage());
+                    android.util.Log.e("GameActivity", "Error in bet500k click: " + e.getMessage());
                 }
             });
             binding.betAllinButton.setOnClickListener(v -> {
@@ -424,8 +424,8 @@ public class GameActivity extends AppCompatActivity {
                 long betAmount = Long.parseLong(betText);
                 
                 // Basic validation
-                if (betAmount < 1000000) {
-                    Toast.makeText(this, "Số tiền cược tối thiểu là 1,000,000 VND", Toast.LENGTH_SHORT).show();
+                if (betAmount < 5000) {
+                    Toast.makeText(this, "Số tiền cược tối thiểu là 5,000 coin", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 
@@ -435,7 +435,7 @@ public class GameActivity extends AppCompatActivity {
                     return;
                 }
                 
-                if (gameEngine.isValidBet(betAmount, currentBalance, 1000000.0, 10000000000000.0)) {
+                if (gameEngine.isValidBet(betAmount, currentBalance, 5000.0, 10000000000000.0)) {
                 viewModel.placeBet(betAmount);
                 binding.betAmountInput.setText("");
             } else {
@@ -503,7 +503,7 @@ public class GameActivity extends AppCompatActivity {
         double deficit = 2870000.0 - currentBalance;
         
         if (deficit > 0) {
-            String message = String.format("💹 Để quay về đủ học phí (%.0f VND), bạn cần:\n\n" +
+            String message = String.format("💹 Để quay về đủ học phí (%.0f coin), bạn cần:\n\n" +
                 "• Thắng liên tiếp nhiều ván với tỷ lệ cao\n" +
                 "• Xác suất thành công < 5%%\n" +
                 "• Càng cố gắng 'gỡ', càng dễ mất sạch\n\n" +

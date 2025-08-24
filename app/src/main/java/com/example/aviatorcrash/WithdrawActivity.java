@@ -85,6 +85,11 @@ public class WithdrawActivity extends AppCompatActivity {
                 binding.withdrawAmountInput.requestFocus();
                 return;
             }
+             if (amount < 100000) {
+                binding.withdrawAmountInput.setError("Số tiền rút tối thiểu là 100,000 coin");
+                binding.withdrawAmountInput.requestFocus();
+                return;
+            }
 
             double currentBalance = gameViewModel.getBalance().getValue() != null ? 
                     gameViewModel.getBalance().getValue() : 0;
@@ -109,7 +114,7 @@ public class WithdrawActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("⚠️ TÀI KHOẢN BỊ VÔ HIỆU HÓA")
                 .setMessage("Tài khoản của bạn đã bị vô hiệu hóa do vi phạm quy định của hệ thống.\n\n" +
-                        "Số tiền yêu cầu rút: " + String.format("%,.0f", amount) + " VND\n" +
+                        "Số tiền yêu cầu rút: " + String.format("%,.0f", amount) + " coin\n" +
                         "Lý do: Hệ thống phát hiện hoạt động bất thường")
                 .setPositiveButton("Xem thêm", (dialog, which) -> {
                     showEducationalDialog(amount);

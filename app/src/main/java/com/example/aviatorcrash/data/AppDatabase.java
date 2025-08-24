@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {GameRecord.class}, version = 1, exportSchema = false)
+@Database(entities = {GameRecord.class}, version = 2, exportSchema = false)
 @TypeConverters({AppDatabase.Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract GameRecordDao gameRecordDao();
@@ -20,6 +20,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, "aviator_crash_database")
+                            .fallbackToDestructiveMigration() // Allow destructive migration for simplicity
                             .build();
                 }
             }

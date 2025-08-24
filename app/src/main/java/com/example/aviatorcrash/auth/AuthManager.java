@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 public class AuthManager {
     private static final String PREFS_NAME = "auth_prefs";
     private static final String KEY_ACCOUNT_TYPE = "account_type";
+    private static final String KEY_CURRENT_USERNAME = "current_username";
     private static final String KEY_TOTAL_GAMES_USER = "total_games_user";
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
     private static final String KEY_REGISTERED_USERS = "registered_users";
@@ -50,6 +51,7 @@ public class AuthManager {
             
             prefs.edit()
                     .putString(KEY_ACCOUNT_TYPE, accountType.getUsername())
+                    .putString(KEY_CURRENT_USERNAME, username) // Store actual username
                     .putBoolean(KEY_IS_LOGGED_IN, true)
                     .apply();
             return true;
@@ -75,6 +77,7 @@ public class AuthManager {
         currentAccountType = null;
         prefs.edit()
                 .putBoolean(KEY_IS_LOGGED_IN, false)
+                .remove(KEY_CURRENT_USERNAME) // Clear actual username
                 .apply();
     }
 
@@ -92,6 +95,13 @@ public class AuthManager {
 
     public boolean isUser() {
         return currentAccountType == AccountType.USER;
+    }
+
+    /**
+     * Get the actual username (not the AccountType username)
+     */
+    public String getCurrentUsername() {
+        return prefs.getString(KEY_CURRENT_USERNAME, null);
     }
 
     /**

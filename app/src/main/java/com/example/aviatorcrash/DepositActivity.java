@@ -107,7 +107,7 @@ public class DepositActivity extends AppCompatActivity {
             }
 
             if (amount < 100000) {
-                binding.amountInput.setError("Số tiền tối thiểu: 100,000 VND");
+                binding.amountInput.setError("Số tiền tối thiểu: 100,000 coin");
                 binding.amountInput.requestFocus();
                 return;
             }
@@ -117,7 +117,7 @@ public class DepositActivity extends AppCompatActivity {
             
             // Show success message
             Toast.makeText(this, "✅ Nạp tiền thành công! Số dư: " + 
-                    String.format("%,.0f", gameViewModel.getBalance().getValue()) + " VND", 
+                    String.format("%,.0f", gameViewModel.getBalance().getValue()) + " coin", 
                     Toast.LENGTH_LONG).show();
             
             // Go back to main menu

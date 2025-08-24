@@ -2973,6 +2973,10 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable bet_button_blue
+drawable bet_button_mint
+drawable bet_button_orange
+drawable bet_button_purple
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2981,6 +2985,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable cashout_button_gold
 drawable circle_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -3092,6 +3097,7 @@ drawable navigation_empty_icon
 drawable neon_button_green
 drawable neon_button_orange
 drawable neon_glow_background
+drawable next_round_button_gradient
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -3210,9 +3216,9 @@ id baseline
 id beginOnFirstDraw
 id beginning
 id bestChoice
-id bet_10m_button
-id bet_1m_button
-id bet_5m_button
+id bet_100k_button
+id bet_500k_button
+id bet_50k_button
 id bet_allin_button
 id bet_amount_input
 id bet_amount_text

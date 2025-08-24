@@ -15,15 +15,17 @@ public class GameRecord {
     private double cashoutAmount;
     private boolean isWin;
     private long gameDuration;
+    private String username; // Add username field for user-specific history
 
     public GameRecord(Date timestamp, double betAmount, double multiplier, 
-                     double cashoutAmount, boolean isWin, long gameDuration) {
+                     double cashoutAmount, boolean isWin, long gameDuration, String username) {
         this.timestamp = timestamp;
         this.betAmount = betAmount;
         this.multiplier = multiplier;
         this.cashoutAmount = cashoutAmount;
         this.isWin = isWin;
         this.gameDuration = gameDuration;
+        this.username = username;
     }
 
     // Getters and Setters
@@ -81,5 +83,13 @@ public class GameRecord {
 
     public void setGameDuration(long gameDuration) {
         this.gameDuration = gameDuration;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

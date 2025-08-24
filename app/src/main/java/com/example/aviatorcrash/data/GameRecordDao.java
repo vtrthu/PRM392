@@ -19,6 +19,16 @@ public interface GameRecordDao {
     @Query("SELECT * FROM game_records ORDER BY timestamp DESC LIMIT 50")
     LiveData<List<GameRecord>> getRecentGameRecords();
 
+    // User-specific queries
+    @Query("SELECT * FROM game_records WHERE username = :username ORDER BY timestamp DESC")
+    LiveData<List<GameRecord>> getGameRecordsByUser(String username);
+
+    @Query("SELECT * FROM game_records WHERE username = :username ORDER BY timestamp DESC")
+    List<GameRecord> getGameRecordsByUserDirect(String username);
+
+    @Query("SELECT * FROM game_records WHERE username = :username ORDER BY timestamp DESC LIMIT 50")
+    LiveData<List<GameRecord>> getRecentGameRecordsByUser(String username);
+
     @Query("SELECT * FROM game_records WHERE isWin = 1 ORDER BY timestamp DESC")
     LiveData<List<GameRecord>> getWinningGames();
 
@@ -33,6 +43,13 @@ public interface GameRecordDao {
 
     @Query("SELECT COUNT(*) FROM game_records")
     LiveData<Integer> getTotalGames();
+
+    // User-specific statistics
+    @Query("SELECT COUNT(*) FROM game_records WHERE username = :username AND isWin = 1")
+    LiveData<Integer> getWinCountByUser(String username);
+
+    @Query("SELECT COUNT(*) FROM game_records WHERE username = :username")
+    LiveData<Integer> getTotalGamesByUser(String username);
 
     @Insert
     void insertGameRecord(GameRecord gameRecord);

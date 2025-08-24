@@ -2972,6 +2972,10 @@ int drawable abc_textfield_search_material 0x7f070075
 int drawable abc_vector_test 0x7f070076
 int drawable avd_hide_password 0x7f070077
 int drawable avd_show_password 0x7f070078
+int drawable bet_button_blue 0x7f070100
+int drawable bet_button_mint 0x7f070101
+int drawable bet_button_orange 0x7f070102
+int drawable bet_button_purple 0x7f070103
 int drawable btn_checkbox_checked_mtrl 0x7f070079
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007a
 int drawable btn_checkbox_unchecked_mtrl 0x7f07007b
@@ -2980,6 +2984,7 @@ int drawable btn_radio_off_mtrl 0x7f07007d
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f07007e
 int drawable btn_radio_on_mtrl 0x7f07007f
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070080
+int drawable cashout_button_gold 0x7f070104
 int drawable circle_background 0x7f070081
 int drawable design_fab_background 0x7f070082
 int drawable design_ic_visibility 0x7f070083
@@ -3091,6 +3096,7 @@ int drawable navigation_empty_icon 0x7f0700ec
 int drawable neon_button_green 0x7f0700ed
 int drawable neon_button_orange 0x7f0700ee
 int drawable neon_glow_background 0x7f0700ef
+int drawable next_round_button_gradient 0x7f070105
 int drawable notification_action_background 0x7f0700f0
 int drawable notification_bg 0x7f0700f1
 int drawable notification_bg_low 0x7f0700f2
@@ -3209,9 +3215,9 @@ int id baseline 0x7f080062
 int id beginOnFirstDraw 0x7f080063
 int id beginning 0x7f080064
 int id bestChoice 0x7f080065
-int id bet_10m_button 0x7f080066
-int id bet_1m_button 0x7f080067
-int id bet_5m_button 0x7f080068
+int id bet_100k_button 0x7f080066
+int id bet_500k_button 0x7f080067
+int id bet_50k_button 0x7f080068
 int id bet_allin_button 0x7f080069
 int id bet_amount_input 0x7f08006a
 int id bet_amount_text 0x7f08006b

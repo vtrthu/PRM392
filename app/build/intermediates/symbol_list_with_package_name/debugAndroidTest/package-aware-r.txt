@@ -1,3 +1,0 @@
-com.example.aviatorcrash.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

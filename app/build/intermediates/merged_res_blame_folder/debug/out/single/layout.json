@@ -1,9 +1,5 @@
 [
     {
-        "merged": "com.example.aviatorcrash.app-mergeDebugResources-47:/layout/activity_settings.xml",
-        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_settings.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\item_game_record.xml",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\item_game_record.xml"
     },
@@ -28,6 +24,10 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\item_bot_leaderboard.xml"
     },
     {
+        "merged": "com.example.aviatorcrash.app-mergeDebugResources-47:/layout/activity_game.xml",
+        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_game.xml"
+    },
+    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_game.xml",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_game.xml"
     },
@@ -40,15 +40,11 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_change_password.xml",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_change_password.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_withdraw.xml",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_withdraw.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\dialog_change_password.xml",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\dialog_change_password.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-mergeDebugResources-47:\\layout\\activity_change_password.xml",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_change_password.xml"
     }
 ]

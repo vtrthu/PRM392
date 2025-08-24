@@ -33,13 +33,13 @@ public final class ActivityGameBinding implements ViewBinding {
   public final ImageButton backButton;
 
   @NonNull
-  public final MaterialButton bet10mButton;
+  public final MaterialButton bet100kButton;
 
   @NonNull
-  public final MaterialButton bet1mButton;
+  public final MaterialButton bet500kButton;
 
   @NonNull
-  public final MaterialButton bet5mButton;
+  public final MaterialButton bet50kButton;
 
   @NonNull
   public final MaterialButton betAllinButton;
@@ -123,8 +123,8 @@ public final class ActivityGameBinding implements ViewBinding {
   public final TextView winAmountText;
 
   private ActivityGameBinding(@NonNull FrameLayout rootView, @NonNull ImageButton backButton,
-      @NonNull MaterialButton bet10mButton, @NonNull MaterialButton bet1mButton,
-      @NonNull MaterialButton bet5mButton, @NonNull MaterialButton betAllinButton,
+      @NonNull MaterialButton bet100kButton, @NonNull MaterialButton bet500kButton,
+      @NonNull MaterialButton bet50kButton, @NonNull MaterialButton betAllinButton,
       @NonNull TextInputEditText betAmountInput, @NonNull LinearLayout betInfoContainer,
       @NonNull LinearLayout bettingControls, @NonNull RecyclerView botLeaderboardRecycler,
       @NonNull CardView bottomHud, @NonNull MaterialButton cashoutButton,
@@ -140,9 +140,9 @@ public final class ActivityGameBinding implements ViewBinding {
       @NonNull TextView winAmountText) {
     this.rootView = rootView;
     this.backButton = backButton;
-    this.bet10mButton = bet10mButton;
-    this.bet1mButton = bet1mButton;
-    this.bet5mButton = bet5mButton;
+    this.bet100kButton = bet100kButton;
+    this.bet500kButton = bet500kButton;
+    this.bet50kButton = bet50kButton;
     this.betAllinButton = betAllinButton;
     this.betAmountInput = betAmountInput;
     this.betInfoContainer = betInfoContainer;
@@ -205,21 +205,21 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.bet_10m_button;
-      MaterialButton bet10mButton = ViewBindings.findChildViewById(rootView, id);
-      if (bet10mButton == null) {
+      id = R.id.bet_100k_button;
+      MaterialButton bet100kButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet100kButton == null) {
         break missingId;
       }
 
-      id = R.id.bet_1m_button;
-      MaterialButton bet1mButton = ViewBindings.findChildViewById(rootView, id);
-      if (bet1mButton == null) {
+      id = R.id.bet_500k_button;
+      MaterialButton bet500kButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet500kButton == null) {
         break missingId;
       }
 
-      id = R.id.bet_5m_button;
-      MaterialButton bet5mButton = ViewBindings.findChildViewById(rootView, id);
-      if (bet5mButton == null) {
+      id = R.id.bet_50k_button;
+      MaterialButton bet50kButton = ViewBindings.findChildViewById(rootView, id);
+      if (bet50kButton == null) {
         break missingId;
       }
 
@@ -385,13 +385,13 @@ public final class ActivityGameBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityGameBinding((FrameLayout) rootView, backButton, bet10mButton, bet1mButton,
-          bet5mButton, betAllinButton, betAmountInput, betInfoContainer, bettingControls,
-          botLeaderboardRecycler, bottomHud, cashoutButton, collapseLeaderboardButton,
-          crashPointText, currentBetText, educationalIndicators, gameArea, gameControls, gameStatus,
-          gameView, leaderboardCard, multiplierText, nextRoundButton, placeBetButton, statusCard,
-          topHud, totalLossText, tuitionAmountText, tuitionMeterCard, tuitionProgressBar,
-          tuitionWarningText, winAmountText);
+      return new ActivityGameBinding((FrameLayout) rootView, backButton, bet100kButton,
+          bet500kButton, bet50kButton, betAllinButton, betAmountInput, betInfoContainer,
+          bettingControls, botLeaderboardRecycler, bottomHud, cashoutButton,
+          collapseLeaderboardButton, crashPointText, currentBetText, educationalIndicators,
+          gameArea, gameControls, gameStatus, gameView, leaderboardCard, multiplierText,
+          nextRoundButton, placeBetButton, statusCard, topHud, totalLossText, tuitionAmountText,
+          tuitionMeterCard, tuitionProgressBar, tuitionWarningText, winAmountText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

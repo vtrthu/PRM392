@@ -120,7 +120,7 @@ public class GameViewModel extends AndroidViewModel {
 
     public void placeBet(double amount) {
         if (gameState.getValue() == GameState.WAITING && 
-            gameEngine.isValidBet(amount, balance.getValue(), 1000000.0, 10000000000000.0)) {
+            gameEngine.isValidBet(amount, balance.getValue(), 5000.0, 10000000000000.0)) {
             
             currentBet.setValue(amount);
             balance.setValue(balance.getValue() - amount);
@@ -264,13 +264,15 @@ public class GameViewModel extends AndroidViewModel {
 
     private void saveGameRecord(double betAmount, double multiplier, double cashoutAmount, boolean isWin) {
         executorService.execute(() -> {
+            String currentUsername = getCurrentUsername();
             GameRecord record = new GameRecord(
                 new Date(),
                 betAmount,
                 multiplier,
                 cashoutAmount,
                 isWin,
-                gameDuration.getValue()
+                gameDuration.getValue(),
+                currentUsername // Add username to record
             );
             gameRecordDao.insertGameRecord(record);
             
@@ -281,8 +283,17 @@ public class GameViewModel extends AndroidViewModel {
     private void loadGameHistory() {
         executorService.execute(() -> {
             try {
-                // Load trực tiếp từ database thay vì qua LiveData
-                List<GameRecord> records = gameRecordDao.getAllGameRecordsDirect();
+                String currentUsername = getCurrentUsername();
+                List<GameRecord> records;
+                
+                if (currentUsername != null) {
+                    // Load user-specific records
+                    records = gameRecordDao.getGameRecordsByUserDirect(currentUsername);
+                } else {
+                    // Fallback to all records
+                    records = gameRecordDao.getAllGameRecordsDirect();
+                }
+                
                 mainHandler.post(() -> {
                     gameHistory.setValue(records);
                     if (records != null && !records.isEmpty()) {
@@ -382,17 +393,7 @@ public class GameViewModel extends AndroidViewModel {
      * Get current username safely
      */
     private String getCurrentUsername() {
-        try {
-            if (authManager.getCurrentAccountType() != null) {
-                return authManager.getCurrentAccountType().getUsername();
-            }
-        } catch (Exception e) {
-            // Fallback: try to get from shared preferences
-        }
-        
-        // Try to get from shared preferences as fallback
-        SharedPreferences authPrefs = getApplication().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-        return authPrefs.getString("account_type", null);
+        return authManager.getCurrentUsername();
     }
     
     /**

@@ -1,4 +1,0 @@
-#Fri Aug 22 11:39:27 ICT 2025
-base.0=D\:\\PRM_GIT\\PRM392\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
