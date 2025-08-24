@@ -266,14 +266,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Nhà phát triển: Android Fundamentals"
+                        android:text="Nhà phát triển: 3AE"
                         android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
                         android:textColor="@color/text_secondary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chỉ dành cho mục đích giải trí và học tập"
+                        android:text="Beta version"
                         android:textAppearance="@style/TextAppearance.AviatorCrash.Body2"
                         android:textColor="@color/text_hint" />
 

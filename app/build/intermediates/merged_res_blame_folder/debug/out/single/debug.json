@@ -112,6 +112,10 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_modern.xml"
     },
     {
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_settings.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_settings.xml"
+    },
+    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_login.xml"
     },
@@ -144,12 +148,12 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_lock.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_circle_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\circle_background.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_circle_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\circle_background.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_background.xml.flat",
