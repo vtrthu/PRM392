@@ -5,69 +5,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.aviatorcrash.R;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.slider.Slider;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivitySettingsBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final AppBarLayout appBar;
-
-  @NonNull
-  public final Slider autoCashoutSlider;
-
-  @NonNull
-  public final SwitchMaterial autoCashoutSwitch;
-
-  @NonNull
-  public final TextView autoCashoutValue;
+  public final TextView accountTypeText;
 
   @NonNull
   public final ImageButton backButton;
 
   @NonNull
-  public final TextView currentBalanceText;
+  public final MaterialButton changePasswordButton;
 
-  @NonNull
-  public final MaterialButton resetBalanceButton;
-
-  @NonNull
-  public final Toolbar toolbar;
-
-  private ActivitySettingsBinding(@NonNull ConstraintLayout rootView, @NonNull AppBarLayout appBar,
-      @NonNull Slider autoCashoutSlider, @NonNull SwitchMaterial autoCashoutSwitch,
-      @NonNull TextView autoCashoutValue, @NonNull ImageButton backButton,
-      @NonNull TextView currentBalanceText, @NonNull MaterialButton resetBalanceButton,
-      @NonNull Toolbar toolbar) {
+  private ActivitySettingsBinding(@NonNull ScrollView rootView, @NonNull TextView accountTypeText,
+      @NonNull ImageButton backButton, @NonNull MaterialButton changePasswordButton) {
     this.rootView = rootView;
-    this.appBar = appBar;
-    this.autoCashoutSlider = autoCashoutSlider;
-    this.autoCashoutSwitch = autoCashoutSwitch;
-    this.autoCashoutValue = autoCashoutValue;
+    this.accountTypeText = accountTypeText;
     this.backButton = backButton;
-    this.currentBalanceText = currentBalanceText;
-    this.resetBalanceButton = resetBalanceButton;
-    this.toolbar = toolbar;
+    this.changePasswordButton = changePasswordButton;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -92,27 +65,9 @@ public final class ActivitySettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.app_bar;
-      AppBarLayout appBar = ViewBindings.findChildViewById(rootView, id);
-      if (appBar == null) {
-        break missingId;
-      }
-
-      id = R.id.auto_cashout_slider;
-      Slider autoCashoutSlider = ViewBindings.findChildViewById(rootView, id);
-      if (autoCashoutSlider == null) {
-        break missingId;
-      }
-
-      id = R.id.auto_cashout_switch;
-      SwitchMaterial autoCashoutSwitch = ViewBindings.findChildViewById(rootView, id);
-      if (autoCashoutSwitch == null) {
-        break missingId;
-      }
-
-      id = R.id.auto_cashout_value;
-      TextView autoCashoutValue = ViewBindings.findChildViewById(rootView, id);
-      if (autoCashoutValue == null) {
+      id = R.id.account_type_text;
+      TextView accountTypeText = ViewBindings.findChildViewById(rootView, id);
+      if (accountTypeText == null) {
         break missingId;
       }
 
@@ -122,27 +77,14 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.current_balance_text;
-      TextView currentBalanceText = ViewBindings.findChildViewById(rootView, id);
-      if (currentBalanceText == null) {
+      id = R.id.change_password_button;
+      MaterialButton changePasswordButton = ViewBindings.findChildViewById(rootView, id);
+      if (changePasswordButton == null) {
         break missingId;
       }
 
-      id = R.id.reset_balance_button;
-      MaterialButton resetBalanceButton = ViewBindings.findChildViewById(rootView, id);
-      if (resetBalanceButton == null) {
-        break missingId;
-      }
-
-      id = R.id.toolbar;
-      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
-        break missingId;
-      }
-
-      return new ActivitySettingsBinding((ConstraintLayout) rootView, appBar, autoCashoutSlider,
-          autoCashoutSwitch, autoCashoutValue, backButton, currentBalanceText, resetBalanceButton,
-          toolbar);
+      return new ActivitySettingsBinding((ScrollView) rootView, accountTypeText, backButton,
+          changePasswordButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

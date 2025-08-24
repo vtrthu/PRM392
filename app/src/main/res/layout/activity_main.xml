@@ -186,6 +186,40 @@
                     app:iconTint="#667eea"
                     android:layout_marginBottom="12dp" />
 
+                <!-- Deposit Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/deposit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="NẠP TIỀN"
+                    android:textSize="14sp"
+                    android:textColor="#27ae60"
+                    android:backgroundTint="#f0fff4"
+                    app:strokeColor="#27ae60"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="textStart"
+                    app:iconTint="#27ae60"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Withdraw Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/withdraw_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="RÚT TIỀN"
+                    android:textSize="14sp"
+                    android:textColor="#e67e22"
+                    android:backgroundTint="#fff8f0"
+                    app:strokeColor="#e67e22"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="14dp"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="textStart"
+                    app:iconTint="#e67e22"
+                    android:layout_marginBottom="12dp" />
+
                 <!-- Logout Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/logout_button"

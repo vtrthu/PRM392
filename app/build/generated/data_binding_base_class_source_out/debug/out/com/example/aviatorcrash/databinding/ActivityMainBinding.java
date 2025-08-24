@@ -23,6 +23,9 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final MaterialButton depositButton;
+
+  @NonNull
   public final MaterialButton exitButton;
 
   @NonNull
@@ -55,13 +58,18 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView titleText;
 
-  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull MaterialButton exitButton,
-      @NonNull CardView featuresCard, @NonNull TextView footerText,
-      @NonNull LinearLayout headerSection, @NonNull MaterialButton historyButton,
-      @NonNull MaterialButton logoutButton, @NonNull CardView menuContainer,
-      @NonNull MaterialButton settingsButton, @NonNull MaterialButton startGameButton,
-      @NonNull TextView subtitleText, @NonNull TextView titleText) {
+  @NonNull
+  public final MaterialButton withdrawButton;
+
+  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull MaterialButton depositButton,
+      @NonNull MaterialButton exitButton, @NonNull CardView featuresCard,
+      @NonNull TextView footerText, @NonNull LinearLayout headerSection,
+      @NonNull MaterialButton historyButton, @NonNull MaterialButton logoutButton,
+      @NonNull CardView menuContainer, @NonNull MaterialButton settingsButton,
+      @NonNull MaterialButton startGameButton, @NonNull TextView subtitleText,
+      @NonNull TextView titleText, @NonNull MaterialButton withdrawButton) {
     this.rootView = rootView;
+    this.depositButton = depositButton;
     this.exitButton = exitButton;
     this.featuresCard = featuresCard;
     this.footerText = footerText;
@@ -73,6 +81,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.startGameButton = startGameButton;
     this.subtitleText = subtitleText;
     this.titleText = titleText;
+    this.withdrawButton = withdrawButton;
   }
 
   @Override
@@ -102,6 +111,12 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.deposit_button;
+      MaterialButton depositButton = ViewBindings.findChildViewById(rootView, id);
+      if (depositButton == null) {
+        break missingId;
+      }
+
       id = R.id.exit_button;
       MaterialButton exitButton = ViewBindings.findChildViewById(rootView, id);
       if (exitButton == null) {
@@ -168,9 +183,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ScrollView) rootView, exitButton, featuresCard, footerText,
-          headerSection, historyButton, logoutButton, menuContainer, settingsButton,
-          startGameButton, subtitleText, titleText);
+      id = R.id.withdraw_button;
+      MaterialButton withdrawButton = ViewBindings.findChildViewById(rootView, id);
+      if (withdrawButton == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ScrollView) rootView, depositButton, exitButton, featuresCard,
+          footerText, headerSection, historyButton, logoutButton, menuContainer, settingsButton,
+          startGameButton, subtitleText, titleText, withdrawButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

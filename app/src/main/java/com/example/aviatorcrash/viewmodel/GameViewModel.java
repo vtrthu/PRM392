@@ -45,8 +45,7 @@ public class GameViewModel extends AndroidViewModel {
     private MutableLiveData<Double> cashoutAmount;
     private MutableLiveData<Double> crashPoint;
     private MutableLiveData<Long> gameDuration;
-    private MutableLiveData<Boolean> autoCashoutEnabled;
-    private MutableLiveData<Double> autoCashoutMultiplier;
+
     private MutableLiveData<List<GameRecord>> gameHistory;
     private MutableLiveData<Double> winRate;
     private MutableLiveData<Integer> totalGames;
@@ -63,8 +62,7 @@ public class GameViewModel extends AndroidViewModel {
     private MutableLiveData<String> motivationalMessage;
     private MutableLiveData<Boolean> showProbabilityPopup;
     
-    // Educational constants
-    private static final double INITIAL_TUITION = 28700000.0;
+    // Educational constants - removed fixed amount constraint
     private double[] previousBets = new double[5]; // Track last 5 bets for chasing detection
     private int betHistoryIndex = 0;
     private long sessionStartTime;
@@ -79,7 +77,9 @@ public class GameViewModel extends AndroidViewModel {
         gameRecordDao = AppDatabase.getDatabase(application).gameRecordDao();
         executorService = Executors.newSingleThreadExecutor();
         mainHandler = new Handler(Looper.getMainLooper());
-        sharedPreferences = application.getSharedPreferences("game_preferences", Context.MODE_PRIVATE);
+        
+        // Initialize shared preferences for current user
+        updateSharedPreferences();
 
         // Initialize LiveData
         gameState = new MutableLiveData<>(GameState.WAITING);
@@ -90,15 +90,14 @@ public class GameViewModel extends AndroidViewModel {
         cashoutAmount = new MutableLiveData<>(0.0);
         crashPoint = new MutableLiveData<>(0.0);
         gameDuration = new MutableLiveData<>(0L);
-        autoCashoutEnabled = new MutableLiveData<>(false);
-        autoCashoutMultiplier = new MutableLiveData<>(2.0);
+
         gameHistory = new MutableLiveData<>();
         winRate = new MutableLiveData<>(0.0);
         totalGames = new MutableLiveData<>(0);
         botLeaderboard = new MutableLiveData<>();
         
         // Initialize educational features
-        tuitionRemaining = new MutableLiveData<>(INITIAL_TUITION);
+        tuitionRemaining = new MutableLiveData<>(0.0);
         additionalExpenses = new MutableLiveData<>(0.0);
         debtAmount = new MutableLiveData<>(0.0);
 
@@ -205,12 +204,7 @@ public class GameViewModel extends AndroidViewModel {
                     // Update bot manager with current multiplier
                     botManager.onTick(currentMultiplier);
                     
-                    // Check for auto-cashout (only if still flying)
-                    if (gameState.getValue() == GameState.FLYING && autoCashoutEnabled.getValue() && 
-                        currentMultiplier >= autoCashoutMultiplier.getValue()) {
-                        cashout();
-                        // Don't return here, continue the timer to show regret effect
-                    }
+
                     
                     // Check if should crash
                     if (gameEngine.shouldCrash(currentMultiplier, crashPoint.getValue())) {
@@ -248,14 +242,14 @@ public class GameViewModel extends AndroidViewModel {
             
             saveGameRecord(betAmount, multiplier.getValue(), 0.0, false);
             
-            // Educational features for losses
-            if (authManager.isUser()) {
-                updateEducationalMetrics();
-                // Show recovery probability if they lost significant amount
-                if (betAmount > 50000) {
-                    showRecoveryProbability(INITIAL_TUITION);
-                }
-            }
+                         // Educational features for losses
+             if (authManager.isUser()) {
+                 updateEducationalMetrics();
+                 // Show recovery probability if they lost significant amount
+                 if (betAmount > 50000) {
+                     showRecoveryProbability();
+                 }
+             }
         } else if (gameState.getValue() == GameState.CASHED_OUT) {
             // Player already cashed out, just end the round to show crash effect
             // No need to save another game record since they already won
@@ -337,10 +331,16 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     public void resetBalance() {
-        // Reset to initial tuition money
-        double initialBalance = authManager.isUser() ? INITIAL_TUITION : 100000.0;
-        balance.setValue(initialBalance);
-        saveSettings();
+        // Only reset balance for demo accounts, not newly registered users
+        String currentUsername = getCurrentUsername();
+        
+        if (authManager.isAdmin() || 
+            (authManager.isUser() && "toiyeufpt".equals(currentUsername))) {
+            double initialBalance = authManager.isAdmin() ? 100000.0 : 28700000.0; // Keep demo balance for toiyeufpt
+            balance.setValue(initialBalance);
+            saveSettings();
+        }
+        // Newly registered users keep their 0 balance until they deposit
     }
     
     public void saveBalance() {
@@ -349,31 +349,135 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     private double loadBalance() {
+        // Get current username safely
+        String currentUsername = getCurrentUsername();
+        
+        // Debug log
+        android.util.Log.d("GameViewModel", "Loading balance for username: " + currentUsername);
+        
+        // Check if this is a newly registered user
+        if (currentUsername != null && authManager.isNewlyRegisteredUser(currentUsername)) {
+            android.util.Log.d("GameViewModel", "User is newly registered, returning 0 balance");
+            return 0.0;
+        }
+        
+                 // Check if this is a demo account (admin/toiyeufpt)
+        if (authManager.isAdmin() || 
+            (authManager.isUser() && "toiyeufpt".equals(currentUsername))) {
+            // Demo accounts get initial balance
+            if (!sharedPreferences.contains("balance")) {
+                double initialBalance = authManager.isAdmin() ? 100000.0 : 28700000.0; // Keep demo balance for toiyeufpt
+                android.util.Log.d("GameViewModel", "Demo account, returning initial balance: " + initialBalance);
+                return initialBalance;
+            }
+        }
+        
         // Load saved balance from preferences
-        double defaultBalance = authManager.isUser() ? INITIAL_TUITION : 100000.0;
-        return sharedPreferences.getFloat("balance", (float) defaultBalance);
+        double savedBalance = sharedPreferences.getFloat("balance", 0.0f);
+        android.util.Log.d("GameViewModel", "Loading saved balance: " + savedBalance);
+        return savedBalance;
+    }
+    
+    /**
+     * Get current username safely
+     */
+    private String getCurrentUsername() {
+        try {
+            if (authManager.getCurrentAccountType() != null) {
+                return authManager.getCurrentAccountType().getUsername();
+            }
+        } catch (Exception e) {
+            // Fallback: try to get from shared preferences
+        }
+        
+        // Try to get from shared preferences as fallback
+        SharedPreferences authPrefs = getApplication().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        return authPrefs.getString("account_type", null);
+    }
+    
+    /**
+     * Update SharedPreferences to use current user's file
+     */
+    private void updateSharedPreferences() {
+        String currentUsername = getCurrentUsername();
+        if (currentUsername != null) {
+            // Create user-specific preferences file
+            String prefsName = "game_preferences_" + currentUsername;
+            sharedPreferences = getApplication().getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+            android.util.Log.d("GameViewModel", "Updated SharedPreferences for user: " + currentUsername + " (file: " + prefsName + ")");
+        } else {
+            // Fallback to general preferences
+            sharedPreferences = getApplication().getSharedPreferences("game_preferences", Context.MODE_PRIVATE);
+            android.util.Log.d("GameViewModel", "Using fallback SharedPreferences (no current user)");
+        }
+    }
+    
+    /**
+     * Call this method when user changes (login/logout)
+     */
+    public void onUserChanged() {
+        // Update SharedPreferences for new user
+        updateSharedPreferences();
+        
+        // Reset tracking data to fix legacy calculation issues
+        resetTrackingData();
+        
+        // Reload balance for new user
+        balance.setValue(loadBalance());
+        
+        // Reload settings for new user
+        loadSettings();
+        
+        // Reload game history for new user
+        loadGameHistory();
+        
+        // Reset educational metrics
+        updateEducationalMetrics();
+        
+        android.util.Log.d("GameViewModel", "User changed, reloaded all data");
+    }
+    
+    /**
+     * Reset tracking data to fix legacy calculation issues
+     */
+    private void resetTrackingData() {
+        // Reset total_deposited and total_withdrawn for clean state
+        double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
+        
+        // Set total_deposited = current balance (assume all current balance came from deposits)
+        sharedPreferences.edit()
+                .putFloat("total_deposited", (float) currentBalance)
+                .putFloat("total_withdrawn", 0.0f)
+                .apply();
+        
+        android.util.Log.d("GameViewModel", "Reset tracking data - deposited: " + currentBalance + ", withdrawn: 0");
+    }
+    
+    /**
+     * Debug method to check balance loading logic
+     */
+    public String debugBalanceLogic() {
+        String currentUsername = getCurrentUsername();
+        boolean isNewlyRegistered = currentUsername != null && authManager.isNewlyRegisteredUser(currentUsername);
+        boolean isAdmin = authManager.isAdmin();
+        boolean isDemoUser = "toiyeufpt".equals(currentUsername);
+        String prefsFile = sharedPreferences != null ? "game_preferences_" + currentUsername : "null";
+        
+        return String.format("Username: %s, IsNew: %s, IsAdmin: %s, IsDemo: %s, PrefsFile: %s", 
+                           currentUsername, isNewlyRegistered, isAdmin, isDemoUser, prefsFile);
     }
 
-    public void setAutoCashout(boolean enabled, double multiplier) {
-        autoCashoutEnabled.setValue(enabled);
-        autoCashoutMultiplier.setValue(multiplier);
-        saveSettings();
-    }
+
 
     private void loadSettings() {
         // Balance is already loaded in constructor via loadBalance()
-        boolean autoCashout = sharedPreferences.getBoolean("auto_cashout_enabled", false);
-        double autoCashoutMultiplierValue = sharedPreferences.getFloat("auto_cashout_multiplier", 2.0f);
-        
-        autoCashoutEnabled.setValue(autoCashout);
-        autoCashoutMultiplier.setValue(autoCashoutMultiplierValue);
+        // No auto cashout settings to load
     }
 
     private void saveSettings() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putFloat("balance", balance.getValue().floatValue());
-        editor.putBoolean("auto_cashout_enabled", autoCashoutEnabled.getValue());
-        editor.putFloat("auto_cashout_multiplier", autoCashoutMultiplier.getValue().floatValue());
+        // No auto cashout settings to save
         editor.apply();
     }
 
@@ -386,8 +490,7 @@ public class GameViewModel extends AndroidViewModel {
     public LiveData<Double> getCashoutAmount() { return cashoutAmount; }
     public LiveData<Double> getCrashPoint() { return crashPoint; }
     public LiveData<Long> getGameDuration() { return gameDuration; }
-    public LiveData<Boolean> getAutoCashoutEnabled() { return autoCashoutEnabled; }
-    public LiveData<Double> getAutoCashoutMultiplier() { return autoCashoutMultiplier; }
+
     public LiveData<List<GameRecord>> getGameHistory() { return gameHistory; }
     public LiveData<Double> getWinRate() { return winRate; }
     public LiveData<Integer> getTotalGames() { return totalGames; }
@@ -413,39 +516,116 @@ public class GameViewModel extends AndroidViewModel {
     public LiveData<Boolean> getShowProbabilityPopup() { return showProbabilityPopup; }
     
     /**
-     * Update educational metrics based on current game state
+     * Deposit money into account
      */
-    private void updateEducationalMetrics() {
-        if (!authManager.isUser()) return; // Only for student account
-        
-        // Update tuition remaining
-        double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
-        tuitionRemaining.setValue(Math.max(0, currentBalance));
-        
-        // Calculate debt if balance goes negative
-        if (currentBalance < 0) {
-            debtAmount.setValue(Math.abs(currentBalance));
-        } else {
-            debtAmount.setValue(0.0);
+    public void depositMoney(double amount) {
+        if (amount > 0) {
+            double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
+            balance.setValue(currentBalance + amount);
+            
+            // Track total deposited for loss calculation
+            updateTotalDeposited(amount);
+            
+            saveBalance();
+            saveSettings();
+            
+            // Update educational metrics after deposit
+            updateEducationalMetrics();
         }
-        
-        // Calculate total loss based on game history
-        updateTotalLossCalculation();
-        
-
-        
-        // Add random expenses periodically
-        addRandomExpenses();
-        
-        // Show motivational messages
-        updateMotivationalMessages();
     }
+
+    /**
+     * Withdraw money from account
+     */
+    public void withdrawMoney(double amount) {
+        double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
+        if (amount > 0 && amount <= currentBalance) {
+            balance.setValue(currentBalance - amount);
+            
+            // Track total withdrawn for accurate loss calculation
+            updateTotalWithdrawn(amount);
+            
+            saveBalance();
+            saveSettings();
+            
+            // Update educational metrics after withdrawal
+            updateEducationalMetrics();
+        }
+    }
+
+         /**
+      * Update educational metrics based on current game state
+      */
+     private void updateEducationalMetrics() {
+         if (!authManager.isUser()) return; // Only for student account
+         
+         // Update tuition remaining - directly show current balance as "study money left"
+         double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
+         tuitionRemaining.setValue(currentBalance); // Show actual balance, can be 0 or negative
+         
+         // Calculate debt if balance goes negative
+         if (currentBalance < 0) {
+             debtAmount.setValue(Math.abs(currentBalance));
+         } else {
+             debtAmount.setValue(0.0);
+         }
+         
+         // Calculate total loss based on actual deposit history
+         updateTotalLossCalculation();
+         
+         // Add random expenses periodically
+         addRandomExpenses();
+         
+         // Show motivational messages
+         updateMotivationalMessages();
+     }
     
     private void updateTotalLossCalculation() {
-        double initialBalance = INITIAL_TUITION; // 2,870,000 VND
-        double currentBalance = balance.getValue() != null ? balance.getValue() : initialBalance;
-        double totalLossAmount = Math.max(0, initialBalance - currentBalance);
+        // Calculate total loss based on actual deposit/withdraw history
+        // Formula: Total Loss = Total Deposited - Current Balance - Total Withdrawn
+        double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
+        double totalDeposited = getTotalDeposited();
+        double totalWithdrawn = getTotalWithdrawn();
+        
+        // Real loss = Money put in - Money currently have - Money successfully withdrawn
+        double totalLossAmount = Math.max(0, totalDeposited - currentBalance - totalWithdrawn);
         totalLoss.setValue(totalLossAmount);
+    }
+    
+    /**
+     * Get total amount deposited by user (from SharedPreferences)
+     */
+    public double getTotalDeposited() {
+        return sharedPreferences.getFloat("total_deposited", 0.0f);
+    }
+    
+    /**
+     * Get total amount withdrawn by user (from SharedPreferences)
+     */
+    public double getTotalWithdrawn() {
+        return sharedPreferences.getFloat("total_withdrawn", 0.0f);
+    }
+    
+    /**
+     * Update total deposited amount
+     */
+    private void updateTotalDeposited(double amount) {
+        double currentTotal = getTotalDeposited();
+        double newTotal = currentTotal + amount;
+        sharedPreferences.edit()
+                .putFloat("total_deposited", (float) newTotal)
+                .apply();
+    }
+    
+    /**
+     * Update total withdrawn amount
+     */
+    private void updateTotalWithdrawn(double amount) {
+        double currentTotal = getTotalWithdrawn();
+        double newTotal = currentTotal + amount;
+        sharedPreferences.edit()
+                .putFloat("total_withdrawn", (float) newTotal)
+                .apply();
     }
     
 
@@ -514,19 +694,23 @@ public class GameViewModel extends AndroidViewModel {
     /**
      * Show probability popup for recovery calculation
      */
-    public void showRecoveryProbability(double targetAmount) {
+    public void showRecoveryProbability() {
         double currentBalance = balance.getValue() != null ? balance.getValue() : 0.0;
-        double deficit = targetAmount - currentBalance;
+        double totalDeposited = getTotalDeposited();
         
-        if (deficit > 0) {
-            // Calculate probability of recovery (simplified)
-            double requiredMultiplier = deficit / currentBalance + 1.0;
-            double probability = Math.pow(0.5, Math.log(requiredMultiplier) / Math.log(2)) * 100;
+        if (totalDeposited > 0 && currentBalance < totalDeposited) {
+            // Calculate probability of recovery based on total deposited vs current balance
+            double deficit = totalDeposited - currentBalance;
             
-            showProbabilityPopup.setValue(true);
-            
-            // Clear popup after showing
-            mainHandler.postDelayed(() -> showProbabilityPopup.setValue(false), 3000);
+            if (currentBalance > 0) {
+                double requiredMultiplier = deficit / currentBalance + 1.0;
+                double probability = Math.pow(0.5, Math.log(requiredMultiplier) / Math.log(2)) * 100;
+                
+                showProbabilityPopup.setValue(true);
+                
+                // Clear popup after showing
+                mainHandler.postDelayed(() -> showProbabilityPopup.setValue(false), 3000);
+            }
         }
     }
 

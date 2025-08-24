@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
         binding.exitButton.setOnClickListener(v -> {
             finish();
         });
+
+        binding.depositButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DepositActivity.class);
+            startActivity(intent);
+        });
+
+        binding.withdrawButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, WithdrawActivity.class);
+            startActivity(intent);
+        });
     }
 
 

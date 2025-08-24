@@ -33,6 +33,8 @@ public class GameActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         gameEngine = new GameEngine();
         
+        // Ensure ViewModel has correct user data
+        viewModel.onUserChanged();
 
 
         setupUI();
@@ -55,12 +57,7 @@ public class GameActivity extends AppCompatActivity {
         viewModel.getGameState().observe(this, this::updateGameState);
         viewModel.getMultiplier().observe(this, this::updateMultiplier);
         
-        // Add balance observer to update UI
-        viewModel.getBalance().observe(this, balance -> {
-            if (balance != null) {
-                binding.tuitionAmountText.setText(String.format("%,.0f VND", balance));
-            }
-        });
+        // Balance observer removed - will be handled by tuition observer
         
         viewModel.getCurrentBet().observe(this, bet -> 
             binding.currentBetText.setText(getString(R.string.current_bet_format, bet)));
@@ -87,28 +84,58 @@ public class GameActivity extends AppCompatActivity {
             return;
         }
         
-        // Tuition meter
+        // Tuition meter - shows current balance as "remaining study money"
         viewModel.getTuitionRemaining().observe(this, tuition -> {
             binding.tuitionAmountText.setText(String.format("%,.0f VND", tuition));
             
-            // Update progress bar
-            double percentage = (tuition / 28700000.0) * 100;
-            binding.tuitionProgressBar.setProgress((int) percentage);
+            // Get total deposited to calculate percentage remaining
+            double totalDeposited = viewModel.getTotalDeposited();
             
-            // Update colors based on amount
-            if (percentage < 30) {
+            // Calculate progress based on percentage of money remaining
+            int progress = 0;
+            double percentage = 0;
+            
+            if (totalDeposited > 0) {
+                percentage = (tuition / totalDeposited) * 100;
+                progress = (int) Math.min(Math.max(percentage, 0), 100);
+            } else if (tuition > 0) {
+                // For demo accounts or accounts with initial balance but no deposits
+                progress = 100;
+                percentage = 100;
+            } else {
+                progress = 0;
+                percentage = 0;
+            }
+            
+            binding.tuitionProgressBar.setProgress(progress);
+            
+            // Color coding based on percentage remaining (not absolute amount)
+            if (percentage <= 0) {
+                // No money left (0%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFFF6B35));
                 }
                 binding.tuitionAmountText.setTextColor(0xFFFF6B35);
                 binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
+                binding.tuitionWarningText.setText("⚠️ Hết tiền học phí!");
+            } else if (percentage < 20) {
+                // Very low remaining (< 20%)
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFFF6B35));
+                }
+                binding.tuitionAmountText.setTextColor(0xFFFF6B35);
+                binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
+                binding.tuitionWarningText.setText("⚠️ Tiền học phí sắp hết!");
             } else if (percentage < 50) {
+                // Low remaining (< 50%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFFFCC02));
                 }
                 binding.tuitionAmountText.setTextColor(0xFFFFCC02);
-                binding.tuitionWarningText.setVisibility(android.view.View.GONE);
+                binding.tuitionWarningText.setVisibility(android.view.View.VISIBLE);
+                binding.tuitionWarningText.setText("⚠️ Cẩn thận với tiền học phí!");
             } else {
+                // Good remaining (≥ 50%)
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     binding.tuitionProgressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFF00FF88));
                 }

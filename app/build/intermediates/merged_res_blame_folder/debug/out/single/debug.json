@@ -1,7 +1,7 @@
 [
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_register_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_register_background.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_settings_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_settings_background.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_history.xml.flat",
@@ -16,10 +16,6 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\logo_fpt_broken.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_check.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_check.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_item_game_record.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\item_game_record.xml"
     },
@@ -28,20 +24,104 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_logofpt.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_button_primary.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_button_primary.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_jet.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_jet.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_deposit.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_deposit.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_neon_button_green.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\neon_button_green.xml"
     },
     {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_jet.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_jet.xml"
+    },
+    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_back.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_login_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_login_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_deposit_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_deposit_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_withdraw_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_withdraw_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_play.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_play.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\mipmap-mdpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_close.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_close.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_input_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_input_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_history.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_button_success.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_button_success.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_card_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_modern.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_modern.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_dialog_change_password_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\dialog_change_password_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_history_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_history_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\mipmap-mdpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_dialog_change_password.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\dialog_change_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_glass_card_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\glass_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_register_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_register_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_withdraw.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_withdraw.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_check.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_button_primary.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_button_primary.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_person.xml.flat",
@@ -50,10 +130,6 @@
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_exit.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_exit.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_login_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_login_background.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_game_background.xml.flat",
@@ -76,60 +152,32 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_play.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_play.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\mipmap-mdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\mipmap-mdpi\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_close.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_close.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_input_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_input_background.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_settings.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_settings.xml"
-    },
-    {
-        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_game.xml.flat",
-        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_game.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_history.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_history.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_button_success.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_button_success.xml"
-    },
-    {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_card_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_card_background.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_neon_glow_background.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\neon_glow_background.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_airplane_modern.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane_modern.xml"
+        "merged": "com.example.aviatorcrash.app-merged_res-48:/layout_activity_settings.xml.flat",
+        "source": "com.example.aviatorcrash.app-main-50:/layout/activity_settings.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_register.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_login.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_delete.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_settings_card_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\settings_card_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_card_input_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_card_input_background.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_logo_fpt_big_broke.xml.flat",
@@ -148,27 +196,23 @@
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_airplane.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\mipmap-mdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\mipmap-mdpi\\ic_launcher_round.xml"
-    },
-    {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_ic_lock.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\ic_lock.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_circle_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\circle_background.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_change_password.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_change_password.xml"
     },
     {
         "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_background.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_circle_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\circle_background.xml"
     },
     {
-        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_glass_card_background.xml.flat",
-        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\glass_card_background.xml"
+        "merged": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-merged_res-48:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\vutro\\.gradle\\daemon\\8.9\\com.example.aviatorcrash.app-main-50:\\drawable\\gradient_background.xml"
     }
 ]

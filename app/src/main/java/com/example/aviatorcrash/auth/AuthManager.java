@@ -43,6 +43,11 @@ public class AuthManager {
                 resetUserGameCount();
             }
             
+            // If this is a newly registered user, mark them as established after first login
+            if (isNewlyRegisteredUser(username)) {
+                markAsEstablishedUser(username);
+            }
+            
             prefs.edit()
                     .putString(KEY_ACCOUNT_TYPE, accountType.getUsername())
                     .putBoolean(KEY_IS_LOGGED_IN, true)
@@ -211,10 +216,108 @@ public class AuthManager {
                     .putString(KEY_REGISTERED_USERS, updatedUsers)
                     .apply();
             
+            // Mark this user as newly registered (for balance reset)
+            markAsNewUser(username);
+            
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    /**
+     * Mark user as newly registered for balance reset
+     */
+    private void markAsNewUser(String username) {
+        String newUsers = prefs.getString("new_users", "");
+        if (!newUsers.contains(username)) {
+            String updatedNewUsers = newUsers.isEmpty() ? username : newUsers + "," + username;
+            prefs.edit()
+                    .putString("new_users", updatedNewUsers)
+                    .apply();
+            
+            // Debug log
+            android.util.Log.d("AuthManager", "Marked user as new: " + username + ", List: " + updatedNewUsers);
+        }
+    }
+
+    /**
+     * Check if user is newly registered (for balance reset)
+     */
+    public boolean isNewlyRegisteredUser(String username) {
+        if (username == null) return false;
+        
+        String newUsers = prefs.getString("new_users", "");
+        boolean isNew = newUsers.contains(username);
+        
+        // Debug log
+        android.util.Log.d("AuthManager", "Checking if user is new: " + username + ", List: " + newUsers + ", Result: " + isNew);
+        
+        return isNew;
+    }
+
+    /**
+     * Remove user from newly registered list after first login
+     */
+    public void markAsEstablishedUser(String username) {
+        String newUsers = prefs.getString("new_users", "");
+        if (newUsers.contains(username)) {
+            String updatedNewUsers = newUsers.replace(username + ",", "").replace("," + username, "").replace(username, "");
+            prefs.edit()
+                    .putString("new_users", updatedNewUsers)
+                    .apply();
+        }
+    }
+
+    /**
+     * Change password for current user
+     */
+    public boolean changePassword(String currentPassword, String newPassword) {
+        if (currentAccountType == null) {
+            return false;
+        }
+
+        String username = currentAccountType.getUsername();
+        
+        // For built-in accounts (admin, toiyeufpt), don't allow password change
+        if (username.equals(ADMIN_USERNAME) || username.equals(PLAYER_USERNAME)) {
+            return false; // Built-in accounts cannot change password
+        }
+
+        // Verify current password
+        if (validateCredentials(username, currentPassword) == null) {
+            return false;
+        }
+
+        // Update password for registered user
+        String registeredUsers = prefs.getString(KEY_REGISTERED_USERS, "");
+        if (registeredUsers.contains(username + ":")) {
+            // Replace old password with new password
+            String oldEntry = username + ":" + currentPassword;
+            String newEntry = username + ":" + newPassword;
+            String updatedUsers = registeredUsers.replace(oldEntry, newEntry);
+            
+            prefs.edit()
+                    .putString(KEY_REGISTERED_USERS, updatedUsers)
+                    .apply();
+            
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if current user can change password
+     */
+    public boolean canChangePassword() {
+        if (currentAccountType == null) {
+            return false;
+        }
+
+        String username = currentAccountType.getUsername();
+        // Built-in accounts cannot change password
+        return !username.equals(ADMIN_USERNAME) && !username.equals(PLAYER_USERNAME);
     }
 
     /**

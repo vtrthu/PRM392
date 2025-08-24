@@ -31,6 +31,16 @@
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".DepositActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".WithdrawActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         
         <activity
             android:name=".GameActivity"
@@ -44,6 +54,11 @@
             
         <activity
             android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ChangePasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
             
